@@ -1,0 +1,167 @@
+body {
+  margin: 0px;
+  padding-top: 0px;
+}
+
+.Mavi {
+  float: left;
+  background-color: #4731D3;
+  width: 70%;
+  height: 100vh;
+}
+
+.Sari {
+  float: left;
+  background: #CBF281;
+  width: 30%;
+  height: 100vh;
+  display: inline;
+  align-items: center;
+}
+
+.Profile1 {
+  position: absolute;
+  top: 25%;
+  left: 59.5%;
+  border-radius: 18px;
+}
+
+.Turkce p {
+  padding-left: 80%;
+  font-family: "Inter", sans-serif;
+  color: #CBF281;
+}
+
+.HeroContent {
+  display: inline;
+  width: 528.88px;
+  height: 375.89px;
+}
+
+.Brand {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  size: 32px;
+  line-height: 72px;
+  color: #CBF281;
+  margin-left: 5%;
+}
+
+.GitBtn {
+  display: flex;
+  float: left;
+  gap: 10px;
+  width: 59px;
+  height: 28px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  size: 18px;
+  line-height: 28px;
+  color: #3730A3;
+  border: 1px;
+  margin-right: 1rem;
+  margin-left: 10%;
+}
+
+.LinkBtn {
+  display: flex;
+  float: left;
+  gap: 10px;
+  width: 59px;
+  height: 28px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  size: 18px;
+  line-height: 28px;
+  color: #3730A3;
+  border: 1px;
+}
+
+.JsSkill {
+  font-family: "Inter", sans-serif;
+}
+
+.ReactSkill {
+  font-family: "Inter", sans-serif;
+}
+
+.ReduxSkill {
+  font-family: "Inter", sans-serif;
+}
+
+.NodeSkill {
+  font-family: "Inter", sans-serif;
+}
+
+.VsSkill {
+  font-family: "Inter", sans-serif;
+}
+
+.FigmaSkill {
+  font-family: "Inter", sans-serif;
+}
+
+#Textp1 {
+  font-family: "Inter", sans-serif;
+  line-height: 59.4px;
+  font-size: 54px;
+  color: #CBF281;
+  font-weight: 700;
+  width: 528px;
+  height: 118px;
+}
+
+#Textp2 {
+  font-family: "Inter", sans-serif;
+  font-size: 24px;
+  line-height: 29.05px;
+  font-weight: 400;
+  color: #FFFFFF;
+  width: 528px;
+  height: 118px;
+}
+
+.BtnMod {
+  display: flex;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  color: #4731D3;
+  font-weight: 700;
+}
+
+.SkillBoxes1 {
+  float: left;
+  margin-right: 10rem;
+  padding-left: 40%;
+
+}
+
+.SkillBoxes2 {
+  vertical-align: middle;
+  align-items: center;
+  margin-right: 10rem;
+  padding-left: 40%;
+
+}
+
+.Skillsa {
+  padding-bottom: 1rem;
+  padding-top: 5rem;
+  font-family: "Inter", sans-serif;
+  line-height: 36px;
+  font-weight: 500;
+  color: #777777;
+  size: 24px;
+}
+
+.Skillsa img{
+  width: 120px;
+  height: 120px;
+}
+h1{
+  display: inline;
+}
+.SkillBoxes{
+  color: #4832D3;
+  
+}
