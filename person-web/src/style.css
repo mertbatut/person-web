@@ -455,3 +455,54 @@ input:checked + .slider:before {
   justify-items: start;
   align-content: center;
 }
+
+.Footer1 {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  size: 48px;
+  color: #4731D3;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+}
+#FooterP {
+  text-align: center;
+  display: inline;
+}
+
+.SkillBoxes1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 40%;
+}
+
+.SkillBoxes2 {
+  font-weight: 500;
+  color: #777777;
+  size: 24px;
+  display: inherit;
+  align-items: center;
+  padding-right: 6rem;
+
+}
+
+.Skillsa img {
+  width: 120px;
+  height: 120px;
+  border-radius: 6px;
+}
+
+.Skillsa h1 {
+  display: inline;
+  font-family: "Inter", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.Skill1 {
+  display: inline-flex;
+  height: 100%;
+  padding-bottom: 6rem;
+
+}
