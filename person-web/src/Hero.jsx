@@ -1,46 +1,44 @@
 import React, { Component } from 'react'
 import './style.css'
+import './dark.scss'
 import ToggleButton from './ToggleButton'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import githubSvg from "./assets/github.svg";
+import linkedinSvg from "./assets/linkedin.svg";
 
 export default class HeroSection extends Component {
-  
   render() {
     return (
       <>
-        <div className='row' style={{ height: "671px" }}>
-          <div className='Blue col'>
-            <div className='row justify-content-end'>
-              <div className='col-2 BlueChangeLang'>
+        <div className='container-fluid'>
+          <div className='row' style={{ height: "671px" }}>
+            <div className='Blue col'>
+              <div className='col-12 text-end BlueChangeLang'>
                 <span className='ChangeLang'>TÜRKÇE</span>'YE GEÇ
               </div>
-            </div>
-            <div className='row justify-content-center BlueContentHeader'>
-              <div className='col-6'>
+              <div className='offset-md-3 col-6 justify-content-center BlueContentHeader mb-5'>
                 almila
               </div>
-            </div>
-            <div className='row justify-content-center BlueContent'>
-              <div className='col-6'>
-                <div className='row BlueContent1'>
-                  I'm a Frontend Developer
-                </div>
-                <div className='row BlueContent2'>
-                  ...who likes to craft solid and scalable frontend products with great user experiences.
-                </div>
-                <div className='row'>
-                  <div className='col'>
-                    <button className='CustomGitBtn'><i class="fa-brands fa-github"></i>Github</button>
-                  </div>
-                  <div className='col'>
-                    <button className='CustomLinkBtn'> Linkedin</button>
-                  </div>
-                </div>
+              <br />
+              <div className='offset-md-3 col-6 BlueContent1 mb-5'>
+                I'm a Frontend Developer
+              </div>
+              <div className='offset-md-3 col-6 BlueContent2 mb-5'>
+                ...who likes to craft solid and scalable frontend products with great user experiences.
+              </div>
+              <div className='offset-md-3 col-6 ButtonRow'>
+                <button className='CustomGitBtn'>
+                  <img src={githubSvg} alt="Github" />
+                  Github</button>
+                <button className='CustomLinkBtn'>
+                  <img src={linkedinSvg} alt="Linkedin" />
+                  Linkedin</button>
               </div>
             </div>
-          </div>
-          <div className='Yellow col-4'>
-            <div className='ImageDiv'></div>
+            <div className='Yellow col-4'>
+              <ToggleButton />
+              <div className='ImageDiv'></div>
+            </div>
           </div>
           {/* <div className='Mavi' >
             <span className='Turkce'><p> <strong>TÜRKÇE'YE GEÇ</strong></p></span>
