@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 export default class Profilecontent extends Component {
   render() {
     return (
-      
       <div className='container-fluid ProfileContainer'>
         <div className='row align-items-center justify-content-center h-100 flex-column'>
           <div className='row justify-content-center'>
