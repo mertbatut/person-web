@@ -4,8 +4,9 @@ import './style.css'
 export default class Skills extends Component {
     render() {
         return (
-            <div>
-                <h1 className='SkillBoxes'>Skills</h1>
+           <div>
+           <div className='SkillBoxes'>
+                <h1 className='SkillBoxesText'>Skills</h1>
                 <div className='SkillBoxes1'>
                     <div className='Skillsa'><h1><img src="Java.png" alt="" />JAVASCRIPT</h1></div>
                     <div className='Skillsa'><h1><img src="react.png" alt="" /> REACT</h1></div>
@@ -18,6 +19,7 @@ export default class Skills extends Component {
                     <div className='Skillsa'><h1><img src="https://placehold.co/120*120" alt="" />FIGMA</h1></div>
                 </div>
 
+            </div>
             </div>
         )
     }
