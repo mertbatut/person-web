@@ -154,14 +154,99 @@ body {
   size: 24px;
 }
 
-.Skillsa img{
+.Skillsa img {
   width: 120px;
   height: 120px;
 }
-h1{
+
+h1 {
   display: inline;
 }
-.SkillBoxes{
+
+.SkillBoxes {
   color: #4832D3;
-  
+
+}
+
+
+html {
+  font-family: "Inter", sans-serif;
+}
+
+.Blue,
+.Yellow {
+  height: 100%;
+  position: relative;
+}
+
+.Blue {
+  padding: 35px;
+  background-color: #4731D3;
+}
+
+.Yellow {
+  background-color: #CBF281;
+}
+
+.BlueContent1 {
+  font-size: 54px;
+  color: #CBF281;
+  font-weight: 700;
+}
+
+.BlueContent2 {
+  font-size: 24px;
+  line-height: 29.05px;
+  font-weight: 400;
+  color: #FFFFFF;
+}
+
+.BlueContentHeader {
+  font-size: 35px;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  color: #CBF281;
+}
+
+.BlueContent {
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+}
+
+.BlueChangeLang {
+  font-size: 15px;
+  font-weight: 700;
+  color: #D9D9D9;
+}
+
+.ChangeLang {
+  color: #CAF181;
+}
+
+.ImageDiv {
+  width: 350px;
+  height: 375.89px;
+  border-radius: 18px;
+  background-image: url(../Profile.png);
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  left: -30%;
+  top: 30%;
+}
+
+.CustomGitBtn, .CustomLinkBtn{
+  padding: 12px 20px 12px 12px;
+  border:1px solid #3730A3;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  height: 52px;
+  color: #3730A3;
+  border-radius: 6px;
 }
