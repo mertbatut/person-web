@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import './style.css'
 import './dark.scss'
 import ToggleButton from './ToggleButton'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import githubSvg from "./assets/github.svg";
 import linkedinSvg from "./assets/linkedin.svg";
 
