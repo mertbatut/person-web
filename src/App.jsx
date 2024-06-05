@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import './App.css'
-import HeroSection from './Hero.jsx'
-import Skills from './Skills.jsx'
-import Profilecontent from './Profilecontent.jsx'
-import Footer from './Footer.jsx'
-import Projects from './projects.jsx'
+import HeroSection from './components/Hero.jsx'
+import Skills from './components/Skills.jsx'
+import Profilecontent from './components/Profilecontent.jsx'
+import Footer from './components/Footer.jsx'
+import Projects from './components/projects.jsx'
 
 function App() {
   const [count, setCount] = useState(0)

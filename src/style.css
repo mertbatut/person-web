@@ -213,21 +213,22 @@ html {
   align-items: center;
 }
 
-.BlueChangeLang {
-  font-size: 15px;
-  font-weight: 700;
-  color: #D9D9D9;
-}
+
 
 .ChangeLang {
   color: #CAF181;
+  background:inherit;
+  border: none;
+  font-size: 15px;
+  font-weight: 700;
+  color: #D9D9D9;
 }
 
 .ImageDiv {
   width: 350px;
   height: 375.89px;
   border-radius: 18px;
-  background-image: url(../Profile.png);
+  background-image: url(https://s3-alpha-sig.figma.com/img/76b0/6993/b04fd1fa29a883e2f4b8b8577a5c82eb?Expires=1718582400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=YJF4zCcGui-vJ9-EBhczEAWlUcXN6~7ElT~vpdmIuOUt8l~XqJPrL4BEiezJbq4QO9IA1Ie96PPWTGD-fdHrs2Ky~ADVjbiWkCCIjO17kbazgosan16~R~3SGlmfTMSRIy67anwAF6EcjHF7fC8dzb2-T3pEja87OmEXtS9cCnFAQPnr3m9rFLcuBB3ZpCD3NiMHUkZ4yrBY~RnYBLBQwo9faKyufBDETrkAWorr3dc1hCPpPmn27ktvxtCKW3Rd3R0yVXz0E0zBZcDb~AGU2kQH4evluWzhnd3NKhedAbSvqOD9mX4pqSQ35hGZEMF2aBR~BhljRVQyyWKttzr5Fg__);
   background-position: center;
   background-size: cover;
   position: absolute;
@@ -491,6 +492,7 @@ input:checked + .slider:before {
   width: 120px;
   height: 120px;
   border-radius: 6px;
+  object-fit: cover;
 }
 
 .Skillsa h1 {
