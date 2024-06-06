@@ -110,53 +110,6 @@ body {
   font-weight: 700;
 }
 
-.SkillBoxes1 {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-left: 40%;
-}
-
-.SkillBoxes2 {
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin-left: 10rem;
-
-}
-
-.Skillsa {
-  padding-bottom: 1rem;
-  padding-top: 5rem;
-  font-family: "Inter", sans-serif;
-  line-height: 36px;
-  font-weight: 500;
-  color: #777777;
-  size: 24px;
-  display: inherit;
-  align-items: center;
-  padding-right: 6rem;
-
-}
-
-.Skillsa img {
-  width: 120px;
-  height: 120px;
-  border-radius: 6px;
-}
-
-.Skillsa h1 {
-  display: inline;
-  font-family: "Inter", sans-serif;
-  font-size: 24px;
-  font-weight: 500;
-}
-
-.SkillBoxes {
-  color: #4832D3;
-
-}
 
 
 html {
@@ -471,7 +424,7 @@ input:checked + .slider:before {
   display: inline;
 }
 
-.SkillBoxes1 {
+/* .SkillBoxes1 {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -507,4 +460,4 @@ input:checked + .slider:before {
   height: 100%;
   padding-bottom: 6rem;
 
-}
+} */

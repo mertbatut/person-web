@@ -37,7 +37,7 @@ class HeroSection extends Component {
               </button>
             </div>
             <div className='offset-md-3 col-6 justify-content-center BlueContentHeader mb-5'>
-              almila
+              Mert Batut
             </div>
             <br />
             <div className='offset-md-3 col-6 BlueContent1 mb-5'>

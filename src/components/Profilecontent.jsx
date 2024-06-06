@@ -33,8 +33,8 @@ export default class Profilecontent extends Component {
             <div className='col-3' style={{justifyContent: "center", display: "flex"}}>
               <div className='ImageDiv2'></div>
             </div>
-            <div className='col-3'>
-              <div className='col-12 ProfileHeader'>About Me</div>
+            <div className='col-3 flex flex-col gap-12'>
+              <div className='col-12 ProfileHeader'>HAKKIMDA</div>
               <div className='col-12 ProfileContent'>
                 <p>
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam aut, odit laborum aliquam voluptatum nisi mollitia.
