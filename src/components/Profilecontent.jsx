@@ -4,8 +4,9 @@ export default class Profilecontent extends Component {
   render() {
     return (
       <div className='bg-[#4731D3]'>
+        <span className='text-[48px] font-bold text-[#CBF281] justify-center flex'>Profil</span>
         <div className='flex gap-24 justify-center items-center'>
-        <span className='text-[48px] font-bold text-[#CBF281]'>Profil</span>
+        
           <div className=' '>
             
             <div className=''>
@@ -17,15 +18,15 @@ export default class Profilecontent extends Component {
               <div className='font-semibold text-[30px] text-[#FFFFFF] '>Temel Bilgiler</div>
               <div className='flex gap-8'>
                 <div className='font-semibold text-[16px] text-[#CBF281]'>Doğum Tarihi :</div>
-                <div className='font-normal text-[16px] text-[#FFFFFF]'>24.03.2024</div>
+                <div className='font-normal text-[16px] text-[#FFFFFF]'>11.08.1993</div>
               </div>
               <div className='flex gap-8'>
                 <div className='font-semibold text-[16px] text-[#CBF281]'>İkamet Şehri :</div>
-                <div className='font-normal text-[16px] text-[#FFFFFF] pl-2'>Ankara</div>
+                <div className='font-normal text-[16px] text-[#FFFFFF] pl-2'>Bursa</div>
               </div>
               <div className='flex gap-8'>
                 <div className='font-semibold text-[16px] text-[#CBF281]'>Eğitim Durumu</div>
-                <div className='font-normal text-[16px] text-[#FFFFFF]'>Hacettepe Ünv.  Biyoloji Lisans, 2016</div>
+                <div className='font-normal text-[16px] text-[#FFFFFF]'>Beykent Üniversitesi İngilizce İşletme</div>
               </div>
               <div className='flex gap-8'>
                 <div className='font-semibold text-[16px] text-[#CBF281]'>Tercih Ettiği Rol</div>
