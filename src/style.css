@@ -305,19 +305,7 @@ input:checked + .slider:before {
 
 
 
-.Footer1 {
-  font-family: "Inter", sans-serif;
-  font-weight: 700;
-  size: 48px;
-  color: #4731D3;
-  display: grid;
-  justify-items: center;
-  align-content: center;
-}
-#FooterP {
-  text-align: center;
-  display: inline;
-}
+
 
 /* .SkillBoxes1 {
   display: flex;
