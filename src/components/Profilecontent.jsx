@@ -49,25 +49,7 @@ export default class Profilecontent extends Component {
           </div>
 
         </div>
-        {/* <div className='ProfileText'>Profile</div>
-        <div className='ProfileContent'>
-          <div className='ProfileText'>Profile</div>
-          <div className='Basicİnfo'>
-            <h1>Basic Information</h1>
-            <div className='Profileİnfo'>
-              <p>Doğum Tarihi: </p>
-              <p>İkamet Şehri: </p>
-              <p>Eğitim Durumu: </p>
-              <p>Tercih Ettiği Rol: </p>
-            </div>
-            <div className='ProfileInfo2'>
-              <p>24.03.1996</p>
-              <p>Ankara</p>
-              <p>Hacettepe Ünv.  Biyoloji
-                Lisans, 2016</p>
-              <p>Frontend, UI</p>
-            </div>
-        </div> */}
+    
       </div>
     )
   }
