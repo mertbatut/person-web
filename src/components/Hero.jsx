@@ -1,72 +1,37 @@
-import React, { Component } from 'react';
-import { withTranslation } from 'react-i18next';
-import '../style.css';
-import '../dark.scss';
-import ToggleButton from '../components/ToggleButton';
-import githubSvg from '../assets/github.svg';
-import linkedinSvg from '../assets/linkedin.svg';
+import React, { Component } from 'react'
 
-class HeroSection extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentLanguage: this.props.i18n.language
-    };
-  }
-
-  changeLanguage = (lng) => {
-    const { i18n } = this.props;
-    i18n.changeLanguage(lng);
-    this.setState({ currentLanguage: lng });
-  };
-
+export default class Hero extends Component {
+  
   render() {
-    const { t } = this.props;
-    const { currentLanguage } = this.state;
-
+     
     return (
-      <div className='container-fluid'>
-        <div className='row' style={{ height: '671px' }}>
-          <div className='Blue col'>
-            <div className='col-12 text-end BlueChangeLang'>
-              <button
-                className='ChangeLang'
-                onClick={() => this.changeLanguage(currentLanguage === 'en' ? 'tr' : 'en')}
-              >
-                {currentLanguage === 'en' ? t('use_turkish') : t('use_english')}
-              </button>
-            </div>
-            <div className='offset-md-3 col-6 justify-content-center BlueContentHeader mb-5'>
-              Mert Batut
-            </div>
-            <br />
-            <div className='offset-md-3 col-6 BlueContent1 mb-5'>
-              {t('i_am_a_frontend_developer')}
-            </div>
-            <div className='offset-md-3 col-6 BlueContent2 mb-5'>
-              {t('frontend_description')}
-            </div>
-            <div className='offset-md-3 col-6 ButtonRow'>
-              <button className='CustomGitBtn'>
-                <img src={githubSvg} alt='Github' />
-                Github
-              </button>
-              <button className='CustomLinkBtn'>
-                <img src={linkedinSvg} alt='Linkedin' />
-                Linkedin
-              </button>
-            </div>
+      <>
+      <div>
+     
+      <div className='HeroContent pl-96 '>
+        
+        <div className='HeroLeft absolute flex items-center gap-16 pt-32'>
+          <div className=''>
+          <p className='font-bold text-[54px] text-[#CBF281] w-[33rem]'>I am a Frontend Developer...</p>
+          <p className='font-normal text-2xl text-[#FFFFFF]  w-[33rem]'>...who likes to craft solid and scalable frontend products with great user experiences.</p>
+          <div className='ButtonDiv flex gap-8'>
+            <button className='w-[127px] h-[52px] rounded-md border flex flex-row items-center justify-center gap-3 py-3 px-[20px] bg-[#FFFFFF] font-semibold text-[18px] text-[#3730A3]'><i class="fa-brands fa-github"></i> Github</button>
+            <button className='w-[127px] h-[52px] rounded-md border flex flex-row items-center justify-center gap-3 py-3 px-[20px] bg-[#FFFFFF] font-semibold text-[18px] text-[#3730A3]'><i class="fa-brands fa-linkedin"></i> Linkedin</button>
           </div>
-          <div className='Yellow col-4'>
-            <ToggleButton />
-            <div className='ImageDiv'>
-             
-            </div>
           </div>
+          <div>
+          
+          </div>
+          <img className='w-[21.9rem] h-[23.5rem] object-cover rounded-[18px]' src="https://s3-alpha-sig.figma.com/img/76b0/6993/b04fd1fa29a883e2f4b8b8577a5c82eb?Expires=1718582400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=YJF4zCcGui-vJ9-EBhczEAWlUcXN6~7ElT~vpdmIuOUt8l~XqJPrL4BEiezJbq4QO9IA1Ie96PPWTGD-fdHrs2Ky~ADVjbiWkCCIjO17kbazgosan16~R~3SGlmfTMSRIy67anwAF6EcjHF7fC8dzb2-T3pEja87OmEXtS9cCnFAQPnr3m9rFLcuBB3ZpCD3NiMHUkZ4yrBY~RnYBLBQwo9faKyufBDETrkAWorr3dc1hCPpPmn27ktvxtCKW3Rd3R0yVXz0E0zBZcDb~AGU2kQH4evluWzhnd3NKhedAbSvqOD9mX4pqSQ35hGZEMF2aBR~BhljRVQyyWKttzr5Fg__" alt="Hero_Profile" />
         </div>
+       
       </div>
-    );
+      <div className='flex flex-row-reverse'>
+        <div className='w-4/12 h-[671px] bg-[#CBF281]'></div>
+        <div className='w-8/12 h-[671px] bg-[#4731D3]'></div>
+      </div>
+      </div>
+      </>
+    )
   }
 }
-
-export default withTranslation()(HeroSection);
