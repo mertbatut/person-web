@@ -7,7 +7,7 @@ import Footer from './components/Footer.jsx'
 import Projects from './components/projects.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [, ] = useState(0)
 
   return (
     <>

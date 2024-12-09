@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-
+import  { Component } from 'react';
+import '../style.css';
 export default class Profilecontent extends Component {
   render() {
     return (
@@ -32,17 +32,38 @@ export default class Profilecontent extends Component {
               </div>
             </div>
             <div className='ProImage py-12'>
-              <img className='rounded-xl w-full lg:w-[300px] h-auto lg:h-[290px]' src="https://s3-alpha-sig.figma.com/img/ec36/93fd/2fc15cffc612b2448fb1f38e4c8c72fd?Expires=1718582400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=p70T21cjHi~Vv1ZsQaryHJd1YcapmluNAG7juNSFVHCfXs67gH2w~0QABWKOzF2qmIwgs5tY94LJChKK~JQU1eYk-V7uPPCouYa8B6gonFrGddt0Rz-9geeOqP3uRy1Go0WRDWDwzLe9pvudApEH-~orWS4a8frVlTge0RAgHHsogDa-VdajGgjzpTkSnJJc5q4VKi9XVGG9S3tWx3XebneHPD6AYSrxTVy2plTO4hio~-QL1OlsXgocRPw9XSj~~5uDSgNTuo78zxr7uZS1LuA-dp2JiydwhpBcu96O7vGZ7gVGOlZ~Bl1sbQXUTRpNJ18r0NXzlaGPF6rqDgd-Ow__" alt="Profile" />
+              <img className='rounded-xl w-full lg:w-[300px] h-auto lg:h-[290px]' src="/images/notification.jpg" alt="Profile" />
             </div>
             <div className='w-full lg:w-[300px] h-auto lg:h-[290px] flex flex-col gap-4 lg:gap-8'>
               <div className='font-normal text-[24px] lg:text-[30px] text-[#FFFFFF]'>HAKKIMDA</div>
-              <div className=''>
+              <div className='max-w-[700px] max-h-[290px] overflow-auto scrollbar-custom'>
                 <p className='font-normal text-[14px] lg:text-[16px] text-[#FFFFFF]'>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam aut, odit laborum aliquam voluptatum nisi mollitia.
+                  Frontend Developer | Angular & React Developer | C# ve .NET
                 </p>
                 <p className='font-normal text-[14px] lg:text-[16px] text-[#FFFFFF]'>
-                  Minima accusamus ratione soluta aperiam sit voluptate? Dicta quod deserunt quam temporibus cumque magnam!
+                  Web geliştirme alanında uzmanlaşmış bir frontend developer olarak, Angular ve React teknolojileriyle modern, performanslı ve kullanıcı dostu web uygulamaları geliştiriyorum. Aynı zamanda, C# ve .NET teknolojileri üzerinde çalışarak full-stack geliştirme becerilerimi artırmaya odaklanıyorum.
                 </p>
+                <p className='font-normal text-[14px] lg:text-[16px] text-[#FFFFFF]'>
+                  Yenilikçi çözümler üretmek, karmaşık problemleri çözmek ve teknolojiyi öğrenme tutkusuyla birleştirerek projelere değer katmak temel hedeflerim arasında. Bu yaklaşım sayesinde hem frontend hem de backend süreçlerinde etkili bir şekilde katkı sağlama yetkinliğimi sürekli geliştirmekteyim.
+                </p>
+                <p className='font-normal text-[14px] lg:text-[16px] text-[#FFFFFF]'>
+                  Ana Yeteneklerim:
+                </p>
+                <ul className='list-disc pl-6 font-normal text-[14px] lg:text-[16px] text-[#FFFFFF] max-w-[700px]'>
+                  <li>Frontend: Angular, React, TypeScript, JavaScript</li>
+                  <li>Backend: C#, .NET, RESTful API geliştirme</li>
+                  <li>Single Page Application (SPA) geliştirme</li>
+                  <li>UI/UX odaklı tasarım ve uygulama</li>
+                  <li>Performans optimizasyonu ve modüler kod yazımı</li>
+                </ul>
+                <p className='font-normal text-[14px] lg:text-[16px] text-[#FFFFFF]'>
+                  Güçlü Yönlerim:
+                </p>
+                <ul className='list-disc pl-6 font-normal text-[14px] lg:text-[16px] text-[#FFFFFF]'>
+                  <li>Takım çalışmasına yatkınlık ve etkili iletişim becerileri</li>
+                  <li>Hızlı öğrenme ve yeni teknolojilere adaptasyon</li>
+                  <li>Kod kalitesi ve ölçeklenebilirlik odaklı yaklaşım</li>
+                </ul>
               </div>
             </div>
           </div>

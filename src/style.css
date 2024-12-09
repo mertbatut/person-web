@@ -26,6 +26,25 @@ html {
 }
 
 
+/* tailwind.css veya global.css dosyanıza ekleyin */
+.scrollbar-custom {
+  scrollbar-width: auto;
+  scrollbar-color: #CBF281 #4731D3;
+}
+
+.scrollbar-custom::-webkit-scrollbar {
+  width: 18px;
+  height: 18px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: #CBF281;
+  border-radius: 10px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background-color: inherit;
+}
 
 
 

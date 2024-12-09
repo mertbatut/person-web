@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import  { Component } from 'react';
 
 export default class Footer extends Component {
   render() {
@@ -13,10 +13,10 @@ export default class Footer extends Component {
             <p className='text-base md:text-xl font-medium text-[#4731D3]'>mertbatut@gmail.com</p>
           </a>
           <div className='FooterIcon flex gap-4'>
-           <a href=""><i class="fa-solid fa-x fa-2xl"></i></a>
-           <a href=""><i class="fa-brands fa-github fa-2xl"></i></a>
-           <a href=""><i class="fa-brands fa-linkedin fa-2xl"></i></a>
-           <a href=""><i class="fa-brands fa-square-instagram fa-2xl"></i></a>
+           <a href=""><i className="fa-solid fa-x fa-2xl"></i></a>
+           <a href=""><i className="fa-brands fa-github fa-2xl"></i></a>
+           <a href=""><i className="fa-brands fa-linkedin fa-2xl"></i></a>
+           <a href=""><i className="fa-brands fa-square-instagram fa-2xl"></i></a>
           </div>
         </div>
       </div>
