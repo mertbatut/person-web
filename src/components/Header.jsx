@@ -65,21 +65,21 @@ export default function Header() {
           className="text-lg font-bold text-white hover:text-[#CBF281] transition duration-300"
           onClick={(e) => handleLinkClick(e, "projects")}
         >
-          Projects
+          Projeler
         </a>
         <a
           href="#skills"
           className="text-lg font-bold text-white hover:text-[#CBF281] transition duration-300"
           onClick={(e) => handleLinkClick(e, "skills")}
         >
-          Skills
+          Yetenekler
         </a>
         <a
           href="#contact"
           className="text-lg font-bold text-white hover:text-[#CBF281] transition duration-300"
           onClick={(e) => handleLinkClick(e, "contact")}
         >
-          Contact
+          İletişim
         </a>
       </nav>
     </header>

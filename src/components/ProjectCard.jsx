@@ -30,7 +30,7 @@ const ProjectCard = ({ project }) => {
               target="blank"
               rel="noopener noreferrer"
             >
-              <p className="font-medium text-base text-center">View Site</p>
+              <p className="font-medium text-base text-center">Siteyi Görüntüle</p>
             </a>
           </button>
           {/* Github Button */}

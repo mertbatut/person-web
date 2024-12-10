@@ -27,7 +27,7 @@ export default class Profilecontent extends Component {
                 </div>
                 <div className='flex gap-4 lg:gap-8'>
                   <div className='font-semibold text-[14px] lg:text-[16px] text-[#D6E9B3]'>Tercih Ettiği Rol</div>
-                  <div className='font-normal text-[14px] lg:text-[16px] text-[#FFFFFF]'>Frontend, UI</div>
+                  <div className='font-normal text-[14px] lg:text-[16px] text-[#FFFFFF]'>Frontend Developer</div>
                 </div>
               </div>
             </div>
