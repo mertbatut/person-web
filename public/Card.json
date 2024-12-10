@@ -1,41 +1,41 @@
 [
   {
     "title": "Segna Tile",
-    "description": "A simple, customizable, minimal setup cookie plugin that allows your users to select which cookies to accept or decline. This was created with vanilla JS, SCSS and Parcel Bundler and is available as a NPM package and the git repository makes any type of customization to code and themes possible.",
+    "description": "ReactJS, TailwindCSS, Node.js ve Vercel teknolojileriyle geliştirilen modern bir kurumsal web platformudur. Hızlı, güvenilir ve estetik tasarımıyla iş süreçlerinizi dijitalde güçlendirmek için ideal bir çözümdür.",
     "images": [
       { "src": "/images/SegnaTile.png", "alt": "SegnaTile_Project" }
     ],
-    "techStack": ["react", "tailwind", "vercel", "ReactRouter", "heroku"],
+    "techStack": ["Reactjs", "Tailwind", "Vercel", "ReactRouter", "Node.js"],
     "siteLink": "https://segnatile.com/",
     "githubLink": ""
   },
   {
     "title": "Krizler ve Hekimlik",
-    "description": "A simple, customizable, minimal setup cookie plugin that allows your users to select which cookies to accept or decline. This was created with vanilla JS, SCSS and Parcel Bundler and is available as a NPM package and the git repository makes any type of customization to code and themes possible.",
+    "description": "Krizler ve Hekimlik, modern teknolojilerle geliştirilmiş etkileyici bir kurumsal web platformudur. ReactJS, Node.js, Tailwind ve Vercel altyapısı kullanılarak oluşturulmuş bu proje, hızlı, güvenilir ve estetik bir kullanıcı deneyimi sunar.",
     "images": [
       { "src": "/images/KrizlerveHekimlik.png", "alt": "KrizlerveHekimlik_Project" }
     ],
-    "techStack": ["react", "redux", "vercel"],
+    "techStack": ["Reactjs", "Node.js", "Vercel","Tailwind"],
     "siteLink": "https://www.krizlervehekimlik.com.tr/",
     "githubLink": ""
   },
   {
     "title": "Videographer Portfolio",
-    "description": "A simple, customizable, minimal setup cookie plugin that allows your users to select which cookies to accept or decline. This was created with vanilla JS, SCSS and Parcel Bundler and is available as a NPM package and the git repository makes any type of customization to code and themes possible.",
+    "description": "Videographer Portfolio, video prodüksiyon profesyonelleri için tasarlanmış modern bir portfolyo platformudur. ReactJS, ReactRouter, TailwindCSS, Node.js ve Vercel kullanılarak geliştirilen bu proje, kullanıcı odaklı ve performanslı bir çözüm sunar.",
     "images": [
       { "src": "/images/videographer.png", "alt": "videographer_Project" }
     ],
-    "techStack": ["React", "JavaScript", "Vercel", "ReactRouter"],
+    "techStack": ["Reactjs", "Tailwind", "Vercel", "ReactRouter", "Node.js"],
     "siteLink": "https://oguzcanturan.com/",
     "githubLink": ""
   },
   {
     "title": "Türk Patent Oyun",
-    "description": "A simple, customizable, minimal setup cookie plugin that allows your users to select which cookies to accept or decline. This was created with vanilla JS, SCSS and Parcel Bundler and is available as a NPM package and the git repository makes any type of customization to code and themes possible.",
+    "description": "Türk Patent Eğitici Oyun Platformu, Angular, TypeScript, Azure ve Bootstrap teknolojileriyle geliştirilmiş interaktif bir eğitim platformudur. Kullanıcılar eğlenceli oyunlarla bilgi edinirken, tamamladıkları görevler sonucunda sertifikalar kazanabilirler. Bu platform, modern tasarımı ve kullanıcı dostu arayüzüyle öğrenmeyi keyifli hale getirir.",
     "images": [
       { "src": "/images/PatentOyun.png", "alt": "videographer_Project" }
     ],
-    "techStack": ["Angular", "TypeScript", "Azure"],
+    "techStack": ["Angular", "TypeScript", "Azure","Bootstrap"],
     "siteLink": "http://oyun.excognize.com/",
     "githubLink": ""
   }

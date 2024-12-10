@@ -1,16 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-
-    if (!menuOpen) {
+  useEffect(() => {
+    if (menuOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
+  }, [menuOpen]);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const handleLinkClick = (e, targetId) => {
+    e.preventDefault();
+    setMenuOpen(false);
+    document.getElementById(targetId).scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -18,7 +26,7 @@ export default function Header() {
     
 
       <div
-        className="md:hidden cursor-pointer z-50"
+        className="md:hidden  cursor-pointer z-50"
         onClick={toggleMenu}
         aria-label="Toggle Menu"
       >
@@ -48,28 +56,28 @@ export default function Header() {
         <a
           href="#home"
           className="text-lg font-bold text-white hover:text-[#CBF281] transition duration-300"
-          onClick={() => setMenuOpen(false)}
+          onClick={(e) => handleLinkClick(e, "home")}
         >
           Anasayfa
         </a>
         <a
           href="#projects"
           className="text-lg font-bold text-white hover:text-[#CBF281] transition duration-300"
-          onClick={() => setMenuOpen(false)}
+          onClick={(e) => handleLinkClick(e, "projects")}
         >
           Projects
         </a>
         <a
           href="#skills"
           className="text-lg font-bold text-white hover:text-[#CBF281] transition duration-300"
-          onClick={() => setMenuOpen(false)}
+          onClick={(e) => handleLinkClick(e, "skills")}
         >
           Skills
         </a>
         <a
           href="#contact"
           className="text-lg font-bold text-white hover:text-[#CBF281] transition duration-300"
-          onClick={() => setMenuOpen(false)}
+          onClick={(e) => handleLinkClick(e, "contact")}
         >
           Contact
         </a>
