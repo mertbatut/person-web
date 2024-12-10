@@ -17,15 +17,15 @@ export default class Hero extends Component {
                 <p className='font-bold text-[20px] md:text-[54px] text-[#4832D3] md:text-[#CBF281] w-full md:w-[33rem]'>
                 Mert Batut | Frontend Developer
                 </p>
-                <p className='font-normal text-sm md:text-2xl text-[#4832D3] md:text-[#FFFFFF] w-full md:w-[33rem]'>
+                <p className='font-normal text-sm md:text-2xl text-[#4832D3] md:text-[#FFFFFF] w-full md:w-[40rem]'>
                 Modern ve ölçeklenebilir frontend çözümleri üretmeye tutkuyla bağlı bir Frontend Developer’ım. Kullanıcı odaklı, estetik ve performans odaklı tasarımlar ile işlevselliği birleştirerek üst düzey kullanıcı deneyimleri sunmayı hedefliyorum.
                 </p>
                 <div className='ButtonDiv flex flex-col items-center md:flex-row gap-4 md:gap-8 mt-4 md:mt-0 lg:gap-0'>
                   <button className='w-full md:w-[127px] h-[52px] rounded-md border flex flex-row items-center justify-center gap-3 py-3 px-[20px] bg-[#FFFFFF] font-semibold text-[16px] md:text-[18px] text-[#3730A3]'>
-                    <i className="fa-brands fa-github"></i> <a className='no-underline text-[#160F44]' href='https://github.com/mertbatut' target='blank'> Github</a>
+                  <a className='no-underline flex items-center gap-2 text-[#160F44]' href='https://github.com/mertbatut' target='blank'>  <i className="fa-brands fa-github"></i>  Github</a>
                   </button>
                   <button className='w-full md:w-[127px] h-[52px]  rounded-md border flex flex-row items-center justify-center gap-3 py-3 px-[20px] bg-[#FFFFFF] font-semibold text-[16px] md:text-[18px] text-[#3730A3]'>
-                    <i className="fa-brands fa-linkedin"></i> <a className='no-underline text-[#160F44]' href='https://www.linkedin.com/in/mert-batut-066b96248/' target='blank' >Linkedin</a>
+                  <a className='flex items-center gap-2 no-underline text-[#160F44]' href='https://www.linkedin.com/in/mert-batut-066b96248/' target='blank' > <i className="fa-brands fa-linkedin"></i> Linkedin</a>
                   </button>
                 </div>
               </div>

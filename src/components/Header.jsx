@@ -5,7 +5,7 @@ export default function Header() {
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
-    // Mobil menü açıkken kaydırmayı engelle
+
     if (!menuOpen) {
       document.body.style.overflow = "hidden";
     } else {
@@ -17,7 +17,6 @@ export default function Header() {
     <header className="flex justify-around pt-8 items-center px-6 bg-inherit w-full z-50 relative">
     
 
-      {/* Hamburger Menu for Mobile */}
       <div
         className="md:hidden cursor-pointer z-50"
         onClick={toggleMenu}
@@ -40,7 +39,7 @@ export default function Header() {
         ></div>
       </div>
 
-      {/* Navigation Links */}
+   
       <nav
         className={`fixed inset-0 bg-[#160f44] md:bg-transparent md:static flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 transform ${
           menuOpen ? "translate-x-0" : "-translate-x-full"

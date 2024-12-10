@@ -4,7 +4,7 @@ import { FaArrowUp } from "react-icons/fa";
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  // Scroll durumunu takip eden bir event listener ekle
+ 
   useEffect(() => {
     const toggleVisibility = () => {
       if (window.scrollY > 300) {
@@ -21,11 +21,11 @@ const ScrollToTop = () => {
     };
   }, []);
 
-  // Sayfanın en üstüne kaydırma fonksiyonu
+ 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth", // Smooth scroll
+      behavior: "smooth",
     });
   };
 
@@ -43,7 +43,7 @@ const ScrollToTop = () => {
             backgroundColor: "#007bff",
             color: "#fff",
             border: "none",
-            borderRadius: "50%", // Butonu yuvarlak yapar
+            borderRadius: "50%",
             cursor: "pointer",
             display: "flex",
             alignItems: "center",
@@ -52,10 +52,10 @@ const ScrollToTop = () => {
             transition: "all 0.3s ease-in-out",
           }}
           onMouseEnter={(e) => {
-            e.target.style.backgroundColor = "#0056b3"; // Hover efekti
+            e.target.style.backgroundColor = "#0056b3"; 
           }}
           onMouseLeave={(e) => {
-            e.target.style.backgroundColor = "#007bff"; // Normal renk
+            e.target.style.backgroundColor = "#007bff"; 
           }}
         >
           <FaArrowUp size={20} />
