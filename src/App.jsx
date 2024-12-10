@@ -5,6 +5,7 @@ import Skills from './components/Skills.jsx'
 import Profilecontent from './components/Profilecontent.jsx'
 import Footer from './components/Footer.jsx'
 import Projects from './components/projects.jsx'
+import ScrollToTop from './components/ScroolToTop.jsx'
 
 function App() {
   const [, ] = useState(0)
@@ -17,7 +18,7 @@ function App() {
         <Profilecontent/>
         <Projects/>
         <Footer/>
-
+        <ScrollToTop/>
       </div>
       
     </>

@@ -5,18 +5,18 @@ export default class Footer extends Component {
     return (
       <div>
         <div className='Footer1 flex flex-col items-center py-16 bg-[#F9F9F9] gap-8'>
-          <p className='text-3xl md:text-5xl font-bold text-[#4731D3]'>Send me a message!</p>
+          <p id='contact' className='text-3xl md:text-5xl font-bold text-[#4731D3]'>Send me a message!</p>
           <p className='text-lg md:text-2xl font-normal text-[#120B39]'>
             Got a question or proposal, or just want to say hello? Go ahead.
           </p>
-          <a href='mailto:mertbatut@gmail.com'>
+          <a className='no-underline' href='mailto:mertbatut@gmail.com'>
             <p className='text-base md:text-xl font-medium text-[#4731D3]'>mertbatut@gmail.com</p>
           </a>
           <div className='FooterIcon flex gap-4'>
-           <a href=""><i className="fa-solid fa-x fa-2xl"></i></a>
-           <a href=""><i className="fa-brands fa-github fa-2xl"></i></a>
-           <a href=""><i className="fa-brands fa-linkedin fa-2xl"></i></a>
-           <a href=""><i className="fa-brands fa-square-instagram fa-2xl"></i></a>
+           <a href="https://www.facebook.com/mert.batut.3/" target='blank'><i className="fa-brands fa-facebook fa-2xl"></i></a>
+           <a href="https://github.com/mertbatut" target='blank'><i className="fa-brands fa-github fa-2xl"></i></a>
+           <a href="https://www.linkedin.com/in/mert-batut-066b96248/" target='blank'><i className="fa-brands fa-linkedin fa-2xl"></i></a>
+           <a href="https://www.instagram.com/mertbatut/" target='blank'><i className="fa-brands fa-square-instagram fa-2xl"></i></a>
           </div>
         </div>
       </div>

@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Segna Tile",
+    "description": "A simple, customizable, minimal setup cookie plugin that allows your users to select which cookies to accept or decline. This was created with vanilla JS, SCSS and Parcel Bundler and is available as a NPM package and the git repository makes any type of customization to code and themes possible.",
+    "images": [
+      { "src": "/images/SegnaTile.png", "alt": "SegnaTile_Project" }
+    ],
+    "techStack": ["react", "tailwind", "vercel", "ReactRouter", "heroku"],
+    "siteLink": "https://segnatile.com/",
+    "githubLink": ""
+  },
+  {
+    "title": "Krizler ve Hekimlik",
+    "description": "A simple, customizable, minimal setup cookie plugin that allows your users to select which cookies to accept or decline. This was created with vanilla JS, SCSS and Parcel Bundler and is available as a NPM package and the git repository makes any type of customization to code and themes possible.",
+    "images": [
+      { "src": "/images/KrizlerveHekimlik.png", "alt": "KrizlerveHekimlik_Project" }
+    ],
+    "techStack": ["react", "redux", "vercel"],
+    "siteLink": "https://www.krizlervehekimlik.com.tr/",
+    "githubLink": ""
+  },
+  {
+    "title": "Videographer Portfolio",
+    "description": "A simple, customizable, minimal setup cookie plugin that allows your users to select which cookies to accept or decline. This was created with vanilla JS, SCSS and Parcel Bundler and is available as a NPM package and the git repository makes any type of customization to code and themes possible.",
+    "images": [
+      { "src": "/images/videographer.png", "alt": "videographer_Project" }
+    ],
+    "techStack": ["React", "JavaScript", "Vercel", "ReactRouter"],
+    "siteLink": "https://oguzcanturan.com/",
+    "githubLink": ""
+  },
+  {
+    "title": "Türk Patent Oyun",
+    "description": "A simple, customizable, minimal setup cookie plugin that allows your users to select which cookies to accept or decline. This was created with vanilla JS, SCSS and Parcel Bundler and is available as a NPM package and the git repository makes any type of customization to code and themes possible.",
+    "images": [
+      { "src": "/images/PatentOyun.png", "alt": "videographer_Project" }
+    ],
+    "techStack": ["Angular", "TypeScript", "Azure"],
+    "siteLink": "http://oyun.excognize.com/",
+    "githubLink": ""
+  }
+]

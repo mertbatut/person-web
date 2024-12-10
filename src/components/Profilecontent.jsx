@@ -3,8 +3,8 @@ import '../style.css';
 export default class Profilecontent extends Component {
   render() {
     return (
-      <div className='bg-[#4731D3] p-4'>
-        <span className='text-[36px] md:text-[48px] font-bold text-[#CBF281] justify-center flex'>Profil</span>
+      <div className='bg-[#160F44] p-4'>
+        <span className='text-[36px] md:text-[48px] font-bold text-[#D6E9B3] justify-center flex'>Profil</span>
         <div className='flex flex-col lg:flex-row gap-8 lg:gap-24 justify-center items-center'>
           <div className='w-full lg:w-auto'>
             <div className=''></div>
@@ -14,19 +14,19 @@ export default class Profilecontent extends Component {
               <div className='font-semibold text-[24px] lg:text-[30px] text-[#FFFFFF]'>Temel Bilgiler</div>
               <div className='flex flex-col gap-4 lg:gap-8'>
                 <div className='flex gap-4 lg:gap-8'>
-                  <div className='font-semibold text-[14px] lg:text-[16px] text-[#CBF281]'>Doğum Tarihi :</div>
+                  <div className='font-semibold text-[14px] lg:text-[16px] text-[#D6E9B3]'>Doğum Tarihi :</div>
                   <div className='font-normal text-[14px] lg:text-[16px] text-[#FFFFFF]'>11.08.1993</div>
                 </div>
                 <div className='flex gap-4 lg:gap-8'>
-                  <div className='font-semibold text-[14px] lg:text-[16px] text-[#CBF281]'>İkamet Şehri :</div>
+                  <div className='font-semibold text-[14px] lg:text-[16px] text-[#D6E9B3]'>İkamet Şehri :</div>
                   <div className='font-normal text-[14px] lg:text-[16px] text-[#FFFFFF] pl-2'>Bursa</div>
                 </div>
                 <div className='flex gap-4 lg:gap-8'>
-                  <div className='font-semibold text-[14px] lg:text-[16px] text-[#CBF281]'>Eğitim Durumu</div>
+                  <div className='font-semibold text-[14px] lg:text-[16px] text-[#D6E9B3]'>Eğitim Durumu</div>
                   <div className='font-normal text-[14px] lg:text-[16px] text-[#FFFFFF]'>Beykent Üniversitesi İngilizce İşletme</div>
                 </div>
                 <div className='flex gap-4 lg:gap-8'>
-                  <div className='font-semibold text-[14px] lg:text-[16px] text-[#CBF281]'>Tercih Ettiği Rol</div>
+                  <div className='font-semibold text-[14px] lg:text-[16px] text-[#D6E9B3]'>Tercih Ettiği Rol</div>
                   <div className='font-normal text-[14px] lg:text-[16px] text-[#FFFFFF]'>Frontend, UI</div>
                 </div>
               </div>
