@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
-
+import { useTranslation } from 'react-i18next';
 const ProjectCard = ({ project }) => {
+  const { t } = useTranslation(); 
   return (
     <div className="Projects1 flex flex-col md:flex-row items-center w-full md:w-[960px] h-auto md:h-[360px] shadow-2xl bg-[#FFFFFF] rounded-xl">
       <img
@@ -22,7 +23,7 @@ const ProjectCard = ({ project }) => {
           ))}
         </div>
         <span className="Details flex flex-col md:flex-row gap-8 pt-4">
-          {/* View Site Button */}
+
           <button className="ProjectsBtn w-auto h-[31px] px-5 py-2 bg-inherit border border-[#120B39] flex items-center justify-center text-[#160F44]">
             <a
               className="no-underline flex items-center justify-center w-full h-full"
@@ -30,10 +31,10 @@ const ProjectCard = ({ project }) => {
               target="blank"
               rel="noopener noreferrer"
             >
-              <p className="font-medium text-base text-center">Siteyi Görüntüle</p>
+              <p className="font-medium text-base text-center">{t('projects.view')}</p>
             </a>
           </button>
-          {/* Github Button */}
+  
           <button className="ProjectsBtn w-auto h-[31px] px-5 py-2 bg-inherit border border-[#160f44] flex items-center justify-center text-[#160f44]">
             <a
               className="no-underline flex items-center justify-center w-full h-full"

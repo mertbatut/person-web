@@ -1,10 +1,12 @@
-import { Component } from 'react';
 
-export default class Skills extends Component {
-  render() {
-    return (
+import { useTranslation } from 'react-i18next';
+
+export default function Skills() {
+  const { t } = useTranslation(); 
+
+  return (
       <div className="lg:py-56 py-20 flex flex-col items-center">
-        <h1 id="skills" className="text-5xl font-bold text-[#4832D3] text-center mb-8">Yetenekler</h1>
+        <h1 id="skills" className="text-5xl font-bold text-[#4832D3] text-center mb-8"> {t('skills.skills')}</h1>
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           <div className="flex flex-col items-center gap-3 border-2 border-gray-300 rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
             <img className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-md object-cover" src="/images/js.png" alt="JAVASCRIPT" />
@@ -62,4 +64,4 @@ export default class Skills extends Component {
       </div>
     );
   }
-}
+

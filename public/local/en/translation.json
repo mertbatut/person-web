@@ -1,0 +1,45 @@
+{
+  "menu": {
+    "home": "Home",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Mert Batut | Frontend Developer",
+    "description": "I am a Frontend Developer passionate about creating modern and scalable frontend solutions. Combining user-centric designs with functionality to deliver superior user experiences.",
+    "github": "Github",
+    "linkedin": "Linkedin"
+  },
+  "skills": {
+    "skills": "Skills"
+  },
+  "projects": {
+    "title": "Projects",
+    "view": "View Project"
+  },
+  "profile": {
+    "header": "Profile",
+    "basicInfo": "Basic Information",
+    "birthDate": "Birth Date",
+    "residence": "Residence City",
+    "education": "Education Status",
+    "preferredRole": "Preferred Role",
+    "aboutMe": "ABOUT ME",
+    "skills": "My Key Skills",
+    "strengths": "My Strengths",
+    "frontend": "Frontend: Angular, React, TypeScript, JavaScript",
+    "backend": "Backend: C#, .NET, RESTful API development",
+    "spa": "Single Page Application (SPA) development",
+    "uiux": "UI/UX-focused design and implementation",
+    "performance": "Performance optimization and modular code writing",
+    "teamwork": "Teamwork-oriented and effective communication skills",
+    "adaptation": "Quick learning and adaptation to new technologies",
+    "codeQuality": "Focus on code quality and scalability"
+  },
+  "footer": {
+    "title": "Send me a message!",
+    "description": "Do you have a question or suggestion, or do you just want to say hello?",
+    "email": "mertbatut@gmail.com"
+  }
+}

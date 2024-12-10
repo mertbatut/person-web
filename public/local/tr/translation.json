@@ -1,0 +1,45 @@
+{
+  "menu": {
+    "home": "Anasayfa",
+    "projects": "Projeler",
+    "skills": "Yetenekler",
+    "contact": "İletişim"
+  },
+  "hero": {
+    "title": "Mert Batut | Frontend Developer",
+    "description": "Modern ve ölçeklenebilir frontend çözümleri üretmeye tutkuyla bağlı bir Frontend Developer’ım. Kullanıcı odaklı, estetik ve performans odaklı tasarımlar ile işlevselliği birleştirerek üst düzey kullanıcı deneyimleri sunmayı hedefliyorum.",
+    "github": "Github",
+    "linkedin": "Linkedin"
+  },
+  "skills": {
+    "skills": "Yetenekler"
+  },
+  "projects": {
+    "title": "Projeler",
+    "view": "Projeyi Görüntüle"
+  },
+  "profile": {
+    "header": "Profil",
+    "basicInfo": "Temel Bilgiler",
+    "birthDate": "Doğum Tarihi",
+    "residence": "İkamet Şehri",
+    "education": "Eğitim Durumu",
+    "preferredRole": "Tercih Ettiği Rol",
+    "aboutMe": "HAKKIMDA",
+    "skills": "Ana Yeteneklerim",
+    "strengths": "Güçlü Yönlerim",
+    "frontend": "Frontend: Angular, React, TypeScript, JavaScript",
+    "backend": "Backend: C#, .NET, RESTful API geliştirme",
+    "spa": "Single Page Application (SPA) geliştirme",
+    "uiux": "UI/UX odaklı tasarım ve uygulama",
+    "performance": "Performans optimizasyonu ve modüler kod yazımı",
+    "teamwork": "Takım çalışmasına yatkınlık ve etkili iletişim becerileri",
+    "adaptation": "Hızlı öğrenme ve yeni teknolojilere adaptasyon",
+    "codeQuality": "Kod kalitesi ve ölçeklenebilirlik odaklı yaklaşım"
+  },
+  "footer": {
+    "title": "Bana bir mesaj gönderin!",
+    "description": "Bir sorunuz veya öneriniz mi var , yoksa sadece merhaba demek mi istiyorsunuz?",
+    "email": "mertbatut@gmail.com"
+  }
+}

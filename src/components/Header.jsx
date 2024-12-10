@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import LanguageSelector from "./LanguageSelector";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { t } = useTranslation(); // i18next çeviri fonksiyonu
 
   useEffect(() => {
     if (menuOpen) {
@@ -23,10 +26,8 @@ export default function Header() {
 
   return (
     <header className="flex justify-around pt-8 items-center px-6 bg-inherit w-full z-50 relative">
-    
-
       <div
-        className="md:hidden  cursor-pointer z-50"
+        className="md:hidden cursor-pointer z-50"
         onClick={toggleMenu}
         aria-label="Toggle Menu"
       >
@@ -47,7 +48,6 @@ export default function Header() {
         ></div>
       </div>
 
-   
       <nav
         className={`fixed inset-0 bg-[#160f44] md:bg-transparent md:static flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 transform ${
           menuOpen ? "translate-x-0" : "-translate-x-full"
@@ -58,30 +58,32 @@ export default function Header() {
           className="text-lg font-bold text-white hover:text-[#CBF281] transition duration-300"
           onClick={(e) => handleLinkClick(e, "home")}
         >
-          Anasayfa
+          {t("menu.home")}
         </a>
         <a
           href="#projects"
           className="text-lg font-bold text-white hover:text-[#CBF281] transition duration-300"
           onClick={(e) => handleLinkClick(e, "projects")}
         >
-          Projeler
+          {t("menu.projects")}
         </a>
         <a
           href="#skills"
           className="text-lg font-bold text-white hover:text-[#CBF281] transition duration-300"
           onClick={(e) => handleLinkClick(e, "skills")}
         >
-          Yetenekler
+          {t("menu.skills")}
         </a>
         <a
           href="#contact"
           className="text-lg font-bold text-white hover:text-[#CBF281] transition duration-300"
           onClick={(e) => handleLinkClick(e, "contact")}
         >
-          İletişim
+          {t("menu.contact")}
         </a>
+     
       </nav>
+      <LanguageSelector />
     </header>
   );
 }

@@ -1,0 +1,43 @@
+[
+    {
+      "title": "Segna Tile",
+      "description": "A modern corporate web platform developed with ReactJS, TailwindCSS, Node.js, and Vercel technologies. It is an ideal solution to strengthen your business processes in the digital world with its fast, reliable, and aesthetic design.",
+      "images": [
+        { "src": "/images/SegnaTile.png", "alt": "SegnaTile_Project" }
+      ],
+      "techStack": ["Reactjs", "Tailwind", "Vercel", "ReactRouter", "Node.js"],
+      "siteLink": "https://segnatile.com/",
+      "githubLink": ""
+    },
+    {
+      "title": "Crises and Medicine",
+      "description": "Crises and Medicine is an impressive corporate web platform developed with modern technologies. Created using ReactJS, Node.js, Tailwind, and Vercel, this project offers a fast, reliable, and aesthetic user experience.",
+      "images": [
+        { "src": "/images/KrizlerveHekimlik.png", "alt": "KrizlerveHekimlik_Project" }
+      ],
+      "techStack": ["Reactjs", "Node.js", "Vercel", "Tailwind"],
+      "siteLink": "https://www.krizlervehekimlik.com.tr/",
+      "githubLink": ""
+    },
+    {
+      "title": "Videographer Portfolio",
+      "description": "A modern portfolio platform designed for video production professionals. Developed using ReactJS, ReactRouter, TailwindCSS, Node.js, and Vercel, this project offers a user-focused and high-performance solution.",
+      "images": [
+        { "src": "/images/videographer.png", "alt": "videographer_Project" }
+      ],
+      "techStack": ["Reactjs", "Tailwind", "Vercel", "ReactRouter", "Node.js"],
+      "siteLink": "https://oguzcanturan.com/",
+      "githubLink": ""
+    },
+    {
+      "title": "Turkish Patent Game",
+      "description": "The Turkish Patent Educational Game Platform is an interactive educational platform developed with Angular, TypeScript, Azure, and Bootstrap technologies. Users can gain knowledge through fun games and earn certificates by completing tasks. This platform makes learning enjoyable with its modern design and user-friendly interface.",
+      "images": [
+        { "src": "/images/PatentOyun.png", "alt": "PatentGame_Project" }
+      ],
+      "techStack": ["Angular", "TypeScript", "Azure", "Bootstrap"],
+      "siteLink": "http://oyun.excognize.com/",
+      "githubLink": ""
+    }
+  ]
+  

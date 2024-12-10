@@ -5,6 +5,7 @@ import Skills from './components/Skills.jsx'
 import Profilecontent from './components/Profilecontent.jsx'
 import Footer from './components/Footer.jsx'
 import Projects from './components/projects.jsx'
+import './i18n';
 import ScrollToTop from './components/ScroolToTop.jsx'
 
 function App() {
