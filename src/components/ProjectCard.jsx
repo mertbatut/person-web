@@ -22,30 +22,32 @@ const ProjectCard = ({ project }) => {
             </button>
           ))}
         </div>
-        <span className="Details flex flex-col md:flex-row gap-8 pt-4">
-
-          <button className="ProjectsBtn w-auto h-[31px] px-5 py-2 bg-inherit border border-[#120B39] flex items-center justify-center text-[#160F44]">
-            <a
-              className="no-underline flex items-center justify-center w-full h-full"
-              href={project.siteLink}
-              target="blank"
-              rel="noopener noreferrer"
-            >
-              <p className="font-medium text-base text-center">{t('projects.view')}</p>
-            </a>
-          </button>
+        <span className="Details flex flex-col md:flex-row gap-4 pt-4">
+  <button className="ProjectsBtn w-auto px-4 py-2 bg-inherit border border-[#160f44] text-[#160f44] flex items-center justify-center hover:bg-[#160f44] hover:text-white transition">
+    <a
+      className="no-underline w-full h-full flex items-center justify-center"
+      href={project.siteLink}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <p className="font-medium text-base text-center m-0">{t('projects.view')}</p>
+    </a>
+  </button>
   
-          <button className="ProjectsBtn w-auto h-[31px] px-5 py-2 bg-inherit border border-[#160f44] flex items-center justify-center text-[#160f44]">
-            <a
-              className="no-underline flex items-center justify-center w-full h-full"
-              href={project.githubLink}
-              target="blank"
-              rel="noopener noreferrer"
-            >
-              <p className="font-medium text-base text-center">Github</p>
-            </a>
-          </button>
-        </span>
+  <button className="ProjectsBtn w-auto px-4 py-2 bg-inherit border border-[#160f44] text-[#160f44] flex items-center justify-center hover:bg-[#160f44] hover:text-white transition">
+    <a
+      className="no-underline w-full h-full flex items-center justify-center"
+      href={project.githubLink}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <p className="font-medium text-base text-center m-0">Github</p>
+    </a>
+  </button>
+</span>
+
+
+
       </div>
     </div>
   );
