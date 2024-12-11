@@ -7,7 +7,7 @@
   },
   "hero": {
     "title": "Mert Batut | Frontend Developer",
-    "description": "Modern ve ölçeklenebilir frontend çözümleri üretmeye tutkuyla bağlı bir Frontend Developer’ım. Kullanıcı odaklı, estetik ve performans odaklı tasarımlar ile işlevselliği birleştirerek üst düzey kullanıcı deneyimleri sunmayı hedefliyorum.",
+    "description": "Modern ve ölçeklenebilir frontend çözümleri üretmeye tutkuyla bağlı bir Frontend Developer. Kullanıcı odaklı, estetik ve performans odaklı tasarımlar ile işlevselliği birleştirerek üst düzey kullanıcı deneyimleri sunmayı hedefliyorum.",
     "github": "Github",
     "linkedin": "Linkedin"
   },
@@ -22,7 +22,7 @@
     "header": "Profil",
     "basicInfo": "Temel Bilgiler",
     "birthDate": "Doğum Tarihi",
-    "residence": "İkamet Şehri",
+    "residence": "Şehir",
     "education": "Eğitim Durumu",
     "preferredRole": "Tercih Ettiği Rol",
     "aboutMe": "HAKKIMDA",

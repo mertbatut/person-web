@@ -5,7 +5,7 @@ export default function Skills() {
   const { t } = useTranslation(); 
 
   return (
-      <div className="lg:py-56 py-20 flex flex-col items-center">
+      <div className="lg:py-56 py-20 flex flex-col items-center bg-[#F9F9F9]">
         <h1 id="skills" className="text-5xl font-bold text-[#4832D3] text-center mb-8"> {t('skills.skills')}</h1>
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           <div className="flex flex-col items-center gap-3 border-2 border-gray-300 rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow duration-300">

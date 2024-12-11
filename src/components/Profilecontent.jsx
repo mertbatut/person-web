@@ -1,102 +1,71 @@
-import { Component } from 'react';
-import { withTranslation } from 'react-i18next'; // Çeviri desteği
-import '../style.css';
-import PropTypes from 'prop-types'; // Props doğrulama
+import PropTypes from 'prop-types';
+import { withTranslation } from 'react-i18next';
+import '../style.css'; // Stil dosyası
 
-class Profilecontent extends Component {
-  render() {
-    const { t } = this.props;
-
-    return (
-      <div className='bg-[#160F44] p-4'>
-        <span className='text-[36px] md:text-[48px] font-bold text-[#D6E9B3] justify-center flex'>
-          {t('profile.header')}
-        </span>
-        <div className='flex flex-col lg:flex-row gap-8 lg:gap-24 justify-center items-center'>
-          <div className='w-full lg:w-auto'></div>
-          <div className='flex flex-col lg:flex-row gap-8 lg:gap-12 items-center'>
-            <div className='w-full lg:w-[300px] h-auto lg:h-[290px] flex gap-[24px] flex-col'>
-              <div className='font-semibold text-[24px] lg:text-[30px] text-[#FFFFFF]'>
-                {t('profile.basicInfo')}
-              </div>
-              <div className='flex flex-col gap-4 lg:gap-8'>
-                <div className='flex gap-4 lg:gap-8'>
-                  <div className='font-semibold text-[14px] lg:text-[16px] text-[#D6E9B3]'>
-                    {t('profile.birthDate')} :
-                  </div>
-                  <div className='font-normal text-[14px] lg:text-[16px] text-[#FFFFFF]'>
-                    11.08.1993
-                  </div>
-                </div>
-                <div className='flex gap-4 lg:gap-8'>
-                  <div className='font-semibold text-[14px] lg:text-[16px] text-[#D6E9B3]'>
-                    {t('profile.residence')} :
-                  </div>
-                  <div className='font-normal text-[14px] lg:text-[16px] text-[#FFFFFF] pl-2'>
-                    Bursa
-                  </div>
-                </div>
-                <div className='flex gap-4 lg:gap-8'>
-                  <div className='font-semibold text-[14px] lg:text-[16px] text-[#D6E9B3]'>
-                    {t('profile.education')}
-                  </div>
-                  <div className='font-normal text-[14px] lg:text-[16px] text-[#FFFFFF]'>
-                    Beykent Üniversitesi İngilizce İşletme
-                  </div>
-                </div>
-                <div className='flex gap-4 lg:gap-8'>
-                  <div className='font-semibold text-[14px] lg:text-[16px] text-[#D6E9B3]'>
-                    {t('profile.preferredRole')}
-                  </div>
-                  <div className='font-normal text-[14px] lg:text-[16px] text-[#FFFFFF]'>
-                    Frontend Developer
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className='ProImage py-12'>
-              <img
-                className='rounded-xl w-full lg:w-[300px] h-auto lg:h-[290px]'
-                src='/images/notification.jpg'
-                alt='Profile'
-              />
-            </div>
-            <div className='w-full lg:w-[300px] h-auto lg:h-[290px] flex flex-col gap-4 lg:gap-8'>
-              <div className='font-normal text-[24px] lg:text-[30px] text-[#FFFFFF]'>
-                {t('profile.aboutMe')}
-              </div>
-              <div className='max-w-[700px] max-h-[290px] overflow-auto scrollbar-custom'>
-                <p className='font-normal text-[14px] lg:text-[16px] text-[#FFFFFF]'>
-                  {t('profile.frontend')}
-                </p>
-                <p className='font-normal text-[14px] lg:text-[16px] text-[#FFFFFF]'>
-                  {t('profile.backend')}
-                </p>
-                <p className='font-normal text-[14px] lg:text-[16px] text-[#FFFFFF]'>
-                  {t('profile.spa')}
-                </p>
-                <ul className='list-disc pl-6 font-normal text-[14px] lg:text-[16px] text-[#FFFFFF] max-w-[700px]'>
-                  <li>{t('profile.uiux')}</li>
-                  <li>{t('profile.performance')}</li>
-                </ul>
-                <p className='font-normal text-[14px] lg:text-[16px] text-[#FFFFFF]'>{t('profile.strengths')}</p>
-                <ul className='list-disc pl-6 font-normal text-[14px] lg:text-[16px] text-[#FFFFFF]'>
-                  <li>{t('profile.teamwork')}</li>
-                  <li>{t('profile.adaptation')}</li>
-                  <li>{t('profile.codeQuality')}</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+const ProfileCardContent = ({ t }) => {
+  return (
+    <div className="bg-[#FFFFFF] min-h-screen flex flex-col items-center justify-center p-6">
+      {/* Profile Header */}
+      <div className="w-full text-center mb-8">
+        <h1 className="text-4xl font-extrabold text-[#160f44]">{t('profile.header')}</h1>
       </div>
-    );
-  }
-}
 
-Profilecontent.propTypes = {
+      <div className="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Left Section */}
+        <div className="p-8 bg-[#160f44] text-white rounded-lg shadow-xl transform transition duration-500 hover:scale-105">
+          <h2 className="text-2xl font-bold border-b-2 border-[#d6e9b3] pb-4 mb-6">
+            {t('profile.basicInfo')}
+          </h2>
+          <ul className="space-y-4">
+            <li className="flex justify-between">
+              <span className="font-medium">{t('profile.birthDate')}:</span>
+              <span>11.08.1993</span>
+            </li>
+            <li className="flex justify-between">
+              <span className="font-medium">{t('profile.residence')}:</span>
+              <span>Bursa</span>
+            </li>
+            <li className="flex justify-between">
+              <span className="font-medium">{t('profile.education')}:</span>
+              <span>Beykent Üniversitesi İşletme</span>
+            </li>
+            <li className="flex justify-between">
+              <span className="font-medium">{t('profile.preferredRole')}:</span>
+              <span>Frontend Developer</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Right Section */}
+        <div className="p-8 bg-[#160f44] text-white rounded-lg shadow-xl transform transition duration-500 hover:scale-105">
+          <h2 className="text-2xl font-bold border-b-2 border-[#d6e9b3] pb-4 mb-6">
+            {t('profile.aboutMe')}
+          </h2>
+          <p className="mb-4">{t('profile.frontend')}</p>
+          <p className="mb-4">{t('profile.backend')}</p>
+          <p className="mb-4">{t('profile.spa')}</p>
+          <ul className="list-disc pl-5 mb-4">
+            <li>{t('profile.uiux')}</li>
+            <li>{t('profile.performance')}</li>
+          </ul>
+          <p className="mb-4">{t('profile.strengths')}</p>
+          <ul className="list-disc pl-5">
+            <li>{t('profile.teamwork')}</li>
+            <li>{t('profile.adaptation')}</li>
+            <li>{t('profile.codeQuality')}</li>
+          </ul>
+        </div>
+
+     
+      </div>
+    </div>
+  );
+};
+
+ProfileCardContent.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-const TranslatedProfilecontent = withTranslation()(Profilecontent);
-export default TranslatedProfilecontent;
+const ProfileCard = withTranslation()(ProfileCardContent);
+
+export default ProfileCard;
