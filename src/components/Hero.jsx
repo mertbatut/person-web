@@ -48,7 +48,7 @@ export default function Hero() {
               <div className="mt-8 md:mt-0">
                 <img
                   className="w-full md:w-[18rem] lg:w-[21.9rem] h-auto md:h-[20rem] lg:h-[23.5rem] object-cover rounded-[18px]"
-                  src="/images/MertBatut.png"
+                  src="/images/MertBatut.JPEG"
                   alt="Hero_Profile"
                 />
               </div>
@@ -64,7 +64,7 @@ export default function Hero() {
               <div>
                 <img
                   className="w-full h-auto object-cover rounded-[18px] mb-8"
-                  src="/images/MertBatut.png"
+                  src="/images/MertBatut.JPEG"
                   alt="Hero_Profile"
                 />
               </div>
