@@ -148,7 +148,7 @@ export default function Hero() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <span>{t('hero.viewProjects', 'Projelerimi Görüntüle')}</span>
+          <span className='no-underline'>{t('hero.viewProjects', 'Projelerimi Görüntüle')}</span>
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
           </svg>
@@ -331,12 +331,7 @@ export default function Hero() {
             }}
             className="text-white/70 hover:text-white transition duration-300"
           >
-            <div className="flex flex-col items-center">
-              <span className="text-sm mb-2">{t('hero.scrollDown', 'Aşağı Kaydır')}</span>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-              </svg>
-            </div>
+            
           </a>
         </motion.div>
       </div>

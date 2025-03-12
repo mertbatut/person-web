@@ -161,67 +161,8 @@ export default function Skills() {
           ))}
         </div>
         
-        {/* İnovatif Footer Kısım */}
-        <div className={`relative mt-24 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-          <div className="absolute inset-0 bg-gradient-to-r from-[#CBF281]/20 to-[#2dd4bf]/20 blur-xl -z-10 rounded-3xl"></div>
-          
-          <div className="p-8 rounded-2xl bg-white shadow-xl border border-gray-100">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-2xl font-bold mb-4 text-gray-800">
-                  <span className="text-[#CBF281]">&lt;</span> 
-                  {t('skills.aboutMySkills', 'Yeteneklerim Hakkında')} 
-                  <span className="text-[#CBF281]">/&gt;</span>
-                </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  {t('skills.aboutDesc', 'Yazılım geliştirme yolculuğumda, modern web teknolojilerini kullanarak kullanıcı dostu ve performanslı uygulamalar geliştirmeye odaklanıyorum. Frontend ve backend teknolojilerinde kendimi sürekli geliştirerek tam stack çözümler üretiyorum.')}
-                </p>
-                <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 rounded-full bg-[#CBF281]/20 flex items-center justify-center">
-                    <i className="fas fa-rocket text-[#CBF281]"></i>
-                  </div>
-                  <span className="text-gray-700 font-medium">
-                    {t('skills.continuousLearning', 'Sürekli öğrenme ve gelişim')}
-                  </span>
-                </div>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-gray-50 rounded-xl p-5 border border-gray-100 hover:border-[#CBF281]/50 transition-all duration-300 flex flex-col items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#CBF281]/20 to-[#2dd4bf]/20 flex items-center justify-center mb-3">
-                    <i className="fas fa-code text-[#CBF281] text-xl"></i>
-                  </div>
-                  <h4 className="text-gray-800 font-bold text-lg mb-1">20+</h4>
-                  <p className="text-gray-500 text-center">{t('skills.projects', 'Tamamlanmış Proje')}</p>
-                </div>
-                
-                <div className="bg-gray-50 rounded-xl p-5 border border-gray-100 hover:border-[#CBF281]/50 transition-all duration-300 flex flex-col items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#CBF281]/20 to-[#2dd4bf]/20 flex items-center justify-center mb-3">
-                    <i className="fas fa-laptop-code text-[#CBF281] text-xl"></i>
-                  </div>
-                  <h4 className="text-gray-800 font-bold text-lg mb-1">10+</h4>
-                  <p className="text-gray-500 text-center">{t('skills.technologies', 'Teknoloji')}</p>
-                </div>
-                
-                <div className="bg-gray-50 rounded-xl p-5 border border-gray-100 hover:border-[#CBF281]/50 transition-all duration-300 flex flex-col items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#CBF281]/20 to-[#2dd4bf]/20 flex items-center justify-center mb-3">
-                    <i className="fas fa-certificate text-[#CBF281] text-xl"></i>
-                  </div>
-                  <h4 className="text-gray-800 font-bold text-lg mb-1">5+</h4>
-                  <p className="text-gray-500 text-center">{t('skills.certificates', 'Sertifika')}</p>
-                </div>
-                
-                <div className="bg-gray-50 rounded-xl p-5 border border-gray-100 hover:border-[#CBF281]/50 transition-all duration-300 flex flex-col items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#CBF281]/20 to-[#2dd4bf]/20 flex items-center justify-center mb-3">
-                    <i className="fas fa-calendar-alt text-[#CBF281] text-xl"></i>
-                  </div>
-                  <h4 className="text-gray-800 font-bold text-lg mb-1">3+</h4>
-                  <p className="text-gray-500 text-center">{t('skills.experience', 'Yıl Deneyim')}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      
+        
       </div>
       
       {/* Custom CSS for 3D Card Effect */}

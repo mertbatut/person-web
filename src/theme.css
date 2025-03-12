@@ -1,0 +1,455 @@
+/* Theme variables for light and dark mode */
+:root {
+    /* Light mode variables (default) */
+    --bg-primary: #f8f9fa;
+    --bg-secondary: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-muted: #6c757d;
+    --accent-primary: #CBF281;
+    --accent-secondary: #2dd4bf;
+    --gradient-start: #CBF281;
+    --gradient-end: #2dd4bf;
+    --card-bg: #ffffff;
+    --card-border: #e9ecef;
+    --card-shadow: rgba(0, 0, 0, 0.05);
+    --header-bg: rgba(22, 15, 68, 0.9);
+    --header-text: #ffffff;
+    --hero-bg-start: #1A1259;
+    --hero-bg-mid: #121139;
+    --hero-bg-end: #0A0A29;
+    --icon-bg: rgba(255, 255, 255, 0.1);
+    --hover-bg: rgba(255, 255, 255, 0.2);
+    --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    
+    /* Skill card specific colors */
+    --skill-card-bg: #ffffff;
+    --skill-card-border: #f0f0f0;
+    --skill-card-text: #333333;
+    
+    /* Project card specific colors */
+    --project-card-bg: #ffffff;
+    --project-card-text: #333333;
+    --project-card-desc: #666666;
+    
+    /* Profile card specific colors */
+    --profile-card-bg: #ffffff;
+    --profile-card-title: #333333;
+    --profile-card-text: #666666;
+    --profile-skill-percent: #2dd4bf;
+    
+    /* Stats cards */
+    --stats-card-bg: #f8f9fa;
+    --stats-card-border: #e9ecef;
+    --stats-card-text: #333333;
+    --stats-card-subtext: #6c757d;
+    --stats-card-icon-bg: rgba(203, 242, 129, 0.1);
+    
+    /* Button colors */
+    --btn-primary-bg: #4832D3;
+    --btn-primary-text: #ffffff;
+    --btn-primary-border: #4832D3;
+    --btn-secondary-bg: #CBF281;
+    --btn-secondary-text: #160f44;
+    --btn-secondary-border: #CBF281;
+    
+    /* Hero stats */
+    --hero-stat-bg: rgba(255, 255, 255, 0.1);
+    --hero-stat-text: rgba(255, 255, 255, 0.8);
+    --hero-stat-border: rgba(255, 255, 255, 0.1);
+    --hero-stat-accent: #CBF281;
+  }
+  
+  /* Dark mode variables */
+  .dark {
+    --bg-primary: #121139;
+    --bg-secondary: #1A1259;
+    --text-primary: #f8f9fa;
+    --text-secondary: #e9ecef;
+    --text-muted: #adb5bd;
+    --accent-primary: #CBF281;
+    --accent-secondary: #2dd4bf;
+    --gradient-start: #CBF281;
+    --gradient-end: #2dd4bf;
+    --card-bg: #1f1c45;
+    --card-border: #2d2a5d;
+    --card-shadow: rgba(0, 0, 0, 0.2);
+    --header-bg: rgba(22, 15, 68, 0.9);
+    --header-text: #ffffff;
+    --hero-bg-start: #0A0A29;
+    --hero-bg-mid: #121139;
+    --hero-bg-end: #1A1259;
+    --icon-bg: rgba(255, 255, 255, 0.05);
+    --hover-bg: rgba(255, 255, 255, 0.1);
+    
+    /* Skill card specific colors */
+    --skill-card-bg: #1f1c45;
+    --skill-card-border: #2d2a5d;
+    --skill-card-text: #ffffff;
+    
+    /* Project card specific colors */
+    --project-card-bg: #1f1c45;
+    --project-card-text: #ffffff;
+    --project-card-desc: #e9ecef;
+    
+    /* Profile card specific colors */
+    --profile-card-bg: #1f1c45;
+    --profile-card-title: #ffffff;
+    --profile-card-text: #e9ecef;
+    --profile-skill-percent: #CBF281;
+    
+    /* Stats cards */
+    --stats-card-bg: #1f1c45;
+    --stats-card-border: #2d2a5d;
+    --stats-card-text: #ffffff;
+    --stats-card-subtext: #e9ecef;
+    --stats-card-icon-bg: rgba(203, 242, 129, 0.2);
+    
+    /* Button colors */
+    --btn-primary-bg: #4832D3;
+    --btn-primary-text: #ffffff; 
+    --btn-primary-border: #5842e3;
+    --btn-secondary-bg: #CBF281;
+    --btn-secondary-text: #160f44;
+    --btn-secondary-border: #CBF281;
+    
+    /* Hero stats */
+    --hero-stat-bg: rgba(255, 255, 255, 0.05);
+    --hero-stat-text: rgba(255, 255, 255, 0.9);
+    --hero-stat-border: rgba(255, 255, 255, 0.1);
+    --hero-stat-accent: #CBF281;
+  }
+  
+  /* Apply theme to common elements */
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: var(--theme-transition);
+  }
+  
+  /* Apply to profile section */
+  #profile {
+    background-color: var(--bg-primary);
+    transition: var(--theme-transition);
+  }
+  
+  /* Apply to skills section */
+  #skills {
+    background-color: var(--bg-primary);
+    transition: var(--theme-transition);
+  }
+  
+  /* Apply to projects section */
+  #projects {
+    background-color: var(--bg-primary);
+    transition: var(--theme-transition);
+  }
+  
+  /* HERO SECTION STYLES */
+  /* Hero background and content */
+  #home {
+    background-color: var(--hero-bg-mid);
+    transition: var(--theme-transition);
+  }
+  
+  #home .absolute.inset-0.bg-\[\#121139\] {
+    background-color: var(--hero-bg-mid);
+  }
+  
+  #home .absolute.top-0.left-0.w-full.h-full.bg-gradient-to-br {
+    background-image: linear-gradient(to bottom right, var(--hero-bg-start), var(--hero-bg-mid), var(--hero-bg-end));
+  }
+  
+  /* Hero text elements */
+  #home h1 {
+    color: #ffffff;
+  }
+  
+  #home p {
+    color: #e9ecef;
+  }
+  
+  /* CARD STYLES */
+  /* Generic card styling */
+  .card, 
+  .relative.bg-white, 
+  .bg-white.p-8.rounded-xl.shadow-lg,
+  .bg-white.p-5.rounded-xl.shadow-sm {
+    background-color: var(--card-bg) !important;
+    border-color: var(--card-border) !important;
+    box-shadow: 0 4px 6px var(--card-shadow) !important;
+    transition: var(--theme-transition);
+  }
+  
+  /* PROJECT CARDS AND STATS */
+  /* Project cards */
+  #projects .bg-white.rounded-xl.shadow-md {
+    background-color: var(--project-card-bg) !important;
+    transition: var(--theme-transition);
+  }
+  
+  #projects .text-gray-800 {
+    color: var(--project-card-text) !important;
+  }
+  
+  #projects .text-gray-600, 
+  #projects .text-gray-500 {
+    color: var(--project-card-desc) !important;
+  }
+  
+  /* Project stats cards */
+  #projects .bg-gray-50.rounded-xl,
+  #projects .bg-gray-50 {
+    background-color: var(--stats-card-bg) !important;
+    border-color: var(--stats-card-border) !important;
+    transition: var(--theme-transition);
+  }
+  
+  #projects .text-gray-800.font-bold,
+  #projects .text-gray-800.mb-0\.5,
+  #projects .text-base.md\:text-lg.font-bold.text-gray-800 {
+    color: var(--stats-card-text) !important;
+  }
+  
+  #projects .text-gray-500.text-center,
+  #projects .text-gray-500.text-xs,
+  #projects .text-xs.md\:text-sm.text-gray-500 {
+    color: var(--stats-card-subtext) !important;
+  }
+  
+  #projects .bg-gradient-to-br.from-\[\#4832D3\]\/10.to-\[\#CBF281\]\/10,
+  #projects .from-\[\#4832D3\]\/10.to-\[\#CBF281\]\/10 {
+    background-image: linear-gradient(to bottom right, var(--accent-primary)/10, var(--accent-secondary)/10);
+  }
+  
+  #projects .w-12.h-12.md\:w-16.md\:h-16.rounded-full.bg-gradient-to-br.from-\[\#4832D3\]\/10.to-\[\#CBF281\]\/10 {
+    background-color: var(--stats-card-icon-bg);
+  }
+  
+  /* Make sure all stats boxes in projects section have correct styling */
+  #projects .grid.grid-cols-2.md\:grid-cols-4.gap-3.md\:gap-4 > div {
+    background-color: var(--stats-card-bg) !important;
+    border-color: var(--stats-card-border) !important;
+    transition: var(--theme-transition);
+  }
+  
+  #projects .grid.grid-cols-2.md\:grid-cols-4.gap-3.md\:gap-4 h4 {
+    color: var(--stats-card-text) !important;
+  }
+  
+  #projects .grid.grid-cols-2.md\:grid-cols-4.gap-3.md\:gap-4 p {
+    color: var(--stats-card-subtext) !important;
+  }
+  
+  /* Profile cards */
+  #profile .bg-white.p-8.rounded-xl.shadow-lg {
+    background-color: var(--profile-card-bg) !important;
+  }
+  
+  #profile .text-gray-800 {
+    color: var(--profile-card-title) !important;
+  }
+  
+  #profile .text-gray-600, 
+  #profile .text-gray-700 {
+    color: var(--profile-card-text) !important;
+  }
+  
+  #profile .text-\[\#2dd4bf\] {
+    color: var(--profile-skill-percent) !important;
+  }
+  
+  /* Skill cards */
+  #skills .bg-white.border {
+    background-color: var(--skill-card-bg) !important;
+    border-color: var(--skill-card-border) !important;
+  }
+  
+  #skills .text-gray-800 {
+    color: var(--skill-card-text) !important;
+  }
+  
+  /* TEXT COLORS */
+  /* Basic text colors */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary);
+    transition: var(--theme-transition);
+  }
+  
+  p, span, li {
+    color: var(--text-secondary);
+    transition: var(--theme-transition);
+  }
+  
+  /* Text in skill cards */
+  .dark .preserve-3d .backface-hidden:first-child > div {
+    background-color: var(--card-bg);
+    border-color: var(--card-border);
+  }
+  
+  .dark .preserve-3d .backface-hidden:first-child > div h3 {
+    color: var(--skill-card-text);
+  }
+  
+  /* Apply to project stats cards in heroes section as well */
+  .bg-white\/5.backdrop-blur-md.px-4.py-2.rounded-full.text-sm.text-white\/80.border.border-white\/10,
+  .bg-white\/5.backdrop-blur-md.px-4.py-2 {
+    background-color: var(--hero-stat-bg) !important;
+    color: var(--hero-stat-text) !important;
+    border-color: var(--hero-stat-border) !important;
+    transition: var(--theme-transition);
+  }
+  
+  /* Fix stats icons in hero and projects sections */
+  .text-\[\#CBF281\].font-semibold,
+  .text-\[\#4832D3\].text-lg.md\:text-xl {
+    color: var(--hero-stat-accent) !important;
+  }
+  
+  /* Fix for icons within colored backgrounds in dark mode */
+  .dark .w-12.h-12.md\:w-16.md\:h-16.rounded-full i.text-\[\#4832D3\],
+  .dark .w-16.h-16.rounded-full.bg-gradient-to-br i.text-\[\#4832D3\],
+  .dark .w-12.h-12.rounded-full i.text-\[\#4832D3\] {
+    color: var(--accent-primary) !important;
+  }
+  
+  /* Fix any gradient backgrounds */
+  .dark .bg-gradient-to-r.from-\[\#4832D3\].to-\[\#160f44\].text-white,
+  .dark .from-\[\#4832D3\].to-\[\#160f44\].text-white {
+    background-image: linear-gradient(to right, var(--accent-primary), var(--hero-bg-end));
+  }
+  
+  /* Fix for category buttons */
+  .dark .bg-gradient-to-r.from-\[\#4832D3\].to-\[\#160f44\] {
+    background-image: linear-gradient(to right, var(--accent-primary), var(--hero-bg-end));
+  }
+  
+  /* Fix additional text colors throughout the site */
+  .dark .text-gray-900 {
+    color: var(--text-primary) !important;
+  }
+  
+  .dark .text-gray-300 {
+    color: var(--text-secondary) !important;
+  }
+  
+  /* BUTTONS */
+  /* Primary colored buttons */
+  .bg-gradient-to-r.from-\[\#4832D3\].to-\[\#160f44\].text-white {
+    background-color: var(--btn-primary-bg) !important;
+    color: var(--btn-primary-text) !important;
+    border-color: var(--btn-primary-border) !important;
+  }
+  
+  /* Secondary colored buttons */
+  .bg-\[\#CBF281\].text-\[\#160f44\] {
+    background-color: var(--btn-secondary-bg) !important;
+    color: var(--btn-secondary-text) !important;
+  }
+  
+  /* Light colored buttons with hover states */
+  .rounded-full.bg-white\/10.hover\:bg-white\/20.text-white {
+    background-color: var(--icon-bg) !important;
+    color: var(--text-primary) !important;
+  }
+  
+  .rounded-full.bg-white\/10.hover\:bg-white\/20.text-white:hover {
+    background-color: var(--hover-bg) !important;
+  }
+  
+  /* Skill section category buttons */
+  #skills .rounded-lg.text-sm.font-medium {
+    transition: var(--theme-transition);
+  }
+  
+  #skills .bg-gray-100.text-gray-700 {
+    background-color: var(--stats-card-bg) !important;
+    color: var(--text-primary) !important;
+  }
+  
+  /* Hero tags */
+  #home .bg-white\/5.backdrop-blur-md {
+    background-color: var(--hero-stat-bg) !important;
+    border-color: var(--hero-stat-border) !important;
+  }
+  
+  #home .text-white\/80 {
+    color: var(--hero-stat-text) !important;
+  }
+  
+  #home .text-\[\#CBF281\].font-semibold {
+    color: var(--hero-stat-accent) !important;
+  }
+  
+  /* SPECIAL FIX FOR BUTTONS */
+  /* Projelerimi Görüntüle button in hero */
+  #home .px-8.py-3.bg-\[\#CBF281\].text-\[\#160f44\] {
+    background-color: var(--btn-secondary-bg) !important;
+    color: var(--btn-secondary-text) !important;
+  }
+  
+  /* Siteyi Ziyaret Et buttons */
+  .rounded-full.bg-gradient-to-r.from-\[\#4832D3\].to-\[\#160f44\].text-white {
+    background-color: var(--btn-primary-bg) !important;
+    color: var(--btn-primary-text) !important;
+    background-image: none !important;
+  }
+  
+  .dark .rounded-full.bg-gradient-to-r.from-\[\#4832D3\].to-\[\#160f44\].text-white {
+    background-image: linear-gradient(to right, var(--accent-primary), var(--accent-secondary)) !important;
+    color: var(--hero-bg-mid) !important;
+  }
+  
+  /* GitHub buttons */
+  .rounded-full.border.border-gray-300.text-gray-700 {
+    border-color: var(--card-border) !important;
+    color: var(--text-primary) !important;
+  }
+  
+  /* Social media icons in footer */
+  footer .rounded-full.bg-white\/10.hover\:bg-white\/20.text-white {
+    background-color: var(--icon-bg) !important;
+    color: white !important;
+  }
+  
+  footer .rounded-full.bg-white\/10.hover\:bg-white\/20.text-white:hover {
+    background-color: var(--hover-bg) !important;
+  }
+  
+  /* THEME TOGGLE BUTTON */
+  .theme-toggle-icon {
+    transform-origin: center;
+    transition: transform 0.5s ease, opacity 0.3s ease;
+  }
+  
+  .theme-toggle-sun {
+    opacity: 0;
+    transform: rotate(90deg) scale(0);
+  }
+  
+  .dark .theme-toggle-sun {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+  
+  .theme-toggle-moon {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+  
+  .dark .theme-toggle-moon {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0);
+  }
+  
+  /* FOOTER */
+  footer {
+    background-color: var(--hero-bg-mid);
+    transition: var(--theme-transition);
+  }
+  
+  /* FIX FOR GRADIENT TEXT */
+  .dark .bg-gradient-to-r.from-\[\#CBF281\].to-\[\#2dd4bf\].text-transparent.bg-clip-text {
+    background-image: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+    color: transparent;
+  }

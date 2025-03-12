@@ -7,12 +7,14 @@ import Footer from './components/Footer.jsx'
 import Projects from './components/projects.jsx'
 import './i18n';
 import ScrollToTop from './components/ScroolToTop.jsx'
+import { ThemeProvider } from './context/ThemeContext'
+import './theme.css'
 
 function App() {
   const [, ] = useState(0)
 
   return (
-    <>
+    <ThemeProvider>
       <div>
         <HeroSection/>
         <Skills/>
@@ -21,8 +23,7 @@ function App() {
         <Footer/>
         <ScrollToTop/>
       </div>
-      
-    </>
+    </ThemeProvider>
   )
 }
 
