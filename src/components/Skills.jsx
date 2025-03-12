@@ -1,67 +1,251 @@
-
 import { useTranslation } from 'react-i18next';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Skills() {
-  const { t } = useTranslation(); 
+  const { t } = useTranslation();
+  const [activeTab, setActiveTab] = useState('all');
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  // Intersection Observer ile görünürlük tespiti
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  // Teknoloji yetenek kartları
+  const skills = [
+    { name: 'JavaScript', category: 'language', icon: 'fab fa-js-square', color: '#F7DF1E', background: '#282C34' },
+    { name: 'React', category: 'frontend', icon: 'fab fa-react', color: '#61DAFB', background: '#282C34' },
+    { name: 'TypeScript', category: 'language', icon: 'devicon-typescript-plain', color: '#3178C6', background: '#282C34' },
+    { name: 'Node.js', category: 'backend', icon: 'fab fa-node-js', color: '#8CC84B', background: '#282C34' },
+    { name: 'HTML5', category: 'frontend', icon: 'fab fa-html5', color: '#E34F26', background: '#282C34' },
+    { name: 'CSS3', category: 'frontend', icon: 'fab fa-css3-alt', color: '#1572B6', background: '#282C34' },
+    { name: 'Redux', category: 'frontend', icon: 'devicon-redux-original', color: '#764ABC', background: '#282C34' },
+    { name: 'TailwindCSS', category: 'frontend', icon: 'devicon-tailwindcss-plain', color: '#06B6D4', background: '#282C34' },
+    { name: 'C#', category: 'language', icon: 'devicon-csharp-plain', color: '#239120', background: '#282C34' },
+    { name: 'Git', category: 'tool', icon: 'fab fa-git-alt', color: '#F05032', background: '#282C34' },
+    { name: 'MongoDB', category: 'database', icon: 'devicon-mongodb-plain', color: '#47A248', background: '#282C34' },
+    { name: 'SQL', category: 'database', icon: 'fas fa-database', color: '#4479A1', background: '#282C34' },
+    { name: 'VS Code', category: 'tool', icon: 'devicon-vscode-plain', color: '#007ACC', background: '#282C34' },
+    { name: 'Figma', category: 'design', icon: 'fab fa-figma', color: '#F24E1E', background: '#282C34' },
+    { name: 'Docker', category: 'devops', icon: 'fab fa-docker', color: '#2496ED', background: '#282C34' },
+    { name: 'Firebase', category: 'backend', icon: 'devicon-firebase-plain', color: '#FFCA28', background: '#282C34' },
+    { name: 'Angular', category: 'frontend', icon: 'fab fa-angular', color: '#DD0031', background: '#282C34' },
+    { name: 'Express', category: 'backend', icon: 'devicon-express-original', color: '#FFFFFF', background: '#282C34' },
+    { name: 'REST API', category: 'backend', icon: 'fas fa-plug', color: '#4CAF50', background: '#282C34' },
+    { name: 'Responsive Design', category: 'design', icon: 'fas fa-mobile-alt', color: '#FF6B6B', background: '#282C34' },
+  ];
+
+  // Kategori filtreleri
+  const categories = [
+    { id: 'all', label: t('skills.all', 'Tümü'), icon: 'fas fa-border-all' },
+    { id: 'frontend', label: t('skills.frontend', 'Frontend'), icon: 'fas fa-laptop-code' },
+    { id: 'backend', label: t('skills.backend', 'Backend'), icon: 'fas fa-server' },
+    { id: 'language', label: t('skills.languages', 'Diller'), icon: 'fas fa-code' },
+    { id: 'database', label: t('skills.database', 'Veritabanı'), icon: 'fas fa-database' },
+    { id: 'tool', label: t('skills.tools', 'Araçlar'), icon: 'fas fa-tools' },
+    { id: 'design', label: t('skills.design', 'Tasarım'), icon: 'fas fa-paint-brush' },
+  ];
+
+  // Filtreli yetenekler
+  const filteredSkills = activeTab === 'all' 
+    ? skills 
+    : skills.filter(skill => skill.category === activeTab);
 
   return (
-      <div className="lg:py-56 py-20 flex flex-col items-center bg-[#F9F9F9]">
-        <h1 id="skills" className="text-5xl font-bold text-[#4832D3] text-center mb-8"> {t('skills.skills')}</h1>
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          <div className="flex flex-col items-center gap-3 border-2 border-gray-300 rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-md object-cover" src="/images/js.png" alt="JAVASCRIPT" />
-            <h1 className="text-lg sm:text-xl md:text-2xl font-medium text-gray-700">JAVASCRIPT</h1>
+    <div id="skills" ref={sectionRef} className="relative py-24 md:py-32 overflow-hidden bg-[#f8f9fa]">
+      {/* Geometrik arka plan şekilleri */}
+      <div className="absolute top-0 right-0 w-full h-full overflow-hidden z-0">
+        <div className="absolute top-0 right-0 w-2/3 h-2/3 bg-gradient-to-br from-[#f0f9ff] to-[#cbf3f0] rounded-bl-[40%] opacity-30"></div>
+        <div className="absolute bottom-0 left-0 w-2/3 h-2/3 bg-gradient-to-tr from-[#cbf281] to-[#2dd4bf] rounded-tr-[40%] opacity-30"></div>
+      </div>
+
+      {/* İçerik container */}
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Başlık alanı */}
+        <div className="text-center mb-16 relative">
+          <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0 -translate-y-10'}`}>
+            <div className="inline-block relative mx-auto">
+              <div className="absolute top-0 -left-6 w-6 h-6 border-t-2 border-l-2 border-[#CBF281]"></div>
+              <div className="absolute top-0 -right-6 w-6 h-6 border-t-2 border-r-2 border-[#CBF281]"></div>
+              <div className="absolute -bottom-2 -left-6 w-6 h-6 border-b-2 border-l-2 border-[#CBF281]"></div>
+              <div className="absolute -bottom-2 -right-6 w-6 h-6 border-b-2 border-r-2 border-[#CBF281]"></div>
+              
+              <h2 className="text-4xl md:text-5xl font-bold mb-1 text-[#333333] bg-gradient-to-r from-[#CBF281] to-[#2dd4bf] text-transparent bg-clip-text px-4">
+                {t('skills.skills', 'Yeteneklerim')}
+              </h2>
+            </div>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto mt-6">
+              {t('skills.description', 'Projelerimde kullandığım teknolojiler ve sürekli geliştirdiğim yetenekler.')}
+            </p>
           </div>
-          <div className="flex flex-col items-center gap-3 border-2 border-gray-300 rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-md object-cover" src="/images/react.png" alt="REACT" />
-            <h1 className="text-lg sm:text-xl md:text-2xl font-medium text-gray-700">REACT</h1>
+        </div>
+
+        {/* 3D Kategori Seçici */}
+        <div className={`relative mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#CBF281]/30 to-[#2dd4bf]/30 blur-xl -z-10 rounded-3xl transform -skew-y-1"></div>
+          <div className="flex justify-center flex-wrap gap-3 bg-white p-4 rounded-xl border border-gray-200 shadow-lg">
+            {categories.map((category, index) => (
+              <button
+                key={category.id}
+                onClick={() => setActiveTab(category.id)}
+                className={`px-5 py-3 rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
+                  activeTab === category.id
+                    ? 'bg-gradient-to-r from-[#CBF281] to-[#2dd4bf] text-white shadow-md'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+                style={{ 
+                  transitionDelay: `${index * 50}ms`,
+                  transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                  opacity: isVisible ? 1 : 0
+                }}
+              >
+                <i className={category.icon}></i>
+                {category.label}
+              </button>
+            ))}
           </div>
-          <div className="flex flex-col items-center gap-3 border-2 border-gray-300 rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-md object-cover" src="/images/redux.png" alt="REDUX" />
-            <h1 className="text-lg sm:text-xl md:text-2xl font-medium text-gray-700">REDUX</h1>
-          </div>
-          <div className="flex flex-col items-center gap-3 border-2 border-gray-300 rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-md object-fit" src="/images/nodejs.png" alt="NODE" />
-            <h1 className="text-lg sm:text-xl md:text-2xl font-medium text-gray-700">NODE</h1>
-          </div>
-          <div className="flex flex-col items-center gap-3 border-2 border-gray-300 rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-md object-cover" src="/images/vscode.png" alt="VS CODE" />
-            <h1 className="text-lg sm:text-xl md:text-2xl font-medium text-gray-700">VS CODE</h1>
-          </div>
-          <div className="flex flex-col items-center gap-3 border-2 border-gray-300 rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-md object-cover" src="/images/figma.png" alt="FIGMA" />
-            <h1 className="text-lg sm:text-xl md:text-2xl font-medium text-gray-700">FIGMA</h1>
-          </div>
-          <div className="flex flex-col items-center gap-3 border-2 border-gray-300 rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-md object-cover" src="/images/typescript.png" alt="TypeScript" />
-            <h1 className="text-lg sm:text-xl md:text-2xl font-medium text-gray-700">TypeScript</h1>
-          </div>
-          <div className="flex flex-col items-center gap-3 border-2 border-gray-300 rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-md object-cover" src="/images/api.png" alt="API" />
-            <h1 className="text-lg sm:text-xl md:text-2xl font-medium text-gray-700">API</h1>
-          </div>
-          <div className="flex flex-col items-center gap-3 border-2 border-gray-300 rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-md object-cover" src="/images/tailwind.png" alt="TailwindCSS" />
-            <h1 className="text-lg sm:text-xl md:text-2xl font-medium text-gray-700">TailwindCSS</h1>
-          </div>
-          <div className="flex flex-col items-center gap-3 border-2 border-gray-300 rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-md object-cover" src="/images/css.png" alt="CSS" />
-            <h1 className="text-lg sm:text-xl md:text-2xl font-medium text-gray-700">CSS</h1>
-          </div>
-          <div className="flex flex-col items-center gap-3 border-2 border-gray-300 rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-md object-cover" src="/images/csharp.png" alt="C#" />
-            <h1 className="text-lg sm:text-xl md:text-2xl font-medium text-gray-700">C#</h1>
-          </div>
-          <div className="flex flex-col items-center gap-3 border-2 border-gray-300 rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-md object-cover" src="/images/angular.png" alt="AngularJS" />
-            <h1 className="text-lg sm:text-xl md:text-2xl font-medium text-gray-700">AngularJS</h1>
-          </div>
-          <div className="flex flex-col items-center gap-3 border-2 border-gray-300 rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-md object-cover" src="/images/html.png" alt="AngularJS" />
-            <h1 className="text-lg sm:text-xl md:text-2xl font-medium text-gray-700">HTML</h1>
+        </div>
+
+        {/* Yetenekler Grid - 3D Kart Efekti ile */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-20">
+          {filteredSkills.map((skill, index) => (
+            <div 
+              key={index}
+              className="group perspective"
+              style={{ 
+                transitionDelay: `${index * 50}ms`,
+                transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+                opacity: isVisible ? 1 : 0,
+                transition: 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+              }}
+            >
+              <div className="relative preserve-3d group-hover:my-rotate-y-180 w-full h-52 duration-700">
+                {/* Kart Ön Yüz */}
+                <div className="absolute backface-hidden w-full h-full rounded-xl p-6 shadow-md">
+                  <div className="flex flex-col items-center justify-center h-full rounded-lg bg-white border border-gray-100">
+                    <i className={`${skill.icon} text-5xl mb-4`} style={{ color: skill.color }}></i>
+                    <h3 className="text-gray-800 text-center font-medium">{skill.name}</h3>
+                  </div>
+                </div>
+                
+                {/* Kart Arka Yüz */}
+                <div className="absolute my-rotate-y-180 backface-hidden w-full h-full rounded-xl shadow-md overflow-hidden">
+                  <div className="flex flex-col items-center justify-center p-6 h-full text-center bg-gradient-to-br from-[#CBF281] to-[#2dd4bf]">
+                    <i className={`${skill.icon} text-4xl mb-3 text-white`}></i>
+                    <h3 className="text-white font-bold mb-2">{skill.name}</h3>
+                    <p className="text-white/90 text-sm">
+                      {t(`skills.${skill.name.toLowerCase().replace(/[^a-z0-9]/g, '')}Desc`, 'Projelerimde aktif olarak kullanıyorum')}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        {/* İnovatif Footer Kısım */}
+        <div className={`relative mt-24 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#CBF281]/20 to-[#2dd4bf]/20 blur-xl -z-10 rounded-3xl"></div>
+          
+          <div className="p-8 rounded-2xl bg-white shadow-xl border border-gray-100">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-2xl font-bold mb-4 text-gray-800">
+                  <span className="text-[#CBF281]">&lt;</span> 
+                  {t('skills.aboutMySkills', 'Yeteneklerim Hakkında')} 
+                  <span className="text-[#CBF281]">/&gt;</span>
+                </h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  {t('skills.aboutDesc', 'Yazılım geliştirme yolculuğumda, modern web teknolojilerini kullanarak kullanıcı dostu ve performanslı uygulamalar geliştirmeye odaklanıyorum. Frontend ve backend teknolojilerinde kendimi sürekli geliştirerek tam stack çözümler üretiyorum.')}
+                </p>
+                <div className="flex items-center gap-2">
+                  <div className="w-10 h-10 rounded-full bg-[#CBF281]/20 flex items-center justify-center">
+                    <i className="fas fa-rocket text-[#CBF281]"></i>
+                  </div>
+                  <span className="text-gray-700 font-medium">
+                    {t('skills.continuousLearning', 'Sürekli öğrenme ve gelişim')}
+                  </span>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-gray-50 rounded-xl p-5 border border-gray-100 hover:border-[#CBF281]/50 transition-all duration-300 flex flex-col items-center justify-center">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#CBF281]/20 to-[#2dd4bf]/20 flex items-center justify-center mb-3">
+                    <i className="fas fa-code text-[#CBF281] text-xl"></i>
+                  </div>
+                  <h4 className="text-gray-800 font-bold text-lg mb-1">20+</h4>
+                  <p className="text-gray-500 text-center">{t('skills.projects', 'Tamamlanmış Proje')}</p>
+                </div>
+                
+                <div className="bg-gray-50 rounded-xl p-5 border border-gray-100 hover:border-[#CBF281]/50 transition-all duration-300 flex flex-col items-center justify-center">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#CBF281]/20 to-[#2dd4bf]/20 flex items-center justify-center mb-3">
+                    <i className="fas fa-laptop-code text-[#CBF281] text-xl"></i>
+                  </div>
+                  <h4 className="text-gray-800 font-bold text-lg mb-1">10+</h4>
+                  <p className="text-gray-500 text-center">{t('skills.technologies', 'Teknoloji')}</p>
+                </div>
+                
+                <div className="bg-gray-50 rounded-xl p-5 border border-gray-100 hover:border-[#CBF281]/50 transition-all duration-300 flex flex-col items-center justify-center">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#CBF281]/20 to-[#2dd4bf]/20 flex items-center justify-center mb-3">
+                    <i className="fas fa-certificate text-[#CBF281] text-xl"></i>
+                  </div>
+                  <h4 className="text-gray-800 font-bold text-lg mb-1">5+</h4>
+                  <p className="text-gray-500 text-center">{t('skills.certificates', 'Sertifika')}</p>
+                </div>
+                
+                <div className="bg-gray-50 rounded-xl p-5 border border-gray-100 hover:border-[#CBF281]/50 transition-all duration-300 flex flex-col items-center justify-center">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#CBF281]/20 to-[#2dd4bf]/20 flex items-center justify-center mb-3">
+                    <i className="fas fa-calendar-alt text-[#CBF281] text-xl"></i>
+                  </div>
+                  <h4 className="text-gray-800 font-bold text-lg mb-1">3+</h4>
+                  <p className="text-gray-500 text-center">{t('skills.experience', 'Yıl Deneyim')}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    );
-  }
-
+      
+      {/* Custom CSS for 3D Card Effect */}
+      <style>{`
+        .perspective {
+          perspective: 1000px;
+        }
+        
+        .preserve-3d {
+          transform-style: preserve-3d;
+        }
+        
+        .backface-hidden {
+          backface-visibility: hidden;
+        }
+        
+        .my-rotate-y-180 {
+          transform: rotateY(180deg);
+        }
+        
+        .group:hover .group-hover\\:my-rotate-y-180 {
+          transform: rotateY(180deg);
+        }
+      `}</style>
+    </div>
+  );
+}

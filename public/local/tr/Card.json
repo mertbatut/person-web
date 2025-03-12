@@ -3,9 +3,18 @@
     "title": "Segna Tile",
     "description": "ReactJS, TailwindCSS, Node.js ve Vercel teknolojileriyle geliştirilen modern bir kurumsal web platformudur. Hızlı, güvenilir ve estetik tasarımıyla iş süreçlerinizi dijitalde güçlendirmek için ideal bir çözümdür.",
     "images": [
-      { "src": "/images/SegnaTile.png", "alt": "SegnaTile_Project" }
+      {
+        "src": "/images/SegnaTile.png",
+        "alt": "SegnaTile_Project"
+      }
     ],
-    "techStack": ["Reactjs", "Tailwind", "Vercel", "ReactRouter", "Node.js"],
+    "techStack": [
+      "Reactjs",
+      "Tailwind",
+      "Vercel",
+      "ReactRouter",
+      "Node.js"
+    ],
     "siteLink": "https://segnatile.com/",
     "githubLink": ""
   },
@@ -13,9 +22,17 @@
     "title": "Krizler ve Hekimlik",
     "description": "Krizler ve Hekimlik, modern teknolojilerle geliştirilmiş etkileyici bir kurumsal web platformudur. ReactJS, Node.js, Tailwind ve Vercel altyapısı kullanılarak oluşturulmuş bu proje, hızlı, güvenilir ve estetik bir kullanıcı deneyimi sunar.",
     "images": [
-      { "src": "/images/KrizlerveHekimlik.png", "alt": "KrizlerveHekimlik_Project" }
+      {
+        "src": "/images/KrizlerveHekimlik.png",
+        "alt": "KrizlerveHekimlik_Project"
+      }
     ],
-    "techStack": ["Reactjs", "Node.js", "Vercel","Tailwind"],
+    "techStack": [
+      "Reactjs",
+      "Node.js",
+      "Vercel",
+      "Tailwind"
+    ],
     "siteLink": "https://www.krizlervehekimlik.com.tr/",
     "githubLink": ""
   },
@@ -23,9 +40,18 @@
     "title": "Videographer Portfolio",
     "description": "Videographer Portfolio, video prodüksiyon profesyonelleri için tasarlanmış modern bir portfolyo platformudur. ReactJS, ReactRouter, TailwindCSS, Node.js ve Vercel kullanılarak geliştirilen bu proje, kullanıcı odaklı ve performanslı bir çözüm sunar.",
     "images": [
-      { "src": "/images/videographer.png", "alt": "videographer_Project" }
+      {
+        "src": "/images/videographer.png",
+        "alt": "videographer_Project"
+      }
     ],
-    "techStack": ["Reactjs", "Tailwind", "Vercel", "ReactRouter", "Node.js"],
+    "techStack": [
+      "Reactjs",
+      "Tailwind",
+      "Vercel",
+      "ReactRouter",
+      "Node.js"
+    ],
     "siteLink": "https://oguzcanturan.com/",
     "githubLink": ""
   },
@@ -33,9 +59,17 @@
     "title": "Türk Patent Oyun",
     "description": "Türk Patent Eğitici Oyun Platformu, Angular, TypeScript, Azure ve Bootstrap teknolojileriyle geliştirilmiş interaktif bir eğitim platformudur. Kullanıcılar eğlenceli oyunlarla bilgi edinirken, tamamladıkları görevler sonucunda sertifikalar kazanabilirler. Bu platform, modern tasarımı ve kullanıcı dostu arayüzüyle öğrenmeyi keyifli hale getirir.",
     "images": [
-      { "src": "/images/PatentOyun.png", "alt": "videographer_Project" }
+      {
+        "src": "/images/PatentOyun.png",
+        "alt": "videographer_Project"
+      }
     ],
-    "techStack": ["Angular", "TypeScript", "Azure","Bootstrap"],
+    "techStack": [
+      "Angular",
+      "TypeScript",
+      "Azure",
+      "Bootstrap"
+    ],
     "siteLink": "http://oyun.excognize.com/",
     "githubLink": ""
   }

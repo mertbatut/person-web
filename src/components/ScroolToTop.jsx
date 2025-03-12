@@ -1,10 +1,9 @@
-import  { useState, useEffect } from "react";
-import { FaArrowUp } from "react-icons/fa"; 
+import { useState, useEffect } from "react";
+import { FaArrowUp } from "react-icons/fa";
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
 
- 
   useEffect(() => {
     const toggleVisibility = () => {
       if (window.scrollY > 300) {
@@ -21,7 +20,6 @@ const ScrollToTop = () => {
     };
   }, []);
 
- 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -34,31 +32,10 @@ const ScrollToTop = () => {
       {isVisible && (
         <button
           onClick={scrollToTop}
-          style={{
-            position: "fixed",
-            bottom: "20px",
-            right: "20px",
-            width: "50px",
-            height: "50px",
-            backgroundColor: "#007bff",
-            color: "#fff",
-            border: "none",
-            borderRadius: "50%",
-            cursor: "pointer",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-            transition: "all 0.3s ease-in-out",
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.backgroundColor = "#0056b3"; 
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.backgroundColor = "#007bff"; 
-          }}
+          aria-label="Scroll to top"
+          className="fixed bottom-5 sm:bottom-8 right-5 sm:right-8 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-gradient-to-r from-[#4832D3] to-[#160f44] text-white shadow-lg hover:shadow-xl transition-all duration-300 z-50 hover:scale-110 focus:outline-none"
         >
-          <FaArrowUp size={20} />
+          <FaArrowUp size={18} />
         </button>
       )}
     </>
