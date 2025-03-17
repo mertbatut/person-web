@@ -62,23 +62,23 @@ const FooterContent = ({ t }) => {
                 <div className="absolute -bottom-2 -right-6 w-6 h-6 border-b-2 border-r-2 border-[#CBF281]"></div>
                 
                 <h2 className="text-4xl md:text-5xl font-bold mb-1 text-white bg-gradient-to-r from-white to-white/70 text-transparent bg-clip-text px-4">
-                  {t('footer.title', 'İletişime Geçin')}
+                  {t('footer.title')}
                 </h2>
               </div>
             </div>
             
             {/* Açıklama */}
             <p className={`text-xl text-gray-300 max-w-2xl transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              {t('footer.description', 'Projeleriniz için benimle iletişime geçebilirsiniz. En kısa sürede dönüş yapacağım.')}
+              {t('footer.description')}
             </p>
             
             {/* Email Butonu */}
             <a 
-              href="mailto:mertbatut@gmail.com"
+              href={`mailto:${t('footer.email')}`}
               className={`inline-flex items-center px-8 py-3 bg-[#CBF281] text-[#160f44] font-semibold rounded-full hover:bg-white transition duration-300 shadow-lg shadow-[#CBF281]/20 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
             >
               <i className="fas fa-envelope mr-2"></i>
-              {t('footer.email', 'mertbatut@gmail.com')}
+              {t('footer.email')}
             </a>
             
             {/* Sosyal Medya İkonları */}
@@ -88,7 +88,7 @@ const FooterContent = ({ t }) => {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white transition duration-300 backdrop-blur-sm"
-                aria-label="Facebook"
+                aria-label={t('footer.facebook')}
               >
                 <i className="fa-brands fa-facebook text-xl"></i>
               </a>
@@ -97,7 +97,7 @@ const FooterContent = ({ t }) => {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white transition duration-300 backdrop-blur-sm"
-                aria-label="GitHub"
+                aria-label={t('footer.github')}
               >
                 <i className="fa-brands fa-github text-xl"></i>
               </a>
@@ -106,7 +106,7 @@ const FooterContent = ({ t }) => {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white transition duration-300 backdrop-blur-sm"
-                aria-label="LinkedIn"
+                aria-label={t('footer.linkedin')}
               >
                 <i className="fa-brands fa-linkedin-in text-xl"></i>
               </a>
@@ -115,7 +115,7 @@ const FooterContent = ({ t }) => {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white transition duration-300 backdrop-blur-sm"
-                aria-label="Instagram"
+                aria-label={t('footer.instagram')}
               >
                 <i className="fa-brands fa-instagram text-xl"></i>
               </a>
@@ -124,7 +124,7 @@ const FooterContent = ({ t }) => {
           
           {/* Alt kısım - Telif hakkı bilgisi */}
           <div className={`mt-16 pt-8 border-t border-white/10 text-center text-gray-400 text-sm transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-            <p>© {new Date().getFullYear()} Mert Batut. {t('footer.rights', 'Tüm hakları saklıdır.')}</p>
+            <p>© {new Date().getFullYear()} Mert Batut. {t('footer.rights')}</p>
           </div>
         </div>
       </div>

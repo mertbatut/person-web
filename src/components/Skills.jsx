@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useState, useEffect, useRef } from 'react';
 
 export default function Skills() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [activeTab, setActiveTab] = useState('all');
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
@@ -28,6 +28,12 @@ export default function Skills() {
       }
     };
   }, []);
+
+  // Dil değişikliğinde kategorileri güncelle
+  useEffect(() => {
+    // Kategorileri doğru dilde güncelle
+    setActiveTab('all');
+  }, [i18n.language]);
 
   // Teknoloji yetenek kartları
   const skills = [
@@ -55,13 +61,14 @@ export default function Skills() {
 
   // Kategori filtreleri
   const categories = [
-    { id: 'all', label: t('skills.all', 'Tümü'), icon: 'fas fa-border-all' },
-    { id: 'frontend', label: t('skills.frontend', 'Frontend'), icon: 'fas fa-laptop-code' },
-    { id: 'backend', label: t('skills.backend', 'Backend'), icon: 'fas fa-server' },
-    { id: 'language', label: t('skills.languages', 'Diller'), icon: 'fas fa-code' },
-    { id: 'database', label: t('skills.database', 'Veritabanı'), icon: 'fas fa-database' },
-    { id: 'tool', label: t('skills.tools', 'Araçlar'), icon: 'fas fa-tools' },
-    { id: 'design', label: t('skills.design', 'Tasarım'), icon: 'fas fa-paint-brush' },
+    { id: 'all', label: t('skills.all'), icon: 'fas fa-border-all' },
+    { id: 'frontend', label: t('skills.frontend'), icon: 'fas fa-laptop-code' },
+    { id: 'backend', label: t('skills.backend'), icon: 'fas fa-server' },
+    { id: 'language', label: t('skills.languages'), icon: 'fas fa-code' },
+    { id: 'database', label: t('skills.database'), icon: 'fas fa-database' },
+    { id: 'tool', label: t('skills.tools'), icon: 'fas fa-tools' },
+    { id: 'design', label: t('skills.design'), icon: 'fas fa-paint-brush' },
+    { id: 'devops', label: t('skills.devops'), icon: 'fas fa-cogs' }
   ];
 
   // Filtreli yetenekler
@@ -89,11 +96,11 @@ export default function Skills() {
               <div className="absolute -bottom-2 -right-6 w-6 h-6 border-b-2 border-r-2 border-[#CBF281]"></div>
               
               <h2 className="text-4xl md:text-5xl font-bold mb-1 text-[#333333] bg-gradient-to-r from-[#CBF281] to-[#2dd4bf] text-transparent bg-clip-text px-4">
-                {t('skills.skills', 'Yeteneklerim')}
+                {t('skills.skills')}
               </h2>
             </div>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto mt-6">
-              {t('skills.description', 'Projelerimde kullandığım teknolojiler ve sürekli geliştirdiğim yetenekler.')}
+              {t('skills.description')}
             </p>
           </div>
         </div>
@@ -152,7 +159,7 @@ export default function Skills() {
                     <i className={`${skill.icon} text-4xl mb-3 text-white`}></i>
                     <h3 className="text-white font-bold mb-2">{skill.name}</h3>
                     <p className="text-white/90 text-sm">
-                      {t(`skills.${skill.name.toLowerCase().replace(/[^a-z0-9]/g, '')}Desc`, 'Projelerimde aktif olarak kullanıyorum')}
+                      {t(`skills.${skill.name.toLowerCase().replace(/[^a-z0-9]/g, '')}Desc`, `Projelerimde ${skill.name} teknolojisini aktif olarak kullanıyorum`)}
                     </p>
                   </div>
                 </div>
@@ -160,9 +167,6 @@ export default function Skills() {
             </div>
           ))}
         </div>
-        
-      
-        
       </div>
       
       {/* Custom CSS for 3D Card Effect */}

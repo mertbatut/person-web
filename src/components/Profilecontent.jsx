@@ -51,16 +51,16 @@ const ProfileCardContent = ({ t }) => {
   // Education and work experience data
   const experiences = [
     {
-      title: 'Front-End Developer',
-      company: 'SaaS/Fintech Company',
-      period: '2022 - Present',
-      description: t('profile.recentWork', 'Developing modern and interactive interfaces using React, React Native, and Redux. Working on improving user experience and optimizing application performance.')
+      title: t('profile.jobTitle1'),
+      company: t('profile.company1'),
+      period: t('profile.period1'),
+      description: t('profile.recentWork')
     },
     {
-      title: 'Junior Front-End Developer',
-      company: 'Web Agency',
-      period: '2020 - 2022',
-      description: t('profile.prevWork', 'Developed user-friendly interfaces using Angular, implemented API integrations, and worked on performance optimization. Contributed to project planning processes using agile methodology.')
+      title: t('profile.jobTitle2'),
+      company: t('profile.company2'),
+      period: t('profile.period2'),
+      description: t('profile.prevWork')
     }
   ];
 
@@ -83,11 +83,11 @@ const ProfileCardContent = ({ t }) => {
               <div className="absolute -bottom-2 -right-6 w-6 h-6 border-b-2 border-r-2 border-[#CBF281]"></div>
               
               <h2 className="text-4xl md:text-5xl font-bold mb-1 text-[#333333] bg-gradient-to-r from-[#CBF281] to-[#2dd4bf] text-transparent bg-clip-text px-4">
-                {t('profile.header', 'About Me')}
+                {t('profile.header')}
               </h2>
             </div>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto mt-6">
-              {t('profile.description', 'Get to know me and my professional journey.')}
+              {t('profile.description')}
             </p>
           </div>
         </div>
@@ -109,13 +109,13 @@ const ProfileCardContent = ({ t }) => {
                         <i className="fas fa-user text-white text-xl"></i>
                       </div>
                       <div>
-                        <h2 className="text-2xl font-bold text-gray-800">{t('profile.aboutMe', 'About Me')}</h2>
+                        <h2 className="text-2xl font-bold text-gray-800">{t('profile.aboutMe')}</h2>
                         <p className="text-gray-600">Front-End Developer</p>
                       </div>
                     </div>
 
                     <div className="border-l-4 border-[#CBF281] pl-4 py-2">
-                      <p className="text-gray-600">{t('profile.aboutDesc', 'I specialize in creating user-friendly interfaces using React, React Native, and modern JavaScript libraries. I focus on building responsive and high-performance web applications.')}</p>
+                      <p className="text-gray-600">{t('profile.aboutDesc')}</p>
                     </div>
 
                     {/* Key Information Cards */}
@@ -123,23 +123,23 @@ const ProfileCardContent = ({ t }) => {
                       <div className="bg-gray-50 p-4 rounded-lg border border-gray-100">
                         <div className="flex items-center mb-2">
                           <i className="fas fa-graduation-cap text-[#2dd4bf] mr-2"></i>
-                          <span className="font-medium text-gray-700">{t('profile.education', 'Education')}</span>
+                          <span className="font-medium text-gray-700">{t('profile.education')}</span>
                         </div>
-                        <p className="text-gray-600 text-sm">Beykent University, Business Administration</p>
+                        <p className="text-gray-600 text-sm">{t('profile.edDescription')}</p>
                       </div>
                       
                       <div className="bg-gray-50 p-4 rounded-lg border border-gray-100">
                         <div className="flex items-center mb-2">
                           <i className="fas fa-map-marker-alt text-[#2dd4bf] mr-2"></i>
-                          <span className="font-medium text-gray-700">{t('profile.residence', 'Location')}</span>
+                          <span className="font-medium text-gray-700">{t('profile.residence')}</span>
                         </div>
-                        <p className="text-gray-600 text-sm">Bursa, Turkey</p>
+                        <p className="text-gray-600 text-sm">{t('profile.location')}</p>
                       </div>
                       
                       <div className="bg-gray-50 p-4 rounded-lg border border-gray-100">
                         <div className="flex items-center mb-2">
                           <i className="fas fa-laptop-code text-[#2dd4bf] mr-2"></i>
-                          <span className="font-medium text-gray-700">{t('profile.preferredRole', 'Current Role')}</span>
+                          <span className="font-medium text-gray-700">{t('profile.currentRole')}</span>
                         </div>
                         <p className="text-gray-600 text-sm">Frontend Developer</p>
                       </div>
@@ -147,7 +147,7 @@ const ProfileCardContent = ({ t }) => {
                       <div className="bg-gray-50 p-4 rounded-lg border border-gray-100">
                         <div className="flex items-center mb-2">
                           <i className="fas fa-briefcase text-[#2dd4bf] mr-2"></i>
-                          <span className="font-medium text-gray-700">{t('profile.experience', 'Experience')}</span>
+                          <span className="font-medium text-gray-700">{t('profile.experience')}</span>
                         </div>
                         <p className="text-gray-600 text-sm">3+ Years</p>
                       </div>
@@ -157,24 +157,24 @@ const ProfileCardContent = ({ t }) => {
                     <div className="mt-2">
                       <h3 className="font-semibold text-gray-700 mb-3 flex items-center">
                         <i className="fas fa-star text-[#CBF281] mr-2"></i>
-                        {t('profile.expertise', 'Areas of Expertise')}
+                        {t('profile.expertise')}
                       </h3>
                       <div className="grid grid-cols-2 gap-2">
                         <div className="flex items-center bg-[#f0f9ff] p-2 rounded-md">
                           <i className="fas fa-check text-[#2dd4bf] mr-2"></i>
-                          <span className="text-sm text-gray-700">{t('profile.uiux', 'UI development')}</span>
+                          <span className="text-sm text-gray-700">{t('profile.uiux')}</span>
                         </div>
                         <div className="flex items-center bg-[#f0f9ff] p-2 rounded-md">
                           <i className="fas fa-check text-[#2dd4bf] mr-2"></i>
-                          <span className="text-sm text-gray-700">{t('profile.performance', 'Performance optimization')}</span>
+                          <span className="text-sm text-gray-700">{t('profile.performance')}</span>
                         </div>
                         <div className="flex items-center bg-[#f0f9ff] p-2 rounded-md">
                           <i className="fas fa-check text-[#2dd4bf] mr-2"></i>
-                          <span className="text-sm text-gray-700">{t('profile.responsive', 'Responsive design')}</span>
+                          <span className="text-sm text-gray-700">{t('profile.responsive')}</span>
                         </div>
                         <div className="flex items-center bg-[#f0f9ff] p-2 rounded-md">
                           <i className="fas fa-check text-[#2dd4bf] mr-2"></i>
-                          <span className="text-sm text-gray-700">{t('profile.mobile', 'Mobile development')}</span>
+                          <span className="text-sm text-gray-700">{t('profile.mobile')}</span>
                         </div>
                       </div>
                     </div>
@@ -196,14 +196,14 @@ const ProfileCardContent = ({ t }) => {
                     <div className="w-12 h-12 bg-gradient-to-r from-[#CBF281] to-[#2dd4bf] rounded-lg flex items-center justify-center mr-4">
                       <i className="fas fa-code text-white text-xl"></i>
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-800">{t('skills.title', 'Technical Skills')}</h3>
+                    <h3 className="text-2xl font-bold text-gray-800">{t('skills.title')}</h3>
                   </div>
 
                   {/* Frontend Skills */}
                   <div className="mb-8">
                     <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
                       <i className="fas fa-laptop-code text-[#2dd4bf] mr-2"></i>
-                      {t('skills.frontend', 'Frontend Technologies')}
+                      {t('skills.frontend')}
                     </h4>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -227,7 +227,7 @@ const ProfileCardContent = ({ t }) => {
                     <div>
                       <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
                         <i className="fas fa-server text-[#2dd4bf] mr-2"></i>
-                        {t('skills.backend', 'Backend')}
+                        {t('skills.backend')}
                       </h4>
                       
                       <div className="space-y-3">
@@ -249,7 +249,7 @@ const ProfileCardContent = ({ t }) => {
                     <div>
                       <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
                         <i className="fas fa-tools text-[#2dd4bf] mr-2"></i>
-                        {t('skills.tools', 'Tools & Others')}
+                        {t('skills.tools')}
                       </h4>
                       
                       <div className="space-y-3">
@@ -286,7 +286,7 @@ const ProfileCardContent = ({ t }) => {
                 <div className="w-12 h-12 bg-gradient-to-r from-[#CBF281] to-[#2dd4bf] rounded-lg flex items-center justify-center mr-4">
                   <i className="fas fa-briefcase text-white text-xl"></i>
                 </div>
-                <h2 className="text-2xl font-bold text-gray-800">{t('profile.career', 'Career Journey')}</h2>
+                <h2 className="text-2xl font-bold text-gray-800">{t('profile.career')}</h2>
               </div>
               
               <div className="space-y-8">

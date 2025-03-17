@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Tab } from '@headlessui/react';
 import { useInView } from 'react-intersection-observer';
-
-// ThemeContext bağımlılığını kaldırdık
+import { useTranslation } from 'react-i18next';
 
 // Tech icon ve renk yardımcıları
 const techIcons = {
@@ -41,16 +40,8 @@ const getTechIcon = (tech) => {
   return techIcons[tech] || 'fa fa-code';
 };
 
-const categories = [
-  { id: 'all', label: 'Tümü', icon: 'fas fa-border-all' },
-  { id: 'web', label: 'Web', icon: 'fas fa-laptop-code' },
-  { id: 'mobile', label: 'Mobil', icon: 'fas fa-mobile-alt' },
-  { id: 'design', label: 'Tasarım', icon: 'fas fa-paint-brush' }
-];
-
 export default function Projects() {
-  // ThemeContext kullanımını kaldırdık
-  // const { theme } = useContext(ThemeContext);
+  const { t, i18n } = useTranslation();
   
   // Ana state değişkenleri
   const [projects, setProjects] = useState([]);
@@ -64,6 +55,32 @@ export default function Projects() {
     threshold: 0.1,
     triggerOnce: true
   });
+  
+  // Kategoriye göre projeleri filtreleme
+  const filterProjectsByCategory = (projectList, category) => {
+    if (!projectList || !Array.isArray(projectList)) return [];
+    if (category === 'all') return projectList;
+    return projectList.filter(project => 
+      project.category === category || 
+      (project.tags && Array.isArray(project.tags) && project.tags.includes(category))
+    );
+  };
+  
+  // Kategorileri dil değişikliğine göre güncelle
+  const categories = [
+    { id: 'all', label: t('projects.all'), icon: 'fas fa-border-all' },
+    { id: 'web', label: t('projects.web'), icon: 'fas fa-laptop-code' },
+    { id: 'mobile', label: t('projects.mobile'), icon: 'fas fa-mobile-alt' },
+    { id: 'design', label: t('projects.design'), icon: 'fas fa-paint-brush' }
+  ];
+  
+  // Dil değişikliğini izle
+  useEffect(() => {
+    // Örnek projeler güncelle
+    if (projects && projects.length > 0 && projects[0].id && projects[0].id.includes('sample')) {
+      setProjects(getSampleProjects());
+    }
+  }, [i18n.language]);
   
   // Veri çekme işlemi
   useEffect(() => {
@@ -103,30 +120,21 @@ export default function Projects() {
   
   // Aktif projeyi ayarlama
   useEffect(() => {
-    if (projects.length > 0) {
+    if (projects && projects.length > 0) {
       const filtered = filterProjectsByCategory(projects, activeCategory);
-      setActiveProject(filtered[0] || null);
+      setActiveProject(filtered.length > 0 ? filtered[0] : null);
     }
   }, [projects, activeCategory]);
-  
-  // Kategoriye göre projeleri filtreleme
-  const filterProjectsByCategory = (projectList, category) => {
-    if (category === 'all') return projectList;
-    return projectList.filter(project => 
-      project.category === category || 
-      (project.tags && project.tags.includes(category))
-    );
-  };
   
   // Filtrelenmiş projeler
   const filteredProjects = filterProjectsByCategory(projects, activeCategory);
   
-  // Örnek projeler
+  // Örnek projeler - çevirilerle birlikte
   const getSampleProjects = () => [
     {
       id: "sample-1",
-      title: "3D Portföy Web Uygulaması",
-      description: "ThreeJS ve React kullanılarak oluşturulmuş, tamamen etkileşimli 3D portföy web uygulaması. Kullanıcılar projeler arasında 3D olarak gezinebilir.",
+      title: t('projects.sampleProject1Title'),
+      description: t('projects.sampleProject1Desc'),
       images: [{ src: "/images/default.png", alt: "3D Portfolio" }],
       techStack: ["React", "ThreeJS", "TailwindCSS", "Framer Motion"],
       category: "web",
@@ -136,8 +144,8 @@ export default function Projects() {
     },
     {
       id: "sample-2",
-      title: "AR Mobilya Uygulaması",
-      description: "Artırılmış gerçeklik teknolojisi kullanarak mobilyaları evinizde görüntüleyebileceğiniz mobil uygulama. Gerçek boyutlarıyla ve malzemesiyle görüntüleme.",
+      title: t('projects.sampleProject2Title'),
+      description: t('projects.sampleProject2Desc'),
       images: [{ src: "/images/default.png", alt: "AR Furniture App" }],
       techStack: ["React Native", "ARKit", "ARCore", "Firebase"],
       category: "mobile",
@@ -147,8 +155,8 @@ export default function Projects() {
     },
     {
       id: "sample-3",
-      title: "İnteraktif Veri Görselleştirme Dashboardu",
-      description: "Büyük veri setlerini etkileşimli grafikler, haritalar ve animasyonlu göstergelerle görselleştiren dashboard uygulaması.",
+      title: t('projects.sampleProject3Title'),
+      description: t('projects.sampleProject3Desc'),
       images: [{ src: "/images/default.png", alt: "Data Visualization" }],
       techStack: ["D3.js", "React", "Node.js", "MongoDB"],
       category: "design",
@@ -188,8 +196,6 @@ export default function Projects() {
   };
 
   // CSS Değişkenleri 
-  // Not: Eğer ThemeContext'teki değişkenlerinize ihtiyacınız varsa, 
-  // burada varsayılan değerler kullanarak devam ediyoruz.
   const cssVariables = {
     projectsBgFrom: 'var(--projects-bg-from, #f8f9fa)',
     projectsBgTo: 'var(--projects-bg-to, #ffffff)',
@@ -254,10 +260,10 @@ export default function Projects() {
                 WebkitBackgroundClip: 'text',
                 color: 'transparent' 
               }}>
-            Projelerim
+            {t('projects.title')}
           </h2>
           <p style={{ color: cssVariables.textSecondary }} className="max-w-2xl mx-auto text-sm sm:text-base">
-            Deneyim ve becerilerimi sergilediğim çalışmalar
+            {t('projects.description')}
           </p>
         </motion.div>
         
@@ -273,7 +279,7 @@ export default function Projects() {
           >
             <span className="flex items-center">
               <i className={`${categories.find(c => c.id === activeCategory)?.icon || 'fas fa-filter'} mr-2`}></i>
-              <span>{categories.find(c => c.id === activeCategory)?.label || 'Filtrele'}</span>
+              <span>{categories.find(c => c.id === activeCategory)?.label || t('projects.filter')}</span>
             </span>
             <i className={`fas fa-chevron-${showCategoryMenu ? 'up' : 'down'}`}></i>
           </button>
@@ -347,7 +353,7 @@ export default function Projects() {
           </div>
         )}
         
-        {!loading && projects.length > 0 && (
+        {!loading && projects && projects.length > 0 && (
           <div className="flex flex-col md:flex-row md:gap-6 lg:gap-8">
             {/* Desktop Sidebar */}
             <div className="hidden md:block md:w-1/3 lg:w-1/4">
@@ -362,7 +368,7 @@ export default function Projects() {
                 }}
               >
                 <h3 className="text-lg font-semibold mb-4" style={{ color: cssVariables.textPrimary }}>
-                  Kategoriler
+                  {t('projects.categories')}
                 </h3>
                 
                 <div className="space-y-2">
@@ -402,11 +408,11 @@ export default function Projects() {
                 {activeProject && (
                   <div className="mt-6 pt-5 border-t border-gray-200 dark:border-gray-700 hidden lg:block">
                     <h3 className="text-lg font-semibold mb-3" style={{ color: cssVariables.textPrimary }}>
-                      Teknolojiler
+                      {t('projects.technologies')}
                     </h3>
                     
                     <div className="flex flex-wrap gap-2">
-                      {activeProject.techStack?.map((tech, idx) => (
+                      {activeProject.techStack && activeProject.techStack.map((tech, idx) => (
                         <motion.span 
                           key={idx}
                           initial={{ opacity: 0, scale: 0.8 }}
@@ -430,7 +436,7 @@ export default function Projects() {
             
             {/* Proje İçeriği Alanı */}
             <div className="w-full md:w-2/3 lg:w-3/4">
-              {filteredProjects.length > 0 ? (
+              {filteredProjects && filteredProjects.length > 0 ? (
                 <Tab.Group>
                   {/* Tab menusu - kaydırılabilir */}
                   <Tab.List className="flex overflow-x-auto space-x-1 rounded-xl p-1 mb-4 sm:mb-6 scrollbar-hide"
@@ -504,7 +510,7 @@ export default function Projects() {
                             
                             {/* Mobil için teknoloji etiketleri */}
                             <div className="mb-4 flex flex-wrap gap-2 lg:hidden">
-                              {project.techStack?.map((tech, idx) => (
+                              {project.techStack && project.techStack.map((tech, idx) => (
                                 <span 
                                   key={idx}
                                   className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium"
@@ -531,7 +537,7 @@ export default function Projects() {
                                   onClick={(e) => {
                                     if (!isValidUrl(project.siteLink)) {
                                       e.preventDefault();
-                                      alert('Geçersiz URL.');
+                                      alert(t('projects.invalidUrl'));
                                     }
                                   }}
                                   className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-all duration-300 group"
@@ -541,7 +547,7 @@ export default function Projects() {
                                   }}
                                 >
                                   <i className="fas fa-external-link-alt group-hover:translate-x-1 transition-transform"></i>
-                                  <span>Siteyi Ziyaret Et</span>
+                                  <span>{t('projects.viewSite')}</span>
                                 </motion.a>
                               )}
                               
@@ -555,7 +561,7 @@ export default function Projects() {
                                   onClick={(e) => {
                                     if (!isValidUrl(project.githubLink)) {
                                       e.preventDefault();
-                                      alert('Geçersiz URL.');
+                                      alert(t('projects.invalidUrl'));
                                     }
                                   }}
                                   className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg border px-4 py-2.5 text-sm font-medium transition-all duration-300 group"
@@ -565,7 +571,7 @@ export default function Projects() {
                                   }}
                                 >
                                   <i className="fab fa-github group-hover:rotate-12 transition-transform"></i>
-                                  <span>GitHub Kodları</span>
+                                  <span>{t('projects.gitHubCode')}</span>
                                 </motion.a>
                               )}
                             </div>
@@ -588,10 +594,10 @@ export default function Projects() {
                     <i className="fas fa-search text-lg sm:text-xl" style={{ color: cssVariables.projectsEmptyIcon }}></i>
                   </div>
                   <h3 className="text-lg sm:text-xl font-bold mb-2" style={{ color: cssVariables.textPrimary }}>
-                    Proje Bulunamadı
+                    {t('projects.notFound')}
                   </h3>
                   <p className="max-w-md mx-auto mb-5 sm:mb-6 px-4 text-sm sm:text-base" style={{ color: cssVariables.textSecondary }}>
-                    Bu kategoride henüz bir proje bulunmuyor. Lütfen başka bir kategori seçin veya daha sonra tekrar deneyin.
+                    {t('projects.notFoundDesc')}
                   </p>
                   <button
                     onClick={() => setActiveCategory('all')}
@@ -601,7 +607,7 @@ export default function Projects() {
                       color: cssVariables.projectsButtonPrimaryText 
                     }}
                   >
-                    Tüm Projeleri Göster
+                    {t('projects.showAllProjects')}
                   </button>
                 </motion.div>
               )}
@@ -611,7 +617,7 @@ export default function Projects() {
       </div>
 
       {/* Scrollbar Gizleme için Inline stil */}
-      <style >{`
+      <style>{`
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
         }
@@ -621,5 +627,5 @@ export default function Projects() {
         }
       `}</style>
     </section>
-  );}
-  
+  );
+}

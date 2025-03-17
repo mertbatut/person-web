@@ -116,10 +116,10 @@ export default function Header() {
   };
 
   const navItems = [
-    { id: "home", label: t("menu.home", "Anasayfa") },
-    { id: "projects", label: t("menu.projects", "Projeler") },
-    { id: "skills", label: t("menu.skills", "Yetenekler") },
-    { id: "contact", label: t("menu.contact", "İletişim") }
+    { id: "home", label: t("menu.home") },
+    { id: "projects", label: t("menu.projects") },
+    { id: "skills", label: t("menu.skills") },
+    { id: "contact", label: t("menu.contact") }
   ];
 
   // Current language
@@ -166,7 +166,7 @@ export default function Header() {
           <button
             onClick={toggleTheme}
             className="p-2 mr-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors duration-300 relative w-10 h-10 flex items-center justify-center"
-            aria-label={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+            aria-label={isDark ? t('common.switchToLight') : t('common.switchToDark')}
           >
             {/* Sun Icon */}
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" 
@@ -190,7 +190,7 @@ export default function Header() {
                   ? "bg-[#CBF281] text-[#160f44]"
                   : "text-white border border-white/20 hover:border-white/40"
               }`}
-              aria-label="Türkçe"
+              aria-label={t('common.turkish')}
             >
               TR
             </button>
@@ -201,7 +201,7 @@ export default function Header() {
                   ? "bg-[#CBF281] text-[#160f44]"
                   : "text-white border border-white/20 hover:border-white/40"
               }`}
-              aria-label="English"
+              aria-label={t('common.english')}
             >
               EN
             </button>
@@ -214,7 +214,7 @@ export default function Header() {
           <button
             onClick={toggleTheme}
             className="p-2 mr-4 rounded-full bg-white/10 hover:bg-white/20 transition-colors duration-300 relative w-10 h-10 flex items-center justify-center"
-            aria-label={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+            aria-label={isDark ? t('common.switchToLight') : t('common.switchToDark')}
           >
             {/* Sun Icon */}
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" 
@@ -232,7 +232,7 @@ export default function Header() {
           <div
             className="cursor-pointer z-50"
             onClick={toggleMenu}
-            aria-label="Toggle Menu"
+            aria-label={t('common.toggleMenu')}
           >
             <div
               className={`w-6 h-1 bg-white mb-1 transition-transform duration-300 ${
