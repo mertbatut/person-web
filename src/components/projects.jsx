@@ -478,7 +478,7 @@ export default function Projects() {
                               <img 
                                 src={project.images[0].src} 
                                 alt={project.images[0].alt || project.title} 
-                                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                                className="w-full h-full object-contain transition-transform duration-700 hover:scale-105"
                               />
                             ) : (
                               <div className="w-full h-full flex items-center justify-center"

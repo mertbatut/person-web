@@ -56,12 +56,12 @@ const ProfileCardContent = ({ t }) => {
       period: t('profile.period1'),
       description: t('profile.recentWork')
     },
-    {
-      title: t('profile.jobTitle2'),
-      company: t('profile.company2'),
-      period: t('profile.period2'),
-      description: t('profile.prevWork')
-    }
+    // {
+    //   title: t('profile.jobTitle2'),
+    //   company: t('profile.company2'),
+    //   period: t('profile.period2'),
+    //   description: t('profile.prevWork')
+    // }
   ];
 
   return (
