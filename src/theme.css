@@ -1,455 +1,686 @@
 /* Theme variables for light and dark mode */
 :root {
-    /* Light mode variables (default) */
-    --bg-primary: #f8f9fa;
-    --bg-secondary: #ffffff;
-    --text-primary: #333333;
-    --text-secondary: #666666;
-    --text-muted: #6c757d;
-    --accent-primary: #CBF281;
-    --accent-secondary: #2dd4bf;
-    --gradient-start: #CBF281;
-    --gradient-end: #2dd4bf;
-    --card-bg: #ffffff;
-    --card-border: #e9ecef;
-    --card-shadow: rgba(0, 0, 0, 0.05);
-    --header-bg: rgba(22, 15, 68, 0.9);
-    --header-text: #ffffff;
-    --hero-bg-start: #1A1259;
-    --hero-bg-mid: #121139;
-    --hero-bg-end: #0A0A29;
-    --icon-bg: rgba(255, 255, 255, 0.1);
-    --hover-bg: rgba(255, 255, 255, 0.2);
-    --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    
-    /* Skill card specific colors */
-    --skill-card-bg: #ffffff;
-    --skill-card-border: #f0f0f0;
-    --skill-card-text: #333333;
-    
-    /* Project card specific colors */
-    --project-card-bg: #ffffff;
-    --project-card-text: #333333;
-    --project-card-desc: #666666;
-    
-    /* Profile card specific colors */
-    --profile-card-bg: #ffffff;
-    --profile-card-title: #333333;
-    --profile-card-text: #666666;
-    --profile-skill-percent: #2dd4bf;
-    
-    /* Stats cards */
-    --stats-card-bg: #f8f9fa;
-    --stats-card-border: #e9ecef;
-    --stats-card-text: #333333;
-    --stats-card-subtext: #6c757d;
-    --stats-card-icon-bg: rgba(203, 242, 129, 0.1);
-    
-    /* Button colors */
-    --btn-primary-bg: #4832D3;
-    --btn-primary-text: #ffffff;
-    --btn-primary-border: #4832D3;
-    --btn-secondary-bg: #CBF281;
-    --btn-secondary-text: #160f44;
-    --btn-secondary-border: #CBF281;
-    
-    /* Hero stats */
-    --hero-stat-bg: rgba(255, 255, 255, 0.1);
-    --hero-stat-text: rgba(255, 255, 255, 0.8);
-    --hero-stat-border: rgba(255, 255, 255, 0.1);
-    --hero-stat-accent: #CBF281;
-  }
+  /* Light mode variables (default) */
+  --bg-primary: #f8f9fa;
+  --bg-secondary: #ffffff;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-muted: #6c757d;
+  --accent-primary: #CBF281;
+  --accent-secondary: #2dd4bf;
+  --gradient-start: #CBF281;
+  --gradient-end: #2dd4bf;
+  --card-bg: #ffffff;
+  --card-border: #e9ecef;
+  --card-shadow: rgba(0, 0, 0, 0.05);
+  --header-bg: rgba(22, 15, 68, 0.9);
+  --header-text: #ffffff;
+  --hero-bg-start: #1A1259;
+  --hero-bg-mid: #121139;
+  --hero-bg-end: #0A0A29;
+  --icon-bg: rgba(255, 255, 255, 0.1);
+  --hover-bg: rgba(255, 255, 255, 0.2);
+  --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   
-  /* Dark mode variables */
-  .dark {
-    --bg-primary: #121139;
-    --bg-secondary: #1A1259;
-    --text-primary: #f8f9fa;
-    --text-secondary: #e9ecef;
-    --text-muted: #adb5bd;
-    --accent-primary: #CBF281;
-    --accent-secondary: #2dd4bf;
-    --gradient-start: #CBF281;
-    --gradient-end: #2dd4bf;
-    --card-bg: #1f1c45;
-    --card-border: #2d2a5d;
-    --card-shadow: rgba(0, 0, 0, 0.2);
-    --header-bg: rgba(22, 15, 68, 0.9);
-    --header-text: #ffffff;
-    --hero-bg-start: #0A0A29;
-    --hero-bg-mid: #121139;
-    --hero-bg-end: #1A1259;
-    --icon-bg: rgba(255, 255, 255, 0.05);
-    --hover-bg: rgba(255, 255, 255, 0.1);
-    
-    /* Skill card specific colors */
-    --skill-card-bg: #1f1c45;
-    --skill-card-border: #2d2a5d;
-    --skill-card-text: #ffffff;
-    
-    /* Project card specific colors */
-    --project-card-bg: #1f1c45;
-    --project-card-text: #ffffff;
-    --project-card-desc: #e9ecef;
-    
-    /* Profile card specific colors */
-    --profile-card-bg: #1f1c45;
-    --profile-card-title: #ffffff;
-    --profile-card-text: #e9ecef;
-    --profile-skill-percent: #CBF281;
-    
-    /* Stats cards */
-    --stats-card-bg: #1f1c45;
-    --stats-card-border: #2d2a5d;
-    --stats-card-text: #ffffff;
-    --stats-card-subtext: #e9ecef;
-    --stats-card-icon-bg: rgba(203, 242, 129, 0.2);
-    
-    /* Button colors */
-    --btn-primary-bg: #4832D3;
-    --btn-primary-text: #ffffff; 
-    --btn-primary-border: #5842e3;
-    --btn-secondary-bg: #CBF281;
-    --btn-secondary-text: #160f44;
-    --btn-secondary-border: #CBF281;
-    
-    /* Hero stats */
-    --hero-stat-bg: rgba(255, 255, 255, 0.05);
-    --hero-stat-text: rgba(255, 255, 255, 0.9);
-    --hero-stat-border: rgba(255, 255, 255, 0.1);
-    --hero-stat-accent: #CBF281;
-  }
+  /* Skill card specific colors */
+  --skill-card-bg: #ffffff;
+  --skill-card-border: #f0f0f0;
+  --skill-card-text: #333333;
   
-  /* Apply theme to common elements */
-  body {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    transition: var(--theme-transition);
-  }
+  /* Project card specific colors */
+  --project-card-bg: #ffffff;
+  --project-card-text: #333333;
+  --project-card-desc: #666666;
+  --project-tag-bg: #f0f0f0;
+  --project-tag-text: #555555;
   
-  /* Apply to profile section */
-  #profile {
-    background-color: var(--bg-primary);
-    transition: var(--theme-transition);
-  }
+  /* Projeler alanı için özel değişkenler - Açık Tema */
+  --projects-bg-from: #f8f9fa;
+  --projects-bg-to: #ffffff;
+  --projects-primary-color: #4832D3;
+  --projects-secondary-color: #160f44;
+  --projects-tab-bg: #ffffff;
+  --projects-tab-selected: #4832D3;
+  --projects-tab-text: #333333;
+  --projects-tab-selected-text: #ffffff;
+  --projects-sidebar-bg: #ffffff;
+  --projects-card-bg: #ffffff;
+  --projects-card-shadow: rgba(0, 0, 0, 0.1);
+  --projects-tech-tag-bg: #f5f5f5;
+  --projects-tech-tag-text: #333333;
+  --projects-tech-icon: #4832D3;
+  --projects-button-primary-bg: #4832D3;
+  --projects-button-primary-text: #ffffff;
+  --projects-button-secondary-bg: #f5f5f5;
+  --projects-button-secondary-text: #333333;
+  --projects-button-secondary-border: #e0e0e0;
+  --projects-empty-icon-bg: #f0f0f0;
+  --projects-empty-icon: #909090;
   
-  /* Apply to skills section */
-  #skills {
-    background-color: var(--bg-primary);
-    transition: var(--theme-transition);
-  }
+  /* Profil alanı için özel değişkenler - Açık Tema */
+  --profile-bg-gradient-1: #f0f9ff;
+  --profile-bg-gradient-2: #cbf3f0;
+  --profile-header-decoration: #CBF281;
+  --profile-title-gradient-1: #CBF281;
+  --profile-title-gradient-2: #2dd4bf;
+  --profile-description-text: #666666;
   
-  /* Apply to projects section */
-  #projects {
-    background-color: var(--bg-primary);
-    transition: var(--theme-transition);
-  }
+  --profile-card-bg: #ffffff;
+  --profile-card-shadow: rgba(0, 0, 0, 0.1);
+  --profile-card-glow-1: #CBF281;
+  --profile-card-glow-2: #2dd4bf;
   
-  /* HERO SECTION STYLES */
-  /* Hero background and content */
-  #home {
-    background-color: var(--hero-bg-mid);
-    transition: var(--theme-transition);
-  }
+  --profile-section-title: #333333;
+  --profile-section-subtitle: #666666;
   
-  #home .absolute.inset-0.bg-\[\#121139\] {
-    background-color: var(--hero-bg-mid);
-  }
+  --profile-icon-bg-1: #CBF281;
+  --profile-icon-bg-2: #2dd4bf;
+  --profile-icon-color: #ffffff;
   
-  #home .absolute.top-0.left-0.w-full.h-full.bg-gradient-to-br {
-    background-image: linear-gradient(to bottom right, var(--hero-bg-start), var(--hero-bg-mid), var(--hero-bg-end));
-  }
+  --profile-infocard-bg: #f8f9fa;
+  --profile-infocard-border: #e9ecef;
+  --profile-infocard-title: #555555;
+  --profile-infocard-text: #666666;
   
-  /* Hero text elements */
-  #home h1 {
-    color: #ffffff;
-  }
+  --profile-skill-bg: #f8f9fa;
+  --profile-skill-border: #e9ecef;
+  --profile-skill-text: #333333;
+  --profile-skill-icon-bg: #f0f9ff;
+  --profile-skill-icon: #2dd4bf;
   
-  #home p {
-    color: #e9ecef;
-  }
+  --profile-expertise-bg: #f0f9ff;
+  --profile-expertise-text: #555555;
+  --profile-expertise-check: #2dd4bf;
   
-  /* CARD STYLES */
-  /* Generic card styling */
-  .card, 
-  .relative.bg-white, 
-  .bg-white.p-8.rounded-xl.shadow-lg,
-  .bg-white.p-5.rounded-xl.shadow-sm {
-    background-color: var(--card-bg) !important;
-    border-color: var(--card-border) !important;
-    box-shadow: 0 4px 6px var(--card-shadow) !important;
-    transition: var(--theme-transition);
-  }
+  --profile-timeline-date-bg-1: rgba(203, 242, 129, 0.2);
+  --profile-timeline-date-bg-2: rgba(45, 212, 191, 0.2);
+  --profile-timeline-date-text: #555555;
+  --profile-timeline-line: #CBF281;
+  --profile-timeline-dot: #CBF281;
+  --profile-timeline-card-bg: #ffffff;
+  --profile-timeline-card-border: #e9ecef;
+  --profile-timeline-card-title: #333333;
+  --profile-timeline-card-company: #2dd4bf;
+  --profile-timeline-card-text: #666666;
   
-  /* PROJECT CARDS AND STATS */
-  /* Project cards */
-  #projects .bg-white.rounded-xl.shadow-md {
-    background-color: var(--project-card-bg) !important;
-    transition: var(--theme-transition);
-  }
+  /* Profile card specific colors */
+  --profile-card-bg: #ffffff;
+  --profile-card-title: #333333;
+  --profile-card-text: #666666;
+  --profile-skill-percent: #2dd4bf;
   
-  #projects .text-gray-800 {
-    color: var(--project-card-text) !important;
-  }
+  /* Stats cards */
+  --stats-card-bg: #f8f9fa;
+  --stats-card-border: #e9ecef;
+  --stats-card-text: #333333;
+  --stats-card-subtext: #6c757d;
+  --stats-card-icon-bg: rgba(203, 242, 129, 0.1);
   
-  #projects .text-gray-600, 
-  #projects .text-gray-500 {
-    color: var(--project-card-desc) !important;
-  }
+  /* Button colors */
+  --btn-primary-bg: #4832D3;
+  --btn-primary-text: #ffffff;
+  --btn-primary-border: #4832D3;
+  --btn-secondary-bg: #CBF281;
+  --btn-secondary-text: #160f44;
+  --btn-secondary-border: #CBF281;
+  --btn-outline-border: #e0e0e0;
+  --btn-outline-text: #555555;
+  --btn-outline-hover: #f0f0f0;
   
-  /* Project stats cards */
-  #projects .bg-gray-50.rounded-xl,
-  #projects .bg-gray-50 {
-    background-color: var(--stats-card-bg) !important;
-    border-color: var(--stats-card-border) !important;
-    transition: var(--theme-transition);
-  }
+  /* Hero stats */
+  --hero-stat-bg: rgba(255, 255, 255, 0.1);
+  --hero-stat-text: rgba(255, 255, 255, 0.8);
+  --hero-stat-border: rgba(255, 255, 255, 0.1);
+  --hero-stat-accent: #CBF281;
+}
+
+/* Dark mode variables - Improved contrast */
+.dark {
+  --bg-primary: #121139;
+  --bg-secondary: #1A1259;
+  --text-primary: #f8f9fa;
+  --text-secondary: #e9ecef;
+  --text-muted: #adb5bd;
+  --accent-primary: #CBF281;
+  --accent-secondary: #2dd4bf;
+  --gradient-start: #CBF281;
+  --gradient-end: #2dd4bf;
+  --card-bg: #1f1c45;
+  --card-border: #2d2a5d;
+  --card-shadow: rgba(0, 0, 0, 0.2);
+  --header-bg: rgba(22, 15, 68, 0.9);
+  --header-text: #ffffff;
+  --hero-bg-start: #0A0A29;
+  --hero-bg-mid: #121139;
+  --hero-bg-end: #1A1259;
+  --icon-bg: rgba(255, 255, 255, 0.05);
+  --hover-bg: rgba(255, 255, 255, 0.1);
   
-  #projects .text-gray-800.font-bold,
-  #projects .text-gray-800.mb-0\.5,
-  #projects .text-base.md\:text-lg.font-bold.text-gray-800 {
-    color: var(--stats-card-text) !important;
-  }
+  /* Skill card specific colors - Enhanced contrast */
+  --skill-card-bg: #1f1c45;
+  --skill-card-border: #2d2a5d;
+  --skill-card-text: #ffffff;
   
-  #projects .text-gray-500.text-center,
-  #projects .text-gray-500.text-xs,
-  #projects .text-xs.md\:text-sm.text-gray-500 {
-    color: var(--stats-card-subtext) !important;
-  }
+  /* Project card specific colors - Enhanced contrast */
+  --project-card-bg: #1f1c45;
+  --project-card-text: #ffffff;
+  --project-card-desc: #e9ecef;
+  --project-tag-bg: #2d2a5d;
+  --project-tag-text: #e9ecef;
   
-  #projects .bg-gradient-to-br.from-\[\#4832D3\]\/10.to-\[\#CBF281\]\/10,
-  #projects .from-\[\#4832D3\]\/10.to-\[\#CBF281\]\/10 {
-    background-image: linear-gradient(to bottom right, var(--accent-primary)/10, var(--accent-secondary)/10);
-  }
+  /* Projeler alanı için özel değişkenler - Koyu Tema */
+  --projects-bg-from: #121139;
+  --projects-bg-to: #0A0A29;
+  --projects-primary-color: #CBF281;
+  --projects-secondary-color: #2dd4bf;
+  --projects-tab-bg: #1f1c45;
+  --projects-tab-selected: #CBF281;
+  --projects-tab-text: #e9ecef;
+  --projects-tab-selected-text: #121139;
+  --projects-sidebar-bg: #1f1c45;
+  --projects-card-bg: #1f1c45;
+  --projects-card-shadow: rgba(0, 0, 0, 0.3);
+  --projects-tech-tag-bg: #2d2a5d;
+  --projects-tech-tag-text: #e9ecef;
+  --projects-tech-icon: #CBF281;
+  --projects-button-primary-bg: #CBF281;
+  --projects-button-primary-text: #121139;
+  --projects-button-secondary-bg: #2d2a5d;
+  --projects-button-secondary-text: #e9ecef;
+  --projects-button-secondary-border: #3d3a70;
+  --projects-empty-icon-bg: #2d2a5d;
+  --projects-empty-icon: #6c7086;
   
-  #projects .w-12.h-12.md\:w-16.md\:h-16.rounded-full.bg-gradient-to-br.from-\[\#4832D3\]\/10.to-\[\#CBF281\]\/10 {
-    background-color: var(--stats-card-icon-bg);
-  }
+  /* Profil alanı için özel değişkenler - Koyu Tema */
+  --profile-bg-gradient-1: #1A1259;
+  --profile-bg-gradient-2: #0A0A29;
+  --profile-header-decoration: #CBF281;
+  --profile-title-gradient-1: #CBF281;
+  --profile-title-gradient-2: #2dd4bf;
+  --profile-description-text: #e0e0e0;
   
-  /* Make sure all stats boxes in projects section have correct styling */
-  #projects .grid.grid-cols-2.md\:grid-cols-4.gap-3.md\:gap-4 > div {
-    background-color: var(--stats-card-bg) !important;
-    border-color: var(--stats-card-border) !important;
-    transition: var(--theme-transition);
-  }
+  --profile-card-bg: #1f1c45;
+  --profile-card-shadow: rgba(0, 0, 0, 0.3);
+  --profile-card-glow-1: #CBF281;
+  --profile-card-glow-2: #2dd4bf;
   
-  #projects .grid.grid-cols-2.md\:grid-cols-4.gap-3.md\:gap-4 h4 {
-    color: var(--stats-card-text) !important;
-  }
+  --profile-section-title: #ffffff;
+  --profile-section-subtitle: #e0e0e0;
   
-  #projects .grid.grid-cols-2.md\:grid-cols-4.gap-3.md\:gap-4 p {
-    color: var(--stats-card-subtext) !important;
-  }
+  --profile-icon-bg-1: #CBF281;
+  --profile-icon-bg-2: #2dd4bf;
+  --profile-icon-color: #121139;
   
-  /* Profile cards */
-  #profile .bg-white.p-8.rounded-xl.shadow-lg {
-    background-color: var(--profile-card-bg) !important;
-  }
+  --profile-infocard-bg: #2d2a5d;
+  --profile-infocard-border: #3d3a70;
+  --profile-infocard-title: #ffffff;
+  --profile-infocard-text: #e0e0e0;
   
-  #profile .text-gray-800 {
-    color: var(--profile-card-title) !important;
-  }
+  --profile-skill-bg: #2d2a5d;
+  --profile-skill-border: #3d3a70;
+  --profile-skill-text: #ffffff;
+  --profile-skill-icon-bg: #3d3a70;
+  --profile-skill-icon: #CBF281;
   
-  #profile .text-gray-600, 
-  #profile .text-gray-700 {
-    color: var(--profile-card-text) !important;
-  }
+  --profile-expertise-bg: #2d2a5d;
+  --profile-expertise-text: #ffffff;
+  --profile-expertise-check: #CBF281;
   
-  #profile .text-\[\#2dd4bf\] {
-    color: var(--profile-skill-percent) !important;
-  }
+  --profile-timeline-date-bg-1: rgba(203, 242, 129, 0.3);
+  --profile-timeline-date-bg-2: rgba(45, 212, 191, 0.3);
+  --profile-timeline-date-text: #ffffff;
+  --profile-timeline-line: #CBF281;
+  --profile-timeline-dot: #CBF281;
+  --profile-timeline-card-bg: #1f1c45;
+  --profile-timeline-card-border: #3d3a70;
+  --profile-timeline-card-title: #ffffff;
+  --profile-timeline-card-company: #CBF281;
+  --profile-timeline-card-text: #e0e0e0;
   
-  /* Skill cards */
-  #skills .bg-white.border {
-    background-color: var(--skill-card-bg) !important;
-    border-color: var(--skill-card-border) !important;
-  }
+  /* Profile card specific colors - Enhanced contrast */
+  --profile-card-bg: #1f1c45;
+  --profile-card-title: #ffffff;
+  --profile-card-text: #e9ecef;
+  --profile-skill-percent: #CBF281;
   
-  #skills .text-gray-800 {
-    color: var(--skill-card-text) !important;
-  }
+  /* Stats cards - Enhanced contrast */
+  --stats-card-bg: #1f1c45;
+  --stats-card-border: #2d2a5d;
+  --stats-card-text: #ffffff;
+  --stats-card-subtext: #e9ecef;
+  --stats-card-icon-bg: rgba(203, 242, 129, 0.2);
   
-  /* TEXT COLORS */
-  /* Basic text colors */
-  h1, h2, h3, h4, h5, h6 {
-    color: var(--text-primary);
-    transition: var(--theme-transition);
-  }
+  /* Button colors - Enhanced contrast */
+  --btn-primary-bg: #4832D3;
+  --btn-primary-text: #ffffff; 
+  --btn-primary-border: #5842e3;
+  --btn-secondary-bg: #CBF281;
+  --btn-secondary-text: #160f44;
+  --btn-secondary-border: #CBF281;
+  --btn-outline-border: #3d3a70;
+  --btn-outline-text: #ffffff;
+  --btn-outline-hover: #2d2a5d;
   
-  p, span, li {
-    color: var(--text-secondary);
-    transition: var(--theme-transition);
-  }
-  
-  /* Text in skill cards */
-  .dark .preserve-3d .backface-hidden:first-child > div {
-    background-color: var(--card-bg);
-    border-color: var(--card-border);
-  }
-  
-  .dark .preserve-3d .backface-hidden:first-child > div h3 {
-    color: var(--skill-card-text);
-  }
-  
-  /* Apply to project stats cards in heroes section as well */
-  .bg-white\/5.backdrop-blur-md.px-4.py-2.rounded-full.text-sm.text-white\/80.border.border-white\/10,
-  .bg-white\/5.backdrop-blur-md.px-4.py-2 {
-    background-color: var(--hero-stat-bg) !important;
-    color: var(--hero-stat-text) !important;
-    border-color: var(--hero-stat-border) !important;
-    transition: var(--theme-transition);
-  }
-  
-  /* Fix stats icons in hero and projects sections */
-  .text-\[\#CBF281\].font-semibold,
-  .text-\[\#4832D3\].text-lg.md\:text-xl {
-    color: var(--hero-stat-accent) !important;
-  }
-  
-  /* Fix for icons within colored backgrounds in dark mode */
-  .dark .w-12.h-12.md\:w-16.md\:h-16.rounded-full i.text-\[\#4832D3\],
-  .dark .w-16.h-16.rounded-full.bg-gradient-to-br i.text-\[\#4832D3\],
-  .dark .w-12.h-12.rounded-full i.text-\[\#4832D3\] {
-    color: var(--accent-primary) !important;
-  }
-  
-  /* Fix any gradient backgrounds */
-  .dark .bg-gradient-to-r.from-\[\#4832D3\].to-\[\#160f44\].text-white,
-  .dark .from-\[\#4832D3\].to-\[\#160f44\].text-white {
-    background-image: linear-gradient(to right, var(--accent-primary), var(--hero-bg-end));
-  }
-  
-  /* Fix for category buttons */
-  .dark .bg-gradient-to-r.from-\[\#4832D3\].to-\[\#160f44\] {
-    background-image: linear-gradient(to right, var(--accent-primary), var(--hero-bg-end));
-  }
-  
-  /* Fix additional text colors throughout the site */
-  .dark .text-gray-900 {
-    color: var(--text-primary) !important;
-  }
-  
-  .dark .text-gray-300 {
-    color: var(--text-secondary) !important;
-  }
-  
-  /* BUTTONS */
-  /* Primary colored buttons */
-  .bg-gradient-to-r.from-\[\#4832D3\].to-\[\#160f44\].text-white {
-    background-color: var(--btn-primary-bg) !important;
-    color: var(--btn-primary-text) !important;
-    border-color: var(--btn-primary-border) !important;
-  }
-  
-  /* Secondary colored buttons */
-  .bg-\[\#CBF281\].text-\[\#160f44\] {
-    background-color: var(--btn-secondary-bg) !important;
-    color: var(--btn-secondary-text) !important;
-  }
-  
-  /* Light colored buttons with hover states */
-  .rounded-full.bg-white\/10.hover\:bg-white\/20.text-white {
-    background-color: var(--icon-bg) !important;
-    color: var(--text-primary) !important;
-  }
-  
-  .rounded-full.bg-white\/10.hover\:bg-white\/20.text-white:hover {
-    background-color: var(--hover-bg) !important;
-  }
-  
-  /* Skill section category buttons */
-  #skills .rounded-lg.text-sm.font-medium {
-    transition: var(--theme-transition);
-  }
-  
-  #skills .bg-gray-100.text-gray-700 {
-    background-color: var(--stats-card-bg) !important;
-    color: var(--text-primary) !important;
-  }
-  
-  /* Hero tags */
-  #home .bg-white\/5.backdrop-blur-md {
-    background-color: var(--hero-stat-bg) !important;
-    border-color: var(--hero-stat-border) !important;
-  }
-  
-  #home .text-white\/80 {
-    color: var(--hero-stat-text) !important;
-  }
-  
-  #home .text-\[\#CBF281\].font-semibold {
-    color: var(--hero-stat-accent) !important;
-  }
-  
-  /* SPECIAL FIX FOR BUTTONS */
-  /* Projelerimi Görüntüle button in hero */
-  #home .px-8.py-3.bg-\[\#CBF281\].text-\[\#160f44\] {
-    background-color: var(--btn-secondary-bg) !important;
-    color: var(--btn-secondary-text) !important;
-  }
-  
-  /* Siteyi Ziyaret Et buttons */
-  .rounded-full.bg-gradient-to-r.from-\[\#4832D3\].to-\[\#160f44\].text-white {
-    background-color: var(--btn-primary-bg) !important;
-    color: var(--btn-primary-text) !important;
-    background-image: none !important;
-  }
-  
-  .dark .rounded-full.bg-gradient-to-r.from-\[\#4832D3\].to-\[\#160f44\].text-white {
-    background-image: linear-gradient(to right, var(--accent-primary), var(--accent-secondary)) !important;
-    color: var(--hero-bg-mid) !important;
-  }
-  
-  /* GitHub buttons */
-  .rounded-full.border.border-gray-300.text-gray-700 {
-    border-color: var(--card-border) !important;
-    color: var(--text-primary) !important;
-  }
-  
-  /* Social media icons in footer */
-  footer .rounded-full.bg-white\/10.hover\:bg-white\/20.text-white {
-    background-color: var(--icon-bg) !important;
-    color: white !important;
-  }
-  
-  footer .rounded-full.bg-white\/10.hover\:bg-white\/20.text-white:hover {
-    background-color: var(--hover-bg) !important;
-  }
-  
-  /* THEME TOGGLE BUTTON */
-  .theme-toggle-icon {
-    transform-origin: center;
-    transition: transform 0.5s ease, opacity 0.3s ease;
-  }
-  
-  .theme-toggle-sun {
-    opacity: 0;
-    transform: rotate(90deg) scale(0);
-  }
-  
-  .dark .theme-toggle-sun {
-    opacity: 1;
-    transform: rotate(0) scale(1);
-  }
-  
-  .theme-toggle-moon {
-    opacity: 1;
-    transform: rotate(0) scale(1);
-  }
-  
-  .dark .theme-toggle-moon {
-    opacity: 0;
-    transform: rotate(-90deg) scale(0);
-  }
-  
-  /* FOOTER */
-  footer {
-    background-color: var(--hero-bg-mid);
-    transition: var(--theme-transition);
-  }
-  
-  /* FIX FOR GRADIENT TEXT */
-  .dark .bg-gradient-to-r.from-\[\#CBF281\].to-\[\#2dd4bf\].text-transparent.bg-clip-text {
-    background-image: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
-    color: transparent;
-  }
+  /* Hero stats - Enhanced contrast */
+  --hero-stat-bg: rgba(255, 255, 255, 0.05);
+  --hero-stat-text: rgba(255, 255, 255, 0.9);
+  --hero-stat-border: rgba(255, 255, 255, 0.1);
+  --hero-stat-accent: #CBF281;
+}
+
+/* Apply theme to common elements */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: var(--theme-transition);
+}
+
+/* Apply to profile section */
+#profile {
+  background-color: var(--bg-primary);
+  transition: var(--theme-transition);
+}
+
+/* Apply to skills section */
+#skills {
+  background-color: var(--bg-primary);
+  transition: var(--theme-transition);
+}
+
+/* Apply to projects section */
+#projects {
+  background-color: var(--bg-primary);
+  transition: var(--theme-transition);
+}
+
+/* HERO SECTION STYLES */
+/* Hero background and content */
+#home {
+  background-color: var(--hero-bg-mid);
+  transition: var(--theme-transition);
+}
+
+#home .absolute.inset-0.bg-\[\#121139\] {
+  background-color: var(--hero-bg-mid);
+}
+
+#home .absolute.top-0.left-0.w-full.h-full.bg-gradient-to-br {
+  background-image: linear-gradient(to bottom right, var(--hero-bg-start), var(--hero-bg-mid), var(--hero-bg-end));
+}
+
+/* Hero text elements */
+#home h1 {
+  color: #ffffff;
+}
+
+#home p {
+  color: #e9ecef;
+}
+
+/* CARD STYLES */
+/* Generic card styling */
+.card, 
+.relative.bg-white, 
+.bg-white.p-8.rounded-xl.shadow-lg,
+.bg-white.p-5.rounded-xl.shadow-sm {
+  background-color: var(--card-bg) !important;
+  border-color: var(--card-border) !important;
+  box-shadow: 0 4px 6px var(--card-shadow) !important;
+  transition: var(--theme-transition);
+}
+
+/* PROJECT CARDS AND STATS */
+/* Project cards */
+#projects .bg-white.rounded-xl.shadow-md {
+  background-color: var(--project-card-bg) !important;
+  transition: var(--theme-transition);
+}
+
+#projects .text-gray-800,
+#projects .text-xl.font-bold.text-gray-800,
+#projects .text-xl.sm\:text-2xl.font-bold.text-gray-800 {
+  color: var(--project-card-text) !important;
+}
+
+#projects .text-gray-600, 
+#projects .text-gray-500,
+#projects .text-gray-700,
+#projects .text-sm.sm\:text-base.text-gray-600 {
+  color: var(--project-card-desc) !important;
+}
+
+/* Project tags */
+#projects .bg-gray-100.text-gray-700.text-xs.rounded-full {
+  background-color: var(--project-tag-bg) !important;
+  color: var(--project-tag-text) !important;
+}
+
+/* Fix GitHub button in projects */
+#projects .border.border-gray-300.text-gray-700 {
+  border-color: var(--btn-outline-border) !important;
+  color: var(--btn-outline-text) !important;
+}
+
+#projects .border.border-gray-300.text-gray-700:hover {
+  background-color: var(--btn-outline-hover) !important;
+}
+
+/* Project stats cards */
+#projects .bg-gray-50.rounded-xl,
+#projects .bg-gray-50 {
+  background-color: var(--stats-card-bg) !important;
+  border-color: var(--stats-card-border) !important;
+  transition: var(--theme-transition);
+}
+
+#projects .text-gray-800.font-bold,
+#projects .text-gray-800.mb-0\.5,
+#projects .text-base.md\:text-lg.font-bold.text-gray-800 {
+  color: var(--stats-card-text) !important;
+}
+
+#projects .text-gray-500.text-center,
+#projects .text-gray-500.text-xs,
+#projects .text-xs.md\:text-sm.text-gray-500 {
+  color: var(--stats-card-subtext) !important;
+}
+
+#projects .bg-gradient-to-br.from-\[\#4832D3\]\/10.to-\[\#CBF281\]\/10,
+#projects .from-\[\#4832D3\]\/10.to-\[\#CBF281\]\/10 {
+  background-image: linear-gradient(to bottom right, var(--accent-primary)/10, var(--accent-secondary)/10);
+}
+
+#projects .w-12.h-12.md\:w-16.md\:h-16.rounded-full.bg-gradient-to-br.from-\[\#4832D3\]\/10.to-\[\#CBF281\]\/10 {
+  background-color: var(--stats-card-icon-bg);
+}
+
+/* Make sure all stats boxes in projects section have correct styling */
+#projects .grid.grid-cols-2.md\:grid-cols-4.gap-3.md\:gap-4 > div {
+  background-color: var(--stats-card-bg) !important;
+  border-color: var(--stats-card-border) !important;
+  transition: var(--theme-transition);
+}
+
+#projects .grid.grid-cols-2.md\:grid-cols-4.gap-3.md\:gap-4 h4 {
+  color: var(--stats-card-text) !important;
+}
+
+#projects .grid.grid-cols-2.md\:grid-cols-4.gap-3.md\:gap-4 p {
+  color: var(--stats-card-subtext) !important;
+}
+
+/* PROJELER ALANI YENİ CSS KURALLARI */
+/* Ana arka plan ve container */
+#projects {
+  background: linear-gradient(to bottom, var(--projects-bg-from), var(--projects-bg-to)) !important;
+}
+
+/* Projeler bileşeni içindeki kartlar */
+#projects .bg-white.dark\:bg-gray-800.rounded-xl.shadow-lg {
+  background-color: var(--projects-sidebar-bg) !important;
+  box-shadow: 0 4px 15px var(--card-shadow) !important;
+  transition: var(--theme-transition);
+}
+
+#projects .bg-white.dark\:bg-gray-800.p-0.shadow-lg {
+  background-color: var(--projects-card-bg) !important;
+  box-shadow: 0 4px 15px var(--projects-card-shadow) !important;
+}
+
+/* Başlık ve metin */
+#projects h2.bg-gradient-to-r {
+  background-image: linear-gradient(to right, var(--projects-primary-color), var(--projects-secondary-color)) !important;
+}
+
+#projects h3.text-gray-800.dark\:text-white,
+#projects h3.text-lg.font-semibold.text-gray-800.dark\:text-white {
+  color: var(--text-primary) !important;
+}
+
+#projects p.text-gray-600.dark\:text-gray-300 {
+  color: var(--text-secondary) !important;
+}
+
+/* Kategori butonları */
+#projects .bg-gray-100.dark\:bg-gray-700.text-gray-700.dark\:text-gray-300 {
+  background-color: var(--projects-tech-tag-bg) !important;
+  color: var(--projects-tech-tag-text) !important;
+}
+
+#projects .bg-indigo-600.dark\:bg-emerald-500.text-white,
+#projects .bg-indigo-600.text-white.shadow-md,
+#projects .bg-emerald-500.text-white.shadow-md {
+  background-color: var(--projects-primary-color) !important;
+  color: var(--projects-tab-selected-text) !important;
+}
+
+/* Sekme listesi ve sekmeler */
+#projects .bg-gray-100.dark\:bg-gray-700 {
+  background-color: var(--projects-tech-tag-bg) !important;
+}
+
+#projects .bg-white.dark\:bg-gray-800.text-indigo-600.dark\:text-emerald-400.shadow {
+  background-color: var(--projects-tab-bg) !important;
+  color: var(--projects-tab-selected) !important;
+}
+
+#projects .text-gray-600.dark\:text-gray-300 {
+  color: var(--projects-tab-text) !important;
+}
+
+/* Teknoloji etiketleri */
+#projects .inline-flex.items-center.rounded-full.text-xs.font-medium.bg-gray-100.dark\:bg-gray-700 {
+  background-color: var(--projects-tech-tag-bg) !important;
+  color: var(--projects-tech-tag-text) !important;
+}
+
+#projects .inline-flex.items-center i.text-indigo-500.dark\:text-emerald-400 {
+  color: var(--projects-tech-icon) !important;
+}
+
+/* Butonlar */
+#projects .bg-indigo-600.dark\:bg-emerald-500 {
+  background-color: var(--projects-button-primary-bg) !important;
+  color: var(--projects-button-primary-text) !important;
+}
+
+#projects .hover\:bg-indigo-700.dark\:hover\:bg-emerald-600:hover {
+  background-color: var(--projects-button-primary-bg) !important;
+  filter: brightness(90%);
+}
+
+#projects .border.border-gray-300.dark\:border-gray-600 {
+  border-color: var(--projects-button-secondary-border) !important;
+  color: var(--projects-button-secondary-text) !important;
+}
+
+#projects .hover\:bg-gray-50.dark\:hover\:bg-gray-700:hover {
+  background-color: var(--projects-button-secondary-bg) !important;
+  filter: brightness(90%);
+}
+
+/* Proje bulunamadı durumu */
+#projects .rounded-full.bg-gray-100.dark\:bg-gray-700 {
+  background-color: var(--projects-empty-icon-bg) !important;
+}
+
+#projects .text-gray-400.dark\:text-gray-500 {
+  color: var(--projects-empty-icon) !important;
+}
+
+/* Yükleniyor animasyonu */
+#projects .border-indigo-200.dark\:border-indigo-900 {
+  border-color: var(--projects-tech-tag-bg) !important;
+}
+
+#projects .border-t-indigo-600.dark\:border-t-emerald-400 {
+  border-top-color: var(--projects-primary-color) !important;
+}
+
+/* TAB BILEŞENI IÇIN UYUMLU RENKLER */
+#projects .bg-gray-100.dark\:bg-gray-700.p-1.mb-6 {
+  background-color: var(--projects-tech-tag-bg) !important;
+}
+
+#projects button[role="tab"].bg-white.dark\:bg-gray-800 {
+  background-color: var(--projects-tab-bg) !important;
+  color: var(--projects-tab-selected) !important;
+}
+
+#projects button[role="tab"].text-indigo-600.dark\:text-emerald-400 {
+  color: var(--projects-tab-selected) !important;
+}
+
+#projects .text-indigo-600.dark\:text-emerald-400 {
+  color: var(--projects-tab-selected) !important;
+}
+
+/* Profil Bölümü Stil Kuralları */
+/* Ana arka plan */
+#profile {
+  background-color: var(--bg-primary) !important;
+  transition: var(--theme-transition);
+}
+
+/* Profil bölümü arka plan şekilleri */
+#profile .absolute.top-0.right-0.w-2\/3.h-2\/3.bg-gradient-to-br {
+  background-image: linear-gradient(to bottom right, var(--profile-bg-gradient-1), var(--profile-bg-gradient-2)) !important;
+}
+
+#profile .absolute.bottom-0.left-0.w-2\/3.h-2\/3.bg-gradient-to-tr {
+  background-image: linear-gradient(to top right, var(--profile-card-glow-1), var(--profile-card-glow-2)) !important;
+}
+
+/* Başlık ve alt başlık */
+#profile .border-\[\#CBF281\] {
+  border-color: var(--profile-header-decoration) !important;
+}
+
+#profile h2.text-\[\#333333\].bg-gradient-to-r.from-\[\#CBF281\].to-\[\#2dd4bf\].text-transparent.bg-clip-text {
+  background-image: linear-gradient(to right, var(--profile-title-gradient-1), var(--profile-title-gradient-2)) !important;
+  color: transparent !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+}
+
+#profile .text-gray-600.text-lg {
+  color: var(--profile-description-text) !important;
+}
+
+/* Kartlar genel stil */
+#profile .bg-gradient-to-r.from-\[\#CBF281\].to-\[\#2dd4bf\].rounded-xl.blur {
+  background-image: linear-gradient(to right, var(--profile-card-glow-1), var(--profile-card-glow-2)) !important;
+}
+
+#profile .relative.bg-white {
+  background-color: var(--profile-card-bg) !important;
+  box-shadow: 0 4px 6px var(--profile-card-shadow) !important;
+}
+
+/* İkon alanları */
+#profile .bg-gradient-to-r.from-\[\#CBF281\].to-\[\#2dd4bf\].rounded-full,
+#profile .bg-gradient-to-r.from-\[\#CBF281\].to-\[\#2dd4bf\].rounded-lg {
+  background-image: linear-gradient(to right, var(--profile-icon-bg-1), var(--profile-icon-bg-2)) !important;
+}
+
+#profile .text-white.text-xl {
+  color: var(--profile-icon-color) !important;
+}
+
+/* Başlık metinleri */
+#profile .text-2xl.font-bold.text-gray-800,
+#profile .text-xl.font-bold.text-gray-800,
+#profile .text-lg.font-semibold.text-gray-800 {
+  color: var(--profile-section-title) !important;
+}
+
+#profile .text-gray-600 {
+  color: var(--profile-section-subtitle) !important;
+}
+
+/* Kişisel bilgi kartları */
+#profile .bg-gray-50.p-4.rounded-lg.border.border-gray-100 {
+  background-color: var(--profile-infocard-bg) !important;
+  border-color: var(--profile-infocard-border) !important;
+}
+
+#profile .font-medium.text-gray-700 {
+  color: var(--profile-infocard-title) !important;
+}
+
+#profile .text-gray-600.text-sm {
+  color: var(--profile-infocard-text) !important;
+}
+
+/* Simge renklerini düzeltme */
+#profile .text-\[\#2dd4bf\] {
+  color: var(--profile-skill-icon) !important;
+}
+
+#profile .text-\[\#CBF281\] {
+  color: var(--profile-card-glow-1) !important;
+}
+
+/* Uzmanlık alanları */
+#profile .bg-\[\#f0f9ff\].p-2.rounded-md {
+  background-color: var(--profile-expertise-bg) !important;
+}
+
+#profile .text-sm.text-gray-700 {
+  color: var(--profile-expertise-text) !important;
+}
+
+#profile .fas.fa-check.text-\[\#2dd4bf\] {
+  color: var(--profile-expertise-check) !important;
+}
+
+/* Yetenekler alanı */
+#profile .flex.items-center.p-3.bg-gray-50.rounded-lg.border.border-gray-100 {
+  background-color: var(--profile-skill-bg) !important;
+  border-color: var(--profile-skill-border) !important;
+}
+
+#profile .rounded-full.bg-\[\#f0f9ff\] {
+  background-color: var(--profile-skill-icon-bg) !important;
+}
+
+#profile .hover\:border-\[\#CBF281\]\/50:hover {
+  border-color: var(--profile-card-glow-1) !important;
+  opacity: 0.5;
+}
+
+/* Kariyer Yolculuğu - Zaman Çizelgesi */
+#profile .bg-gradient-to-r.from-\[\#CBF281\]\/20.to-\[\#2dd4bf\]\/20 {
+  background-image: linear-gradient(to right, var(--profile-timeline-date-bg-1), var(--profile-timeline-date-bg-2)) !important;
+}
+
+#profile .font-semibold.text-gray-700 {
+  color: var(--profile-timeline-date-text) !important;
+}
+
+#profile .w-0\.5.bg-\[\#CBF281\] {
+  background-color: var(--profile-timeline-line) !important;
+}
+
+#profile .rounded-full.bg-\[\#CBF281\].border-4.border-white {
+  background-color: var(--profile-timeline-dot) !important;
+  border-color: var(--profile-card-bg) !important;
+}
+
+#profile .bg-white.rounded-lg.p-5.shadow.border.border-gray-100 {
+  background-color: var(--profile-timeline-card-bg) !important;
+  border-color: var(--profile-timeline-card-border) !important;
+}
+
+#profile .hover\:border-\[\#CBF281\]\/30:hover {
+  border-color: var(--profile-card-glow-1) !important;
+  opacity: 0.3;
+}
+
+#profile .text-xl.font-bold.text-gray-800 {
+  color: var(--profile-timeline-card-title) !important;
+}
+
+#profile .text-\[\#2dd4bf\].mb-3 {
+  color: var(--profile-timeline-card-company) !important;
+}
