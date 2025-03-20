@@ -87,20 +87,20 @@
     "company1": "Alesta Software",
     "period1": "2022 - Present",
     "jobTitle2": "Real Estate Consultant",
-    "company2": "Real Estate Agency",
-    "period2": "2019 - 2021",
+    "company2": "Batut Real Estate",
+    "period2": "2018 - 2022",
+    "realEstateDesc": "Worked as a real estate consultant at Batut Real Estate, managing client relationships and property listings. Developed skills in client communication, negotiation, and problem-solving.",
     
     "resume": "My Resume",
-    "resumeIntro": "With a background in business administration and a passion for web development, I've successfully transitioned to become a proficient frontend developer. My journey began with self-learning, followed by formal training at Workintech Academy where I mastered React and modern JavaScript. Beyond frontend, I've independently developed backend skills with Node.js and Express, enabling me to understand full-stack architecture. I approach each project with attention to detail, prioritizing clean code and user experience, while continuously expanding my technical toolkit to meet evolving industry demands.",
+    "resumeIntro": "As a Front-End Developer with 2 years of professional experience focusing on React and Angular, I specialize in developing modern web applications. I create performance-oriented solutions that prioritize user experience, built on strong foundations in JavaScript (ES6+), HTML5, and CSS3. Beyond my front-end skills, I've expanded my capabilities in the back-end domain, developing entry-level projects using C#, ASP.NET, SQL Server, and Docker. This has given me the ability to understand and implement full-stack architecture. I approach each project with a detail-oriented mindset, prioritizing clean code and user experience, while continuously developing my technical skills to keep pace with evolving industry demands.",
     
     "universityName": "Beykent University",
     "universityDegree": "Bachelor's Degree in Business Administration",
-    "universityYear": "2015 - 2019",
+    "universityYear": "2012 - 2016",
     
     "workExperience": "Work Experience",
     "realEstateTitle": "Real Estate Consultant",
-    "realEstatePeriod": "2019 - 2021",
-    "realEstateDesc": "Worked as a real estate consultant, managing client relationships and property listings. Developed skills in client communication, negotiation, and problem-solving.",
+    "realEstatePeriod": "2018 - 2022",
     
     "training": "Professional Training",
     "bootcampName": "Workintech Academy",
@@ -108,7 +108,17 @@
     "bootcampDesc": "Completed an intensive frontend development bootcamp where I gained hands-on experience with modern web technologies including JavaScript, React, HTML5, and CSS3. Participated in team projects and developed several web applications.",
     
     "continuedLearning": "Continued Development",
-    "continuedLearningDesc": "After completing my formal training, I've continued to expand my knowledge in both frontend and backend technologies. I regularly work on personal projects to apply new technologies and methodologies, enhancing my skills in React, Node.js, and other web development frameworks."
+    "continuedLearningDesc": "After completing my formal training, I've continued to expand my knowledge in both frontend and backend technologies. I regularly work on personal projects to apply new technologies and methodologies, enhancing my skills in React, Node.js, and other web development frameworks.",
+    
+    "certifications": "Certifications",
+    "nativeLanguage": "Native Language",
+    "intermediateLevel": "Intermediate Level",
+    "downloadOptions": "Download Options",
+    "selectFormat": "Select Format",
+    "personalInfo": "Personal Information",
+    "birthDate": "August 11, 1993",
+    "birthPlace": "Bursa, Turkey",
+    "contactInfo": "Contact Information"
   },
   "footer": {
     "title": "Send me a message!",
@@ -145,6 +155,8 @@
     "less": "Less",
     "yearsExperience": "Years Experience",
     "projectsCompleted": "Projects Completed",
-    "technologiesUsed": "Technologies Used"
+    "technologiesUsed": "Technologies Used",
+    "downloadResume": "Download Resume",
+    "plainText": "Plain Text"
   }
 }

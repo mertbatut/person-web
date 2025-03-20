@@ -9,6 +9,7 @@ import './i18n';
 import ScrollToTop from './components/ScroolToTop.jsx'
 import { ThemeProvider } from './context/ThemeContext'
 import './theme.css'
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function App() {
   const [, ] = useState(0)

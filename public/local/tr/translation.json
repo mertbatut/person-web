@@ -87,20 +87,20 @@
     "company1": "Alesta Yazılım",
     "period1": "2022 - Günümüz",
     "jobTitle2": "Emlak Danışmanı",
-    "company2": "Emlak Ofisi",
-    "period2": "2019 - 2021",
+    "company2": "Batut Gayrimenkul",
+    "period2": "2018 - 2022",
+    "realEstateDesc": "Batut Gayrimenkul firmasında emlak danışmanı olarak müşteri ilişkileri ve emlak listeleri yönetimi üzerine çalıştım. Müşteri iletişimi, pazarlık ve problem çözme becerilerini geliştirdim.",
     
     "resume": "Özgeçmişim",
-    "resumeIntro": "İşletme eğitimim ve web geliştirme tutkumla, kendimi başarılı bir şekilde yetkin bir frontend geliştirici olmaya yönlendirdim. Yolculuğum kendi kendime öğrenmeyle başladı ve Workintech Akademi'deki formal eğitimimle devam etti; burada React ve modern JavaScript konusunda uzmanlaştım. Frontend'in ötesinde, Node.js ve Express ile backend becerilerimi bağımsız olarak geliştirerek tam yığın mimarisini anlama yeteneği kazandım. Her projeye detaylara dikkat ederek yaklaşır, temiz kod ve kullanıcı deneyimini önceliklendirirken, gelişen sektör taleplerine ayak uydurmak için teknik araç setimi sürekli genişletirim.",
+    "resumeIntro": "2 yıllık profesyonel deneyime sahip, React ve Angular odaklı bir Front-End Developer olarak modern web uygulamaları geliştirme konusunda uzmanlığa sahibim. JavaScript (ES6+), HTML5 ve CSS3 konularında güçlü temeller üzerine kurulu becerilerle, kullanıcı deneyimini ön plana alan, performans odaklı çözümler üretiyorum. Front-end yeteneklerimin yanı sıra kendimi back-end alanında da geliştirerek C#, ASP.NET, SQL Server ve Docker gibi teknolojilerde giriş seviyesinde projeler gerçekleştiriyorum. Bu sayede tam yığın (full-stack) mimarisini anlama ve uygulama yeteneği kazandım. Her projeye detaycı bir yaklaşımla, temiz kod ve kullanıcı deneyimini önceliklendirerek yaklaşıyor, gelişen sektör taleplerine ayak uydurmak için sürekli olarak teknik becerilerimi geliştiriyorum.",
     
     "universityName": "Beykent Üniversitesi",
     "universityDegree": "İşletme Bölümü, Lisans",
-    "universityYear": "2015 - 2019",
+    "universityYear": "2012 - 2016",
     
     "workExperience": "İş Deneyimi",
     "realEstateTitle": "Emlak Danışmanı",
-    "realEstatePeriod": "2019 - 2021",
-    "realEstateDesc": "Emlak danışmanı olarak müşteri ilişkileri ve emlak listeleri yönetimi üzerine çalıştım. Müşteri iletişimi, pazarlık ve problem çözme becerilerini geliştirdim.",
+    "realEstatePeriod": "2018 - 2022",
     
     "training": "Profesyonel Eğitim",
     "bootcampName": "Workintech Akademi",
@@ -108,7 +108,17 @@
     "bootcampDesc": "Modern web teknolojileri (JavaScript, React, HTML5 ve CSS3) üzerine yoğun bir frontend geliştirme bootcamp'ini tamamladım. Ekip projelerine katıldım ve çeşitli web uygulamaları geliştirdim.",
     
     "continuedLearning": "Sürekli Gelişim",
-    "continuedLearningDesc": "Formal eğitimimi tamamladıktan sonra, hem frontend hem de backend teknolojilerindeki bilgimi genişletmeye devam ettim. Yeni teknolojileri ve metodolojileri uygulamak için düzenli olarak kişisel projeler üzerinde çalışarak React, Node.js ve diğer web geliştirme frameworklerindeki becerilerimi geliştiriyorum."
+    "continuedLearningDesc": "Formal eğitimimi tamamladıktan sonra, hem frontend hem de backend teknolojilerindeki bilgimi genişletmeye devam ettim. Yeni teknolojileri ve metodolojileri uygulamak için düzenli olarak kişisel projeler üzerinde çalışarak React, Node.js ve diğer web geliştirme frameworklerindeki becerilerimi geliştiriyorum.",
+    
+    "certifications": "Sertifikalar",
+    "nativeLanguage": "Anadil",
+    "intermediateLevel": "Orta Seviye",
+    "downloadOptions": "İndirme Seçenekleri",
+    "selectFormat": "Format Seçin",
+    "personalInfo": "Kişisel Bilgiler",
+    "birthDate": "11 Ağustos 1993",
+    "birthPlace": "Bursa, Türkiye",
+    "contactInfo": "İletişim Bilgileri"
   },
   "footer": {
     "title": "Bana bir mesaj gönderin!",
@@ -145,6 +155,8 @@
     "less": "Daha Az",
     "yearsExperience": "Yıl Deneyim",
     "projectsCompleted": "Tamamlanan Proje",
-    "technologiesUsed": "Kullanılan Teknoloji"
+    "technologiesUsed": "Kullanılan Teknoloji",
+    "downloadResume": "CV'yi İndir",
+    "plainText": "Düz Metin"
   }
 }
