@@ -138,8 +138,8 @@
 .dark {
   --bg-primary: #121139;
   --bg-secondary: #1A1259;
-  --text-primary: #f8f9fa;
-  --text-secondary: #e9ecef;
+  --text-primary: #f8f9fa;         
+  --text-secondary: #e9ecef;      
   --text-muted: #adb5bd;
   --accent-primary: #CBF281;
   --accent-secondary: #2dd4bf;
@@ -234,7 +234,7 @@
   --profile-timeline-card-bg: #1f1c45;
   --profile-timeline-card-border: #3d3a70;
   --profile-timeline-card-title: #ffffff;
-  --profile-timeline-card-company: #CBF281;
+  --profile-timeline-card-company: #CBF281;  
   --profile-timeline-card-text: #e0e0e0;
   
   /* Profile card specific colors - Enhanced contrast */
@@ -622,7 +622,7 @@ body {
 }
 
 /* Uzmanlık alanları */
-#profile .bg-\[\#f0f9ff\].p-2.rounded-md {
+#profile .bg-\[\#f0f9ff\].p-3.rounded-md {
   background-color: var(--profile-expertise-bg) !important;
 }
 
@@ -683,4 +683,205 @@ body {
 
 #profile .text-\[\#2dd4bf\].mb-3 {
   color: var(--profile-timeline-card-company) !important;
+}
+
+/* Fix dark mode text colors in profile section */
+.dark #profile .text-gray-800,
+.dark #profile .text-gray-700,
+.dark #profile .font-semibold.text-gray-800,
+.dark #profile .text-3xl.font-bold.text-gray-800,
+.dark #profile h1.text-3xl.font-bold.text-gray-800,
+.dark #profile h2.text-xl.text-gray-800,
+.dark #profile h3.text-lg.font-semibold.text-gray-800,
+.dark #profile h4.font-semibold.text-gray-800 {
+  color: var(--text-primary) !important;
+}
+
+.dark #profile .text-gray-600,
+.dark #profile .text-gray-500,
+.dark #profile .text-sm.text-gray-600,
+.dark #profile .text-sm.text-gray-700 {
+  color: var(--text-secondary) !important;
+}
+
+/* Fix profile card specific colors in dark mode */
+.dark #profile .bg-white {
+  background-color: var(--profile-card-bg) !important;
+}
+
+/* Fix specific component colors */
+.dark #profile .border-gray-100 {
+  border-color: var(--profile-timeline-card-border) !important;
+}
+
+/* Ensure text in profile info cards is visible */
+.dark #profile .bg-gray-50 p,
+.dark #profile .bg-gray-50 span,
+.dark #profile .bg-gray-50 h4 {
+  color: var(--text-primary) !important;
+}
+
+/* Fix expertise section text */
+.dark #profile .bg-\[\#f0f9ff\] .text-sm.text-gray-700 {
+  color: var(--profile-expertise-text) !important;
+}
+
+.dark #profile h1,
+.dark #profile h2,
+.dark #profile h3,
+.dark #profile h4,
+.dark #profile .font-bold,
+.dark #profile .font-semibold {
+  color: var(--text-primary) !important;
+}
+
+.dark #profile p,
+.dark #profile span:not(.text-\[\#2dd4bf\]):not(.text-\[\#CBF281\]),
+.dark #profile a:not(:hover) {
+  color: var(--text-secondary) !important;
+}
+
+/* Fix light backgrounds in dark mode */
+.dark #profile .bg-white,
+.dark #profile .bg-gray-50,
+.dark #profile .bg-\[\#f0f9ff\] {
+  background-color: var(--profile-card-bg) !important;
+}
+
+/* Make sure expertise cards in dark mode have lighter text */
+.dark #profile .bg-\[\#f0f9ff\] span {
+  color: var(--text-primary) !important;
+}
+
+/* Ensure buttons in dark mode have proper contrast */
+.dark #profile button,
+.dark #profile select {
+  background-color: var(--profile-card-bg) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--profile-infocard-border) !important;
+}
+
+/* Override special elements that need extra attention */
+.dark #profile .border-gray-100 {
+  border-color: var(--profile-timeline-card-border) !important;
+}
+
+/* Ensure special areas like PDF selection dropdown are visible */
+.dark #profile select option {
+  background-color: var(--profile-card-bg) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Fix expertise area text colors in dark mode */
+.dark #profile .bg-\[\#f0f9ff\] .text-sm.text-gray-700,
+.dark #profile .flex.items-center.bg-\[\#f0f9ff\] span {
+  color: var(--text-primary) !important;
+}
+
+/* Ensure dark mode text colors in skill sections */
+.dark #profile .bg-gray-50.py-2.px-3.rounded-md.border-l-2 {
+  color: var(--text-primary) !important;
+  background-color: var(--profile-skill-bg) !important;
+}
+
+/* Fix contact information colors in dark mode */
+.dark #profile .flex.items-center span,
+.dark #profile .flex.items-center a {
+  color: var(--text-primary) !important;
+}
+
+/* Fix download button text in dark mode */
+.dark #profile .relative.flex.items-center.justify-center.px-6.py-2.bg-white.rounded-lg span {
+  color: var(--text-primary) !important;
+}
+
+/* Fix text in experience cards */
+.dark #profile .bg-gray-50.p-4.rounded-lg h4,
+.dark #profile .bg-gray-50.p-4.rounded-lg span,
+.dark #profile .bg-gray-50.p-4.rounded-lg p {
+  color: var(--text-primary) !important;
+}
+
+/* Ensure darker backgrounds in dark mode */
+.dark #profile .bg-\[\#f0f9ff\],
+.dark #profile .bg-gray-50 {
+  background-color: var(--profile-infocard-bg) !important;
+}
+
+/* Fix hover colors in dark mode */
+.dark #profile .hover\:bg-\[\#e0f5ff\]:hover {
+  background-color: var(--profile-skill-bg) !important;
+  filter: brightness(110%);
+}
+
+/* Fix border styles in dark mode */
+.dark #profile .border-gray-100 {
+  border-color: var(--profile-infocard-border) !important;
+}
+
+/* Fix background colors for skill cards in dark mode */
+.dark #profile .bg-gray-50 {
+  background-color: var(--profile-infocard-bg) !important;
+}
+
+/* Fix text colors for special elements in dark mode */
+.dark #profile .text-gray-700 {
+  color: var(--text-primary) !important;
+}
+
+/* Ensure proper contrast for timeline elements */
+.dark #profile .bg-white.rounded-lg.p-5.shadow.border {
+  background-color: var(--profile-timeline-card-bg) !important;
+  border-color: var(--profile-timeline-card-border) !important;
+}
+
+/* Fix gradient backgrounds in dark mode */
+.dark #profile .bg-gradient-to-r.from-\[\#CBF281\]\/20.to-\[\#2dd4bf\]\/20 {
+  background-image: linear-gradient(to right, 
+    var(--profile-timeline-date-bg-1), 
+    var(--profile-timeline-date-bg-2)) !important;
+}
+
+/* Fix header text in dark mode */
+.dark #profile h2.text-\[\#333333\].bg-gradient-to-r {
+  color: transparent !important;
+}
+
+/* Fix for the dark text in Skills section on dark mode */
+.dark #skills p.text-gray-600 {
+  color: var(--text-secondary) !important;
+}
+
+.dark #skills .text-gray-800 {
+  color: var(--text-primary) !important;
+}
+
+/* Fix for the skills description text under the header */
+.dark #skills .text-gray-600.text-lg {
+  color: var(--text-secondary) !important;
+}
+
+/* Fix for Express logo in dark mode (make it visible) */
+#skills .devicon-express-original {
+  /* Add a visible border/outline to make it stand out */
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+  /* Force visible color depending on theme */
+  color: #000000 !important; /* Dark color for light mode */
+}
+
+/* Alternatively, you could add a light background just for the Express icon */
+.dark #skills [class*="devicon-express"] {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  padding: 3px;
+}
+
+/* Make sure all skill cards have proper text contrast in dark mode */
+.dark #skills .backface-hidden .bg-white {
+  background-color: var(--card-bg) !important;
+  border-color: var(--card-border) !important;
+}
+
+.dark #skills .backface-hidden .bg-white h3 {
+  color: var(--text-primary) !important;
 }
