@@ -90,10 +90,11 @@
     "company2": "Batut Gayrimenkul",
     "period2": "2018 - 2022",
     "realEstateDesc": "Batut Gayrimenkul firmasında emlak danışmanı olarak müşteri ilişkileri ve emlak listeleri yönetimi üzerine çalıştım. Müşteri iletişimi, pazarlık ve problem çözme becerilerini geliştirdim.",
-    
+    "downloadComplete":"İndirme Tamamlandı",
     "resume": "Özgeçmişim",
     "resumeIntro": "2 yıllık profesyonel deneyime sahip, React ve Angular odaklı bir Front-End Developer olarak modern web uygulamaları geliştirme konusunda uzmanlığa sahibim. JavaScript (ES6+), HTML5 ve CSS3 konularında güçlü temeller üzerine kurulu becerilerle, kullanıcı deneyimini ön plana alan, performans odaklı çözümler üretiyorum. Front-end yeteneklerimin yanı sıra kendimi back-end alanında da geliştirerek C#, ASP.NET, SQL Server ve Docker gibi teknolojilerde giriş seviyesinde projeler gerçekleştiriyorum. Bu sayede tam yığın (full-stack) mimarisini anlama ve uygulama yeteneği kazandım. Her projeye detaycı bir yaklaşımla, temiz kod ve kullanıcı deneyimini önceliklendirerek yaklaşıyor, gelişen sektör taleplerine ayak uydurmak için sürekli olarak teknik becerilerimi geliştiriyorum.",
-    
+    "exportFormat":"Dışa Aktarılacak Formatı Seçin",
+    "preparingDownload":"İndirme Hazırlanıyor...",
     "universityName": "Beykent Üniversitesi",
     "universityDegree": "İşletme Bölümü, Lisans",
     "universityYear": "2012 - 2016",
@@ -157,6 +158,7 @@
     "projectsCompleted": "Tamamlanan Proje",
     "technologiesUsed": "Kullanılan Teknoloji",
     "downloadResume": "CV'yi İndir",
-    "plainText": "Düz Metin"
+    "plainText": "Düz Metin",
+    "processing":"İşleniyor..."
   }
 }

@@ -90,10 +90,11 @@
     "company2": "Batut Real Estate",
     "period2": "2018 - 2022",
     "realEstateDesc": "Worked as a real estate consultant at Batut Real Estate, managing client relationships and property listings. Developed skills in client communication, negotiation, and problem-solving.",
-    
+    "downloadComplete":"Download Complete",
     "resume": "My Resume",
     "resumeIntro": "As a Front-End Developer with 2 years of professional experience focusing on React and Angular, I specialize in developing modern web applications. I create performance-oriented solutions that prioritize user experience, built on strong foundations in JavaScript (ES6+), HTML5, and CSS3. Beyond my front-end skills, I've expanded my capabilities in the back-end domain, developing entry-level projects using C#, ASP.NET, SQL Server, and Docker. This has given me the ability to understand and implement full-stack architecture. I approach each project with a detail-oriented mindset, prioritizing clean code and user experience, while continuously developing my technical skills to keep pace with evolving industry demands.",
-    
+    "exportFormat":"Export Format",
+    "preparingDownload":"Preparing Download...",
     "universityName": "Beykent University",
     "universityDegree": "Bachelor's Degree in Business Administration",
     "universityYear": "2012 - 2016",
@@ -157,6 +158,7 @@
     "projectsCompleted": "Projects Completed",
     "technologiesUsed": "Technologies Used",
     "downloadResume": "Download Resume",
-    "plainText": "Plain Text"
+    "plainText": "Plain Text",
+    "processing":"Processing..."
   }
 }
