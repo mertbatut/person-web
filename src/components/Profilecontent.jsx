@@ -54,7 +54,7 @@ const ProfileCardContent = ({ t }) => {
     setShowToast(true);
   };
 
-  // Function to export CV as PDF
+  // Function to export CV as PDF with improved mobile compatibility
   const exportAsPDF = async () => {
     if (!resumeRef.current) return;
 
@@ -62,39 +62,77 @@ const ProfileCardContent = ({ t }) => {
       setIsExporting(true);
       displayToast(t('profile.preparingDownload'));
 
-      // Mobile için ölçeklendirme ve kalite ayarları
-      const scale = window.innerWidth < 768 ? 1 : 2;
-      
+      // Better scaling for mobile devices
+      const scale = window.innerWidth < 768 ? 2 : 2; // Use consistent scaling
+
+      // Apply temporary styles to ensure what you see is what you get
+      const originalStyle = resumeRef.current.style.cssText;
+      // Set a fixed width for consistency
+      resumeRef.current.style.width = window.innerWidth < 768 ? '100%' : '800px';
+      resumeRef.current.style.margin = '0 auto';
+
+      // Force background colors to be captured correctly
+      const backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--card-bg');
+
       const canvas = await html2canvas(resumeRef.current, {
         scale: scale,
         useCORS: true,
         logging: false,
         allowTaint: true,
-        backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--card-bg'),
-        // PDF render kalitesini artırmak için
+        backgroundColor: backgroundColor,
         imageTimeout: 0,
         removeContainer: true,
         letterRendering: true,
+        // Force full height capture
+        height: resumeRef.current.scrollHeight,
+        windowWidth: window.innerWidth < 768 ? 1200 : window.innerWidth,
+        windowHeight: window.innerHeight * 3,
+        // Improved rendering options
+        onclone: (document, element) => {
+          // Ensure all elements are rendered in the clone
+          const allElements = element.getElementsByTagName('*');
+          for (let i = 0; i < allElements.length; i++) {
+            if (allElements[i].style) {
+              allElements[i].style.display = 'block';
+            }
+          }
+        }
       });
 
-      // PDF'e dönüştür
+      // Restore original styling
+      resumeRef.current.style.cssText = originalStyle;
+
+      // Calculate correct PDF dimensions for better quality
+      const imgWidth = 210; // A4 width in mm
+      const pageHeight = 297; // A4 height in mm
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      const canvasData = canvas.toDataURL('image/jpeg', 1.0);
+
+      // Create PDF with proper dimensions
       const pdf = new jsPDF({
-        orientation: 'portrait',
+        orientation: imgHeight > pageHeight ? 'portrait' : 'portrait',
         unit: 'mm',
         format: 'a4',
       });
 
-      const imgWidth = 210; // A4 genişliği (mm)
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      const canvasData = canvas.toDataURL('image/jpeg', 1.0);
-      
-      pdf.addImage(canvasData, 'JPEG', 0, 0, imgWidth, imgHeight);
-      
-      // Mobil uyumluluk için blob kullanma
+      // Handle multi-page support for longer CVs
+      let position = 0;
+
+      // Add first page
+      pdf.addImage(canvasData, 'JPEG', 0, position, imgWidth, imgHeight);
+
+      // Add additional pages if content exceeds page height
+      while (position - imgHeight < -pageHeight) {
+        position -= pageHeight;
+        pdf.addPage();
+        pdf.addImage(canvasData, 'JPEG', 0, position, imgWidth, imgHeight);
+      }
+
+      // Use blob for better mobile compatibility
       const pdfBlob = pdf.output('blob');
       const blobUrl = URL.createObjectURL(pdfBlob);
-      
-      // Yeni bir pencere açma veya indirme bağlantısı oluşturma
+
+      // Create download link
       const link = document.createElement('a');
       link.href = blobUrl;
       link.download = 'Mert_Batut_CV.pdf';
@@ -102,8 +140,8 @@ const ProfileCardContent = ({ t }) => {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      
-      // Temizlik
+
+      // Cleanup
       setTimeout(() => {
         URL.revokeObjectURL(blobUrl);
         setIsExporting(false);
@@ -116,41 +154,62 @@ const ProfileCardContent = ({ t }) => {
     }
   };
 
-  // Function to export CV as PNG
+  // Function to export CV as PNG with improved mobile compatibility
   const exportAsPNG = async () => {
     if (!resumeRef.current) return;
 
     try {
       setIsExporting(true);
       displayToast(t('profile.preparingDownload'));
-      
-      // Mobile için ölçeklendirme ve kalite ayarları
-      const scale = window.innerWidth < 768 ? 1.5 : 2;
+
+      // Consistent scaling for better quality on all devices
+      const scale = window.innerWidth < 768 ? 2 : 2;
+
+      // Apply temporary styles for better rendering
+      const originalStyle = resumeRef.current.style.cssText;
+      resumeRef.current.style.width = window.innerWidth < 768 ? '100%' : '800px';
+      resumeRef.current.style.margin = '0 auto';
+
+      const backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--card-bg');
 
       const canvas = await html2canvas(resumeRef.current, {
         scale: scale,
         useCORS: true,
         logging: false,
         allowTaint: true,
-        backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--card-bg'),
-        // Render kalitesini artırmak için
+        backgroundColor: backgroundColor,
         imageTimeout: 0,
         removeContainer: true,
         letterRendering: true,
+        // Force full height capture
+        height: resumeRef.current.scrollHeight,
+        windowWidth: window.innerWidth < 768 ? 1200 : window.innerWidth,
+        windowHeight: window.innerHeight * 3,
+        // Fix rendering issues in clone
+        onclone: (document, element) => {
+          // Make sure all elements are properly displayed
+          const allElements = element.getElementsByTagName('*');
+          for (let i = 0; i < allElements.length; i++) {
+            if (allElements[i].style) {
+              allElements[i].style.display = 'block';
+            }
+          }
+        }
       });
-      
-      // Mobil uyumluluk için blob kullanma
-      const blob = await (async () => {
-        return new Promise((resolve) => {
-          canvas.toBlob((blob) => {
-            resolve(blob);
-          }, 'image/png', 1.0);
-        });
-      })();
-      
+
+      // Restore original style
+      resumeRef.current.style.cssText = originalStyle;
+
+      // Use blob for better mobile compatibility
+      const blob = await new Promise((resolve) => {
+        canvas.toBlob((blob) => {
+          resolve(blob);
+        }, 'image/png', 1.0);
+      });
+
       const blobUrl = URL.createObjectURL(blob);
-      
-      // Yeni bir pencere açma veya indirme bağlantısı oluşturma
+
+      // Create download link
       const link = document.createElement('a');
       link.href = blobUrl;
       link.download = 'Mert_Batut_CV.png';
@@ -158,8 +217,8 @@ const ProfileCardContent = ({ t }) => {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      
-      // Temizlik
+
+      // Cleanup
       setTimeout(() => {
         URL.revokeObjectURL(blobUrl);
         setIsExporting(false);
@@ -220,7 +279,7 @@ ${t('skills.languages')}:
 
       const blob = new Blob([textContent], { type: 'text/plain' });
       const url = URL.createObjectURL(blob);
-      
+
       // Mobil uyumluluk için
       const link = document.createElement('a');
       link.href = url;
@@ -229,7 +288,7 @@ ${t('skills.languages')}:
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      
+
       setTimeout(() => {
         URL.revokeObjectURL(url);
         setIsExporting(false);
@@ -245,7 +304,7 @@ ${t('skills.languages')}:
   // Handle export based on selected format
   const handleExport = () => {
     if (isExporting) return; // İşlem zaten sürüyorsa engelle
-    
+
     switch (exportFormat) {
       case 'pdf':
         exportAsPDF();
@@ -310,11 +369,10 @@ ${t('skills.languages')}:
               <button
                 onClick={handleExport}
                 disabled={isExporting}
-                className={`w-full sm:w-auto px-6 py-2 rounded-lg border transition-colors duration-300 flex items-center justify-center gap-2 ${
-                  isExporting 
-                    ? 'bg-[var(--btn-outline-hover)] cursor-not-allowed text-[var(--text-secondary)] border-[var(--card-border)]' 
+                className={`w-full sm:w-auto px-6 py-2 rounded-lg border transition-colors duration-300 flex items-center justify-center gap-2 ${isExporting
+                    ? 'bg-[var(--btn-outline-hover)] cursor-not-allowed text-[var(--text-secondary)] border-[var(--card-border)]'
                     : 'bg-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/80 text-[var(--btn-secondary-text)] border-[var(--accent-primary)]'
-                }`}
+                  }`}
               >
                 {isExporting ? (
                   <>
@@ -362,7 +420,7 @@ ${t('skills.languages')}:
                 <div className="flex-grow text-center sm:text-left">
                   <h1 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-1">Mert Batut</h1>
                   <h2 className="text-xl text-[#4EF2C3] dark:text-[#5FD2D3] mb-4">Front-End Developer</h2>
-                  
+
                   <div className="flex flex-wrap justify-center sm:justify-start gap-x-4 gap-y-2 text-[var(--text-secondary)]">
                     <div className="flex items-center">
                       <i className="fas fa-map-marker-alt text-[#5FD2D3] dark:text-[#4EF2C3] w-5 text-center mr-2"></i>
@@ -413,7 +471,7 @@ ${t('skills.languages')}:
                       <div className="bg-[var(--profile-timeline-card-bg)] p-4 rounded-lg border border-[var(--profile-timeline-card-border)] transition-all duration-300 hover:shadow-md relative">
                         {/* Timeline indicator */}
                         <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#4EF2C3] dark:bg-[#5FD2D3] rounded-l-lg"></div>
-                        
+
                         <div className="pl-3">
                           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
                             <h4 className="font-semibold text-[var(--profile-timeline-card-title)]">
@@ -433,7 +491,7 @@ ${t('skills.languages')}:
                       <div className="bg-[var(--profile-timeline-card-bg)] p-4 rounded-lg border border-[var(--profile-timeline-card-border)] transition-all duration-300 hover:shadow-md relative">
                         {/* Timeline indicator */}
                         <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#4EF2C3] dark:bg-[#5FD2D3] rounded-l-lg"></div>
-                        
+
                         <div className="pl-3">
                           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
                             <h4 className="font-semibold text-[var(--profile-timeline-card-title)]">
@@ -465,7 +523,7 @@ ${t('skills.languages')}:
                       <div className="bg-[var(--profile-timeline-card-bg)] p-4 rounded-lg border border-[var(--profile-timeline-card-border)] transition-all duration-300 hover:shadow-md relative">
                         {/* Timeline indicator */}
                         <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#5FD2D3] dark:bg-[#4EF2C3] rounded-l-lg"></div>
-                        
+
                         <div className="pl-3">
                           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
                             <h4 className="font-semibold text-[var(--profile-timeline-card-title)]">
@@ -485,7 +543,7 @@ ${t('skills.languages')}:
                       <div className="bg-[var(--profile-timeline-card-bg)] p-4 rounded-lg border border-[var(--profile-timeline-card-border)] transition-all duration-300 hover:shadow-md relative">
                         {/* Timeline indicator */}
                         <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#5FD2D3] dark:bg-[#4EF2C3] rounded-l-lg"></div>
-                        
+
                         <div className="pl-3">
                           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
                             <h4 className="font-semibold text-[var(--profile-timeline-card-title)]">
@@ -669,11 +727,10 @@ ${t('skills.languages')}:
             </div>
           </div>
         </div>
-        
+
         {/* Bildirim Toast */}
-        <div className={`fixed bottom-4 left-1/2 -translate-x-1/2 bg-[var(--card-bg)] border border-[var(--card-border)] text-[var(--text-primary)] px-4 py-3 rounded-lg shadow-lg transition-all duration-300 z-50 ${
-          showToast ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10 pointer-events-none'
-        }`}>
+        <div className={`fixed bottom-4 left-1/2 -translate-x-1/2 bg-[var(--card-bg)] border border-[var(--card-border)] text-[var(--text-primary)] px-4 py-3 rounded-lg shadow-lg transition-all duration-300 z-50 ${showToast ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10 pointer-events-none'
+          }`}>
           <div className="flex items-center">
             {isExporting ? (
               <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-[var(--accent-primary)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
