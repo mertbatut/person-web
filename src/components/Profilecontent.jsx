@@ -54,107 +54,84 @@ const ProfileCardContent = ({ t }) => {
     setShowToast(true);
   };
 
-  // Function to export CV as PDF with improved mobile compatibility
-  const exportAsPDF = async () => {
-    if (!resumeRef.current) return;
+// PNG formatıyla aynı düzende PDF oluşturan export fonksiyonu
+const exportAsPDF = async () => {
+  if (!resumeRef.current) return;
 
-    try {
-      setIsExporting(true);
-      displayToast(t('profile.preparingDownload'));
+  try {
+    setIsExporting(true);
+    displayToast(t('profile.preparingDownload'));
+    
+    // PNG ile aynı scale değerini kullan
+    const scale = window.innerWidth < 768 ? 1.5 : 2;
 
-      // Better scaling for mobile devices
-      const scale = window.innerWidth < 768 ? 2 : 2; // Use consistent scaling
+    // Mevcut PNG export fonksiyonundan alınan canvas ayarları
+    const canvas = await html2canvas(resumeRef.current, {
+      scale: scale,
+      useCORS: true,
+      logging: false,
+      allowTaint: true,
+      backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--card-bg'),
+      imageTimeout: 0,
+      removeContainer: true,
+      letterRendering: true,
+    });
+    
+    // PNG'den elde edilen görüntüyü doğrudan PDF'e çevir
+    // Ölçek ve oranları koruyarak tam görüntü
+    const pdf = new jsPDF({
+      orientation: 'portrait',
+      unit: 'mm',
+      format: 'a4',
+    });
 
-      // Apply temporary styles to ensure what you see is what you get
-      const originalStyle = resumeRef.current.style.cssText;
-      // Set a fixed width for consistency
-      resumeRef.current.style.width = window.innerWidth < 768 ? '100%' : '800px';
-      resumeRef.current.style.margin = '0 auto';
-
-      // Force background colors to be captured correctly
-      const backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--card-bg');
-
-      const canvas = await html2canvas(resumeRef.current, {
-        scale: scale,
-        useCORS: true,
-        logging: false,
-        allowTaint: true,
-        backgroundColor: backgroundColor,
-        imageTimeout: 0,
-        removeContainer: true,
-        letterRendering: true,
-        // Force full height capture
-        height: resumeRef.current.scrollHeight,
-        windowWidth: window.innerWidth < 768 ? 1200 : window.innerWidth,
-        windowHeight: window.innerHeight * 3,
-        // Improved rendering options
-        onclone: (document, element) => {
-          // Ensure all elements are rendered in the clone
-          const allElements = element.getElementsByTagName('*');
-          for (let i = 0; i < allElements.length; i++) {
-            if (allElements[i].style) {
-              allElements[i].style.display = 'block';
-            }
-          }
-        }
-      });
-
-      // Restore original styling
-      resumeRef.current.style.cssText = originalStyle;
-
-      // Calculate correct PDF dimensions for better quality
-      const imgWidth = 210; // A4 width in mm
-      const pageHeight = 297; // A4 height in mm
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      const canvasData = canvas.toDataURL('image/jpeg', 1.0);
-
-      // Create PDF with proper dimensions
-      const pdf = new jsPDF({
-        orientation: imgHeight > pageHeight ? 'portrait' : 'portrait',
-        unit: 'mm',
-        format: 'a4',
-      });
-
-      // Handle multi-page support for longer CVs
-      let position = 0;
-
-      // Add first page
-      pdf.addImage(canvasData, 'JPEG', 0, position, imgWidth, imgHeight);
-
-      // Add additional pages if content exceeds page height
-      while (position - imgHeight < -pageHeight) {
-        position -= pageHeight;
-        pdf.addPage();
-        pdf.addImage(canvasData, 'JPEG', 0, position, imgWidth, imgHeight);
-      }
-
-      // Use blob for better mobile compatibility
-      const pdfBlob = pdf.output('blob');
-      const blobUrl = URL.createObjectURL(pdfBlob);
-
-      // Create download link
-      const link = document.createElement('a');
-      link.href = blobUrl;
-      link.download = 'Mert_Batut_CV.pdf';
-      link.style.display = 'none';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
-      // Cleanup
-      setTimeout(() => {
-        URL.revokeObjectURL(blobUrl);
-        setIsExporting(false);
-        displayToast(t('profile.downloadComplete'));
-      }, 1000);
-    } catch (error) {
-      console.error('Error exporting PDF:', error);
+    // Canvas en-boy oranını koru
+    const canvasRatio = canvas.width / canvas.height;
+    const a4Width = 210; // mm
+    
+    // PNG görüntüsünün oranlarını koruyarak PDF'e yerleştir
+    const imgWidth = a4Width;
+    const imgHeight = a4Width / canvasRatio;
+    
+    // PNG ile aynı kalite
+    const canvasData = canvas.toDataURL('image/jpeg', 1.0);
+    
+    // Görüntüyü PDF sayfasına merkezi olarak yerleştir
+    pdf.addImage({
+      imageData: canvasData,
+      format: 'JPEG',
+      x: 0,
+      y: 0,
+      width: imgWidth,
+      height: imgHeight
+    });
+    
+    // PNG ile aynı şekilde dosya indirme mekanizması
+    const pdfBlob = pdf.output('blob');
+    const blobUrl = URL.createObjectURL(pdfBlob);
+    
+    const link = document.createElement('a');
+    link.href = blobUrl;
+    link.download = 'Mert_Batut_CV.pdf';
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Temizlik
+    setTimeout(() => {
+      URL.revokeObjectURL(blobUrl);
       setIsExporting(false);
-      displayToast(t('profile.errorDownloading'));
-    }
-  };
+      displayToast(t('profile.downloadComplete'));
+    }, 1000);
+  } catch (error) {
+    console.error('PDF dışa aktarma hatası:', error);
+    setIsExporting(false);
+    displayToast(t('profile.errorDownloading'));
+  }
+};
 
-  // Function to export CV as PNG with improved mobile compatibility
+  // PNG olarak dışa aktarma - aynı hassasiyette
   const exportAsPNG = async () => {
     if (!resumeRef.current) return;
 
@@ -162,45 +139,62 @@ const ProfileCardContent = ({ t }) => {
       setIsExporting(true);
       displayToast(t('profile.preparingDownload'));
 
-      // Consistent scaling for better quality on all devices
-      const scale = window.innerWidth < 768 ? 2 : 2;
+      // Orijinal elemanın stil durumunu kaydet
+      const computedStyle = window.getComputedStyle(resumeRef.current);
+      const originalStyles = {
+        width: resumeRef.current.style.width,
+        height: resumeRef.current.style.height,
+        position: resumeRef.current.style.position,
+        transform: resumeRef.current.style.transform,
+        margin: resumeRef.current.style.margin,
+        padding: resumeRef.current.style.padding
+      };
 
-      // Apply temporary styles for better rendering
-      const originalStyle = resumeRef.current.style.cssText;
-      resumeRef.current.style.width = window.innerWidth < 768 ? '100%' : '800px';
-      resumeRef.current.style.margin = '0 auto';
+      // Görsel kalitesini arttırmak için birebir görünümü sağlayacak geçici DOM hazırlığı
+      resumeRef.current.style.width = computedStyle.width;
+      resumeRef.current.style.position = "relative";
+      resumeRef.current.style.transform = "none";
+      resumeRef.current.style.margin = "0";
 
-      const backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--card-bg');
+      // Fontların yüklenmesi için kısa bir bekleme
+      await new Promise(resolve => setTimeout(resolve, 300));
+
+      // Çok yüksek çözünürlük
+      const scale = window.devicePixelRatio * 2;
 
       const canvas = await html2canvas(resumeRef.current, {
         scale: scale,
         useCORS: true,
         logging: false,
         allowTaint: true,
-        backgroundColor: backgroundColor,
+        backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--card-bg'),
         imageTimeout: 0,
         removeContainer: true,
         letterRendering: true,
-        // Force full height capture
-        height: resumeRef.current.scrollHeight,
-        windowWidth: window.innerWidth < 768 ? 1200 : window.innerWidth,
-        windowHeight: window.innerHeight * 3,
-        // Fix rendering issues in clone
-        onclone: (document, element) => {
-          // Make sure all elements are properly displayed
-          const allElements = element.getElementsByTagName('*');
-          for (let i = 0; i < allElements.length; i++) {
-            if (allElements[i].style) {
-              allElements[i].style.display = 'block';
+        onclone: (clonedDoc, clonedElement) => {
+          // Klonlanan elemanın tam doğru görünmesi için ek ayarlar
+          clonedElement.style.overflow = 'visible';
+          clonedElement.style.height = 'auto';
+
+          // Font yükleme sorunlarını çözmek için
+          const allElements = clonedElement.querySelectorAll('*');
+          allElements.forEach(el => {
+            if (el.style) {
+              const styles = window.getComputedStyle(el);
+              el.style.fontFamily = styles.fontFamily;
+              el.style.fontSize = styles.fontSize;
+              el.style.fontWeight = styles.fontWeight;
             }
-          }
+          });
         }
       });
 
-      // Restore original style
-      resumeRef.current.style.cssText = originalStyle;
+      // Orijinal stilleri geri yükle
+      Object.keys(originalStyles).forEach(key => {
+        resumeRef.current.style[key] = originalStyles[key];
+      });
 
-      // Use blob for better mobile compatibility
+      // Maksimum kalitede PNG oluştur
       const blob = await new Promise((resolve) => {
         canvas.toBlob((blob) => {
           resolve(blob);
@@ -209,7 +203,6 @@ const ProfileCardContent = ({ t }) => {
 
       const blobUrl = URL.createObjectURL(blob);
 
-      // Create download link
       const link = document.createElement('a');
       link.href = blobUrl;
       link.download = 'Mert_Batut_CV.png';
@@ -218,16 +211,35 @@ const ProfileCardContent = ({ t }) => {
       link.click();
       document.body.removeChild(link);
 
-      // Cleanup
       setTimeout(() => {
         URL.revokeObjectURL(blobUrl);
         setIsExporting(false);
         displayToast(t('profile.downloadComplete'));
       }, 1000);
     } catch (error) {
-      console.error('Error exporting PNG:', error);
+      console.error('PNG dışa aktarma hatası:', error);
       setIsExporting(false);
       displayToast(t('profile.errorDownloading'));
+
+      // Basitleştirilmiş yöntem dene
+      try {
+        const canvas = await html2canvas(resumeRef.current, {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--card-bg')
+        });
+
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL('image/png');
+        link.download = 'Mert_Batut_CV.png';
+        link.click();
+
+        setIsExporting(false);
+        displayToast(t('profile.downloadComplete'));
+      } catch (fallbackError) {
+        console.error('Yedek PNG dışa aktarma hatası:', fallbackError);
+        exportAsText(); // En son çare - metin olarak dışa aktar
+      }
     }
   };
 
