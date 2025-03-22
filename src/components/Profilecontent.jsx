@@ -63,12 +63,12 @@ const ProfileCardContent = ({ t }) => {
       tempDiv.style.left = '-9999px';
       tempDiv.style.width = '1200px'; // Sabit genişlik
       document.body.appendChild(tempDiv);
-      
+
       // Sabit bir CV yapısı oluştur - PDF'teki düzen
       const fixedLayout = document.createElement('div');
       fixedLayout.className = 'bg-white p-8 rounded-xl';
       fixedLayout.style.width = '1200px';
-      
+
       // Header bölümü (İsim, Unvan, İletişim bilgileri)
       const header = document.createElement('div');
       header.innerHTML = `
@@ -101,166 +101,172 @@ const ProfileCardContent = ({ t }) => {
           </div>
         </div>
       `;
-      
+
       // Hakkımda bölümü
       const about = document.createElement('div');
       about.className = 'mb-8 p-4 bg-gray-50 rounded-lg border border-gray-200';
       about.innerHTML = `
-        <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center">
-          <div class="relative w-8 h-8 rounded-full bg-gradient-to-r from-[#4EF2C3] to-[#5FD2D3] flex items-center justify-center mr-3">
-            <i class="fas fa-user absolute text-white text-sm"></i>
-          </div>
-          ${t('profile.aboutMe')}
-        </h3>
-        <p class="text-gray-700">${t('profile.resumeIntro')}</p>
-      `;
-      
+     <h3 class="text-md font-semibold text-gray-800 mb-2 flex items-center">
+    <div class="relative w-6 h-6 rounded-full bg-gradient-to-r from-[#4EF2C3] to-[#5FD2D3] flex items-center justify-center mr-2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" fill="white">
+        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+      </svg>
+    </div>
+    ${t('profile.aboutMe')}
+  </h3>
+  <p class="text-sm text-gray-700">${t('profile.resumeIntro')}</p>
+    `;
       // Ana içerik bölümü - iki sütun
       const mainContent = document.createElement('div');
       mainContent.className = 'grid grid-cols-3 gap-8';
-      
+
       // Sol sütun - deneyim ve eğitim
       const leftColumn = document.createElement('div');
       leftColumn.className = 'col-span-2';
-      
+
       // İş deneyimi
       const experience = document.createElement('div');
       experience.className = 'mb-8';
       experience.innerHTML = `
-        <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-          <div class="relative w-8 h-8 rounded-full bg-gradient-to-r from-[#4EF2C3] to-[#5FD2D3] flex items-center justify-center mr-3">
-            <i class="fas fa-briefcase absolute text-white text-sm"></i>
+  <h3 class="text-md font-semibold text-gray-800 mb-3 flex items-center">
+    <div class="relative w-6 h-6 rounded-full bg-gradient-to-r from-[#4EF2C3] to-[#5FD2D3] flex items-center justify-center mr-2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" fill="white">
+        <path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-8-2h4v2h-4V4zM4 8h16v3H4V8zm0 5h16v5H4v-5z"/>
+      </svg>
+    </div>
+    ${t('profile.workExperience')}
+  </h3>
+  
+  <div class="space-y-3">
+    <div class="bg-gray-50 p-2 rounded-md border border-gray-200 relative hover:shadow-md">
+      <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#4EF2C3] rounded-l-md"></div>
+      <div class="pl-3">
+        <div class="flex justify-between items-center mb-1">
+          <h4 class="font-semibold text-gray-800 text-sm">
+            ${t('profile.jobTitle1')} <span class="text-[#4EF2C3]">@ ${t('profile.company3')}</span>
+          </h4>
+          <div>
+            <span class="inline-flex bg-[#4EF2C3]/10 text-[#4EF2C3] px-2 py-1 rounded-full text-xs items-center justify-center" style="min-width: 80px; min-height: 22px;">
+              2019 - 2020
+            </span>
           </div>
-          ${t('profile.workExperience')}
-        </h3>
-        
-        <div class="space-y-4">
-          <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 relative hover:shadow-md">
-            <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#4EF2C3] rounded-l-lg"></div>
-
-            <div class="pl-3">
-              <div class="flex justify-between items-center mb-2">
-                <h4 class="font-semibold text-gray-800">
-                  ${t('profile.jobTitle1')} <span class="text-[#4EF2C3]">@ ${t('profile.company3')}</span>
-                </h4>
-                <div>
-                  <span class="inline-block bg-[#4EF2C3]/10 text-[#4EF2C3] px-3 py-1 rounded-full">
-                    ${t('profile.period3')}
-                  </span>
-                </div>
-              </div>
-              <p class="text-gray-700">${t('profile.recentWork2')}</p>
-            </div>
-          </div>
+        </div>
+        <p class="text-xs text-gray-700" style="display: flex; align-items: center; min-height: 40px;">${t('profile.recentWork2')}</p>
+      </div>
+    </div>
 
 
           <!-- Alesta Yazılım -->
-          <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 relative hover:shadow-md">
-            <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#4EF2C3] rounded-l-lg"></div>
-            <div class="pl-3">
-              <div class="flex justify-between items-center mb-2">
-                <h4 class="font-semibold text-gray-800">
-                  ${t('profile.jobTitle1')} <span class="text-[#4EF2C3]">@ ${t('profile.company1')}</span>
-                </h4>
-                <div>
-                  <span class="inline-block bg-[#4EF2C3]/10 text-[#4EF2C3] px-3 py-1 rounded-full">
-                    ${t('profile.period1')}
-                  </span>
-                </div>
-              </div>
-              <p class="text-gray-700">${t('profile.recentWork')}</p>
-            </div>
-          </div>
-          
-          <!-- Batut Gayrimenkul -->
-          <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 relative hover:shadow-md">
-            <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#4EF2C3] rounded-l-lg"></div>
-            <div class="pl-3">
-              <div class="flex justify-between items-center mb-2">
-                <h4 class="font-semibold text-gray-800">
-                  ${t('profile.realEstateTitle')} <span class="text-[#4EF2C3]">@ ${t('profile.company2')}</span>
-                </h4>
-                <div>
-                  <span class="inline-block bg-[#4EF2C3]/10 text-[#4EF2C3] px-3 py-1 rounded-full">
-                    ${t('profile.period2')}
-                  </span>
-                </div>
-              </div>
-              <p class="text-gray-700">${t('profile.realEstateDesc')}</p>
-            </div>
+         <div class="bg-gray-50 p-2 rounded-md border border-gray-200 relative hover:shadow-md">
+      <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#4EF2C3] rounded-l-md"></div>
+      <div class="pl-3">
+        <div class="flex justify-between items-center mb-1">
+          <h4 class="font-semibold text-gray-800 text-sm">
+            ${t('profile.jobTitle1')} <span class="text-[#4EF2C3]">@ ${t('profile.company1')}</span>
+          </h4>
+          <div>
+            <span class="inline-flex bg-[#4EF2C3]/10 text-[#4EF2C3] px-2 py-1 rounded-full text-xs items-center justify-center" style="min-width: 80px; min-height: 22px;">
+              2022 - Günümüz
+            </span>
           </div>
         </div>
+        <p class="text-xs text-gray-700" style="display: flex; align-items: center; min-height: 40px;">${t('profile.recentWork')}</p>
+      </div>
+    </div>
+          
+          <!-- Batut Gayrimenkul -->
+          <div class="bg-gray-50 p-2 rounded-md border border-gray-200 relative hover:shadow-md">
+      <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#4EF2C3] rounded-l-md"></div>
+      <div class="pl-3">
+        <div class="flex justify-between items-center mb-1">
+          <h4 class="font-semibold text-gray-800 text-sm">
+            ${t('profile.realEstateTitle')} <span class="text-[#4EF2C3]">@ ${t('profile.company2')}</span>
+          </h4>
+          <div>
+            <span class="inline-flex bg-[#4EF2C3]/10 text-[#4EF2C3] px-2 py-1 rounded-full text-xs items-center justify-center" style="min-width: 80px; min-height: 22px;">
+              2016 - 2019
+            </span>
+          </div>
+        </div>
+        <p class="text-xs text-gray-700" style="display: flex; align-items: center; min-height: 40px;">${t('profile.realEstateDesc')}</p>
+      </div>
+    </div>
+  </div>
       `;
-      
+
       // Eğitim
       const education = document.createElement('div');
       education.className = 'mb-8';
       education.innerHTML = `
-        <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-          <div class="relative w-8 h-8 rounded-full bg-gradient-to-r from-[#4EF2C3] to-[#5FD2D3] flex items-center justify-center mr-3">
-            <i class="fas fa-graduation-cap absolute text-white text-sm"></i>
-          </div>
-          ${t('profile.education')}
-        </h3>
-        
-        <div class="space-y-4">
-          <!-- Beykent Üniversitesi -->
-          <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 relative hover:shadow-md">
-            <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#5FD2D3] rounded-l-lg"></div>
-            <div class="pl-3">
-              <div class="flex justify-between items-center mb-2">
-                <h4 class="font-semibold text-gray-800">
-                  ${t('profile.universityName')}
-                </h4>
-                <div>
-                  <span class="inline-block bg-[#5FD2D3]/10 text-[#5FD2D3] px-3 py-1 rounded-full">
-                    ${t('profile.universityYear')}
-                  </span>
-                </div>
+      <h3 class="text-md font-semibold text-gray-800 mb-3 flex items-center">
+        <div class="relative w-6 h-6 rounded-full bg-gradient-to-r from-[#4EF2C3] to-[#5FD2D3] flex items-center justify-center mr-2">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" fill="white">
+            <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+          </svg>
+        </div>
+        ${t('profile.education')}
+      </h3>
+      
+      <div class="space-y-3">
+        <!-- Beykent Üniversitesi -->
+        <div class="bg-gray-50 p-2 rounded-md border border-gray-200 relative hover:shadow-md">
+          <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#5FD2D3] rounded-l-md"></div>
+          <div class="pl-3">
+            <div class="flex justify-between items-center mb-1">
+              <h4 class="font-semibold text-gray-800 text-sm">
+                ${t('profile.universityName')}
+              </h4>
+              <div>
+                <span class="inline-flex bg-[#5FD2D3]/10 text-[#5FD2D3] px-2 py-1 rounded-full text-xs items-center justify-center" style="min-width: 80px; min-height: 22px;">
+                  2012 - 2016
+                </span>
               </div>
-              <p class="text-gray-700">${t('profile.universityDegree')}</p>
             </div>
-          </div>
-          
-          <!-- Bootcamp -->
-          <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 relative hover:shadow-md">
-            <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#5FD2D3] rounded-l-lg"></div>
-            <div class="pl-3">
-              <div class="flex justify-between items-center mb-2">
-                <h4 class="font-semibold text-gray-800">
-                  ${t('profile.bootcampName')}
-                </h4>
-                <div>
-                  <span class="inline-block bg-[#5FD2D3]/10 text-[#5FD2D3] px-3 py-1 rounded-full">
-                    ${t('profile.bootcampPeriod')}
-                  </span>
-                </div>
-              </div>
-              <p class="text-gray-700">${t('profile.bootcampDesc')}</p>
-            </div>
+            <p class="text-xs text-gray-700" style="display: flex; align-items: center; min-height: 30px;">${t('profile.universityDegree')}</p>
           </div>
         </div>
-      `;
-      
+        
+        <!-- Bootcamp -->
+        <div class="bg-gray-50 p-2 rounded-md border border-gray-200 relative hover:shadow-md">
+          <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#5FD2D3] rounded-l-md"></div>
+          <div class="pl-3">
+            <div class="flex justify-between items-center mb-1">
+              <h4 class="font-semibold text-gray-800 text-sm">
+                ${t('profile.bootcampName')}
+              </h4>
+              <div>
+                <span class="inline-flex bg-[#5FD2D3]/10 text-[#5FD2D3] px-2 py-1 rounded-full text-xs items-center justify-center" style="min-width: 80px; min-height: 22px;">
+                  2021 - 2022
+                </span>
+              </div>
+            </div>
+            <p class="text-xs text-gray-700" style="display: flex; align-items: center; min-height: 30px;">${t('profile.bootcampDesc')}</p>
+          </div>
+        </div>
+      </div>
+    `;
+
       leftColumn.appendChild(experience);
       leftColumn.appendChild(education);
-      
+
       // Sağ sütun - yetenekler ve diller
       const rightColumn = document.createElement('div');
       rightColumn.className = 'col-span-1';
-      
+
       // Frontend Yetenekleri
       const frontendSkills = document.createElement('div');
       frontendSkills.className = 'mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200';
       frontendSkills.innerHTML = `
-        <h4 class="font-medium text-gray-800 mb-3 text-center">
-          <div class="inline-flex items-center justify-center">
-            <span class="relative w-6 h-6 rounded-full bg-[#4EF2C3]/20 flex items-center justify-center mr-2">
-              <i class="fas fa-laptop-code absolute text-[#4EF2C3] text-xs"></i>
-            </span>
-            ${t('skills.frontend')}
-          </div>
-        </h4>
+       <h4 class="font-medium text-gray-800 mb-2 text-center text-sm">
+    <div class="inline-flex items-center justify-center">
+      <span class="relative w-5 h-5 rounded-full bg-[#4EF2C3]/20 flex items-center justify-center mr-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="10" height="10" fill="#4EF2C3">
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM6 10h2v2H6v-2zm0 4h8v2H6v-2zm10 0h2v2h-2v-2zm-10-8h12v2H6V6z"/>
+        </svg>
+      </span>
+      ${t('skills.frontend')}
+    </div>
+  </h4>
         <div class="space-y-2">
           <div class="py-2 px-3 rounded-md flex items-center justify-center gap-2 bg-gray-100 border-l-2 border-[#4EF2C3]">
             <span class="text-sm text-gray-700">HTML5, CSS3, JavaScript (ES6+)</span>
@@ -276,75 +282,79 @@ const ProfileCardContent = ({ t }) => {
           </div>
         </div>
       `;
-      
+
       // Backend Yetenekleri
       const backendSkills = document.createElement('div');
       backendSkills.className = 'mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200';
       backendSkills.innerHTML = `
-        <h4 class="font-medium text-gray-800 mb-3 text-center">
-          <div class="inline-flex items-center justify-center">
-            <span class="relative w-6 h-6 rounded-full bg-[#4EF2C3]/20 flex items-center justify-center mr-2">
-              <i class="fas fa-server absolute text-[#4EF2C3] text-xs"></i>
-            </span>
-            ${t('skills.backend')}
-          </div>
-        </h4>
-        <div class="space-y-2">
-          <div class="py-2 px-3 rounded-md flex items-center justify-center gap-2 bg-gray-100 border-l-2 border-[#4EF2C3]">
-            <span class="text-sm text-gray-700">C#, ASP.NET</span>
-          </div>
-          <div class="py-2 px-3 rounded-md flex items-center justify-center gap-2 bg-gray-100 border-l-2 border-[#4EF2C3]">
-            <span class="text-sm text-gray-700">SQL Server</span>
-          </div>
-          <div class="py-2 px-3 rounded-md flex items-center justify-center gap-2 bg-gray-100 border-l-2 border-[#4EF2C3]">
-            <span class="text-sm text-gray-700">Docker, API Integration</span>
-          </div>
-          <div class="py-2 px-3 rounded-md flex items-center justify-center gap-2 bg-gray-100 border-l-2 border-[#4EF2C3]">
-            <span class="text-sm text-gray-700">Node.js, Express</span>
-          </div>
-        </div>
-      `;
-      
+  <h4 class="font-medium text-gray-800 mb-2 text-center text-sm">
+    <div class="inline-flex items-center justify-center">
+      <span class="relative w-5 h-5 rounded-full bg-[#4EF2C3]/20 flex items-center justify-center mr-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="10" height="10" fill="#4EF2C3">
+          <path d="M4 5h16v4H4V5zm0 10h16v4H4v-4zm16-14H4c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 14H4c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c0-1.1-.9-2-2-2z"/>
+        </svg>
+      </span>
+      ${t('skills.backend')}
+    </div>
+  </h4>
+  <div class="space-y-1">
+    <div class="py-1 px-2 rounded-md flex items-center justify-center gap-1 bg-gray-100 border-l-2 border-[#4EF2C3]">
+      <span class="text-xs text-gray-700 text-center">C#, ASP.NET</span>
+    </div>
+    <div class="py-1 px-2 rounded-md flex items-center justify-center gap-1 bg-gray-100 border-l-2 border-[#4EF2C3]">
+      <span class="text-xs text-gray-700 text-center">SQL Server</span>
+    </div>
+    <div class="py-1 px-2 rounded-md flex items-center justify-center gap-1 bg-gray-100 border-l-2 border-[#4EF2C3]">
+      <span class="text-xs text-gray-700 text-center">Docker, API Integration</span>
+    </div>
+    <div class="py-1 px-2 rounded-md flex items-center justify-center gap-1 bg-gray-100 border-l-2 border-[#4EF2C3]">
+      <span class="text-xs text-gray-700 text-center">Node.js, Express</span>
+    </div>
+  </div>
+`;
+
       // Diller
       const languages = document.createElement('div');
       languages.className = 'mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200';
-      languages.innerHTML = `
-        <h4 class="font-medium text-gray-800 mb-3 text-center">
-          <div class="inline-flex items-center justify-center">
-            <span class="relative w-6 h-6 rounded-full bg-[#4EF2C3]/20 flex items-center justify-center mr-2">
-              <i class="fas fa-language absolute text-[#4EF2C3] text-xs"></i>
-            </span>
-            ${t('skills.languages')}
-          </div>
-        </h4>
-        <div class="space-y-2">
-          <div class="py-2 px-3 rounded-md flex items-center justify-center gap-2 bg-gray-100 border-l-2 border-[#4EF2C3]">
-            <span class="text-sm text-gray-700">${t('common.turkish')} <span class="text-xs opacity-75">(${t('profile.nativeLanguage')})</span></span>
-          </div>
-          <div class="py-2 px-3 rounded-md flex items-center justify-center gap-2 bg-gray-100 border-l-2 border-[#4EF2C3]">
-            <span class="text-sm text-gray-700">${t('common.english')} <span class="text-xs opacity-75">(${t('profile.intermediateLevel')})</span></span>
-          </div>
-        </div>
-      `;
-      
+    languages.innerHTML = `
+  <h4 class="font-medium text-gray-800 mb-2 text-center text-sm">
+    <div class="inline-flex items-center justify-center">
+      <span class="relative w-5 h-5 rounded-full bg-[#4EF2C3]/20 flex items-center justify-center mr-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="10" height="10" fill="#4EF2C3">
+          <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2s.07-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/>
+        </svg>
+      </span>
+      ${t('skills.languages')}
+    </div>
+  </h4>
+  <div class="space-y-1">
+    <div class="py-1 px-2 rounded-md flex items-center justify-center gap-1 bg-gray-100 border-l-2 border-[#4EF2C3]">
+      <span class="text-xs text-gray-700 text-center">${t('common.turkish')} <span class="text-xs opacity-75">(${t('profile.nativeLanguage')})</span></span>
+    </div>
+    <div class="py-1 px-2 rounded-md flex items-center justify-center gap-1 bg-gray-100 border-l-2 border-[#4EF2C3]">
+      <span class="text-xs text-gray-700 text-center">${t('common.english')} <span class="text-xs opacity-75">(${t('profile.intermediateLevel')})</span></span>
+    </div>
+  </div>
+`;
+
       rightColumn.appendChild(frontendSkills);
       rightColumn.appendChild(backendSkills);
       rightColumn.appendChild(languages);
-      
+
       mainContent.appendChild(leftColumn);
       mainContent.appendChild(rightColumn);
-      
+
       // Bütün bölümleri birleştir
       fixedLayout.appendChild(header);
       fixedLayout.appendChild(about);
       fixedLayout.appendChild(mainContent);
-      
+
       tempDiv.appendChild(fixedLayout);
-      
+
       // Tüm resimlerin yüklenmesini bekle
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      return { 
+
+      return {
         element: fixedLayout,
         cleanup: () => {
           document.body.removeChild(tempDiv);
@@ -366,7 +376,7 @@ const ProfileCardContent = ({ t }) => {
 
       // Sabit CV düzenini render et
       const { element, cleanup } = await renderFixedCVLayout();
-      
+
       const canvas = await html2canvas(element, {
         scale: 2, // Yüksek kalite için sabit değer
         useCORS: true,
@@ -375,7 +385,7 @@ const ProfileCardContent = ({ t }) => {
         imageTimeout: 0,
         letterRendering: true,
       });
-      
+
       // Temizlik
       cleanup();
 
@@ -389,13 +399,13 @@ const ProfileCardContent = ({ t }) => {
       const imgWidth = 210; // A4 genişliği (mm)
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
       const canvasData = canvas.toDataURL('image/jpeg', 1.0);
-      
+
       pdf.addImage(canvasData, 'JPEG', 0, 0, imgWidth, imgHeight);
-      
+
       // İndirme işlemi
       const pdfBlob = pdf.output('blob');
       const blobUrl = URL.createObjectURL(pdfBlob);
-      
+
       const link = document.createElement('a');
       link.href = blobUrl;
       link.download = 'Mert_Batut_CV.pdf';
@@ -403,7 +413,7 @@ const ProfileCardContent = ({ t }) => {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      
+
       // Temizlik
       setTimeout(() => {
         URL.revokeObjectURL(blobUrl);
@@ -424,10 +434,10 @@ const ProfileCardContent = ({ t }) => {
     try {
       setIsExporting(true);
       displayToast(t('profile.preparingDownload'));
-      
+
       // Sabit CV düzenini render et
       const { element, cleanup } = await renderFixedCVLayout();
-      
+
       const canvas = await html2canvas(element, {
         scale: 2, // Yüksek kalite için sabit değer
         useCORS: true,
@@ -436,10 +446,10 @@ const ProfileCardContent = ({ t }) => {
         imageTimeout: 0,
         letterRendering: true,
       });
-      
+
       // Temizlik
       cleanup();
-      
+
       // PNG'ye dönüştür
       const blob = await (async () => {
         return new Promise((resolve) => {
@@ -448,9 +458,9 @@ const ProfileCardContent = ({ t }) => {
           }, 'image/png', 1.0);
         });
       })();
-      
+
       const blobUrl = URL.createObjectURL(blob);
-      
+
       // İndirme işlemi
       const link = document.createElement('a');
       link.href = blobUrl;
@@ -459,7 +469,7 @@ const ProfileCardContent = ({ t }) => {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      
+
       // Temizlik
       setTimeout(() => {
         URL.revokeObjectURL(blobUrl);
@@ -521,7 +531,7 @@ ${t('skills.languages')}:
 
       const blob = new Blob([textContent], { type: 'text/plain' });
       const url = URL.createObjectURL(blob);
-      
+
       // Mobil uyumluluk için
       const link = document.createElement('a');
       link.href = url;
@@ -530,7 +540,7 @@ ${t('skills.languages')}:
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      
+
       setTimeout(() => {
         URL.revokeObjectURL(url);
         setIsExporting(false);
@@ -546,7 +556,7 @@ ${t('skills.languages')}:
   // Handle export based on selected format
   const handleExport = () => {
     if (isExporting) return; // İşlem zaten sürüyorsa engelle
-    
+
     switch (exportFormat) {
       case 'pdf':
         exportAsPDF();
@@ -611,11 +621,10 @@ ${t('skills.languages')}:
               <button
                 onClick={handleExport}
                 disabled={isExporting}
-                className={`w-full sm:w-auto px-6 py-2 rounded-lg border transition-colors duration-300 flex items-center justify-center gap-2 ${
-                  isExporting 
-                    ? 'bg-[var(--btn-outline-hover)] cursor-not-allowed text-[var(--text-secondary)] border-[var(--card-border)]' 
-                    : 'bg-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/80 text-[var(--btn-secondary-text)] border-[var(--accent-primary)]'
-                }`}
+                className={`w-full sm:w-auto px-6 py-2 rounded-lg border transition-colors duration-300 flex items-center justify-center gap-2 ${isExporting
+                  ? 'bg-[var(--btn-outline-hover)] cursor-not-allowed text-[var(--text-secondary)] border-[var(--card-border)]'
+                  : 'bg-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/80 text-[var(--btn-secondary-text)] border-[var(--accent-primary)]'
+                  }`}
               >
                 {isExporting ? (
                   <>
@@ -663,7 +672,7 @@ ${t('skills.languages')}:
                 <div className="flex-grow text-center sm:text-left">
                   <h1 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-1">Mert Batut</h1>
                   <h2 className="text-xl text-[#4EF2C3] dark:text-[#5FD2D3] mb-4">Front-End Developer</h2>
-                  
+
                   <div className="flex flex-wrap justify-center sm:justify-start gap-x-4 gap-y-2 text-[var(--text-secondary)]">
                     <div className="flex items-center">
                       <i className="fas fa-map-marker-alt text-[#5FD2D3] dark:text-[#4EF2C3] w-5 text-center mr-2"></i>
@@ -689,7 +698,11 @@ ${t('skills.languages')}:
               <div className="mb-8 bg-[var(--profile-infocard-bg)] p-4 rounded-lg border border-[var(--profile-infocard-border)]">
                 <h3 className="text-lg sm:text-xl font-semibold text-[var(--profile-section-title)] mb-3 flex items-center">
                   <div className="relative w-8 h-8 rounded-full bg-gradient-to-r from-[#4EF2C3] to-[#5FD2D3] flex items-center justify-center mr-3">
-                    <i className="fas fa-user absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-sm"></i>
+                    <i className="fas fa-user absolute text-white text-sm" style={{
+                      top: '50%',
+                      left: '50%',
+                      transform: 'translate(-50%, -50%)'
+                    }}></i>
                   </div>
                   {t('profile.aboutMe')}
                 </h3>
@@ -711,11 +724,11 @@ ${t('skills.languages')}:
 
                     <div className="space-y-4">
 
-                       {/* Alesta Yazılım */}
-                       <div className="bg-[var(--profile-timeline-card-bg)] p-4 rounded-lg border border-[var(--profile-timeline-card-border)] transition-all duration-300 hover:shadow-md relative">
+                      {/* Alesta Yazılım */}
+                      <div className="bg-[var(--profile-timeline-card-bg)] p-4 rounded-lg border border-[var(--profile-timeline-card-border)] transition-all duration-300 hover:shadow-md relative">
                         {/* Timeline indicator */}
                         <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#4EF2C3] dark:bg-[#5FD2D3] rounded-l-lg"></div>
-                        
+
                         <div className="pl-3">
                           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
                             <h4 className="font-semibold text-[var(--profile-timeline-card-title)]">
@@ -730,12 +743,12 @@ ${t('skills.languages')}:
                           <p className="text-sm text-[var(--profile-timeline-card-text)]">{t('profile.recentWork')}</p>
                         </div>
                       </div>
-                      
+
                       {/* Just Markt */}
                       <div className="bg-[var(--profile-timeline-card-bg)] p-4 rounded-lg border border-[var(--profile-timeline-card-border)] transition-all duration-300 hover:shadow-md relative">
                         {/* Timeline indicator */}
                         <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#4EF2C3] dark:bg-[#5FD2D3] rounded-l-lg"></div>
-                        
+
                         <div className="pl-3">
                           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
                             <h4 className="font-semibold text-[var(--profile-timeline-card-title)]">
@@ -751,13 +764,13 @@ ${t('skills.languages')}:
                         </div>
                       </div>
 
-                     
+
 
                       {/* Batut Gayrimenkul */}
                       <div className="bg-[var(--profile-timeline-card-bg)] p-4 rounded-lg border border-[var(--profile-timeline-card-border)] transition-all duration-300 hover:shadow-md relative">
                         {/* Timeline indicator */}
                         <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#4EF2C3] dark:bg-[#5FD2D3] rounded-l-lg"></div>
-                        
+
                         <div className="pl-3">
                           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
                             <h4 className="font-semibold text-[var(--profile-timeline-card-title)]">
@@ -789,7 +802,7 @@ ${t('skills.languages')}:
                       <div className="bg-[var(--profile-timeline-card-bg)] p-4 rounded-lg border border-[var(--profile-timeline-card-border)] transition-all duration-300 hover:shadow-md relative">
                         {/* Timeline indicator */}
                         <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#5FD2D3] dark:bg-[#4EF2C3] rounded-l-lg"></div>
-                        
+
                         <div className="pl-3">
                           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
                             <h4 className="font-semibold text-[var(--profile-timeline-card-title)]">
@@ -809,7 +822,7 @@ ${t('skills.languages')}:
                       <div className="bg-[var(--profile-timeline-card-bg)] p-4 rounded-lg border border-[var(--profile-timeline-card-border)] transition-all duration-300 hover:shadow-md relative">
                         {/* Timeline indicator */}
                         <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#5FD2D3] dark:bg-[#4EF2C3] rounded-l-lg"></div>
-                        
+
                         <div className="pl-3">
                           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
                             <h4 className="font-semibold text-[var(--profile-timeline-card-title)]">
@@ -993,11 +1006,10 @@ ${t('skills.languages')}:
             </div>
           </div>
         </div>
-        
+
         {/* Bildirim Toast */}
-        <div className={`fixed bottom-4 left-1/2 -translate-x-1/2 bg-[var(--card-bg)] border border-[var(--card-border)] text-[var(--text-primary)] px-4 py-3 rounded-lg shadow-lg transition-all duration-300 z-50 ${
-          showToast ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10 pointer-events-none'
-        }`}>
+        <div className={`fixed bottom-4 left-1/2 -translate-x-1/2 bg-[var(--card-bg)] border border-[var(--card-border)] text-[var(--text-primary)] px-4 py-3 rounded-lg shadow-lg transition-all duration-300 z-50 ${showToast ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10 pointer-events-none'
+          }`}>
           <div className="flex items-center">
             {isExporting ? (
               <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-[var(--accent-primary)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
