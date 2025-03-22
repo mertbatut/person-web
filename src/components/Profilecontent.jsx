@@ -135,6 +135,25 @@ const ProfileCardContent = ({ t }) => {
         </h3>
         
         <div class="space-y-4">
+          <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 relative hover:shadow-md">
+            <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#4EF2C3] rounded-l-lg"></div>
+
+            <div class="pl-3">
+              <div class="flex justify-between items-center mb-2">
+                <h4 class="font-semibold text-gray-800">
+                  ${t('profile.jobTitle1')} <span class="text-[#4EF2C3]">@ ${t('profile.company3')}</span>
+                </h4>
+                <div>
+                  <span class="inline-block bg-[#4EF2C3]/10 text-[#4EF2C3] px-3 py-1 rounded-full">
+                    ${t('profile.period3')}
+                  </span>
+                </div>
+              </div>
+              <p class="text-gray-700">${t('profile.recentWork2')}</p>
+            </div>
+          </div>
+
+
           <!-- Alesta Yazılım -->
           <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 relative hover:shadow-md">
             <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#4EF2C3] rounded-l-lg"></div>
@@ -691,8 +710,9 @@ ${t('skills.languages')}:
                     </h3>
 
                     <div className="space-y-4">
-                      {/* Alesta Yazılım */}
-                      <div className="bg-[var(--profile-timeline-card-bg)] p-4 rounded-lg border border-[var(--profile-timeline-card-border)] transition-all duration-300 hover:shadow-md relative">
+
+                       {/* Alesta Yazılım */}
+                       <div className="bg-[var(--profile-timeline-card-bg)] p-4 rounded-lg border border-[var(--profile-timeline-card-border)] transition-all duration-300 hover:shadow-md relative">
                         {/* Timeline indicator */}
                         <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#4EF2C3] dark:bg-[#5FD2D3] rounded-l-lg"></div>
                         
@@ -710,6 +730,28 @@ ${t('skills.languages')}:
                           <p className="text-sm text-[var(--profile-timeline-card-text)]">{t('profile.recentWork')}</p>
                         </div>
                       </div>
+                      
+                      {/* Just Markt */}
+                      <div className="bg-[var(--profile-timeline-card-bg)] p-4 rounded-lg border border-[var(--profile-timeline-card-border)] transition-all duration-300 hover:shadow-md relative">
+                        {/* Timeline indicator */}
+                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#4EF2C3] dark:bg-[#5FD2D3] rounded-l-lg"></div>
+                        
+                        <div className="pl-3">
+                          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
+                            <h4 className="font-semibold text-[var(--profile-timeline-card-title)]">
+                              {t('profile.jobTitle3')} <span className="text-[#4EF2C3] dark:text-[#5FD2D3]">@ {t('profile.company3')}</span>
+                            </h4>
+                            <div className="text-sm text-center sm:text-right">
+                              <span className="inline-block bg-[#4EF2C3]/10 dark:bg-[#5FD2D3]/10 text-[#4EF2C3] dark:text-[#5FD2D3] px-3 py-1 rounded-full mt-1 sm:mt-0">
+                                {t('profile.period3')}
+                              </span>
+                            </div>
+                          </div>
+                          <p className="text-sm text-[var(--profile-timeline-card-text)]">{t('profile.recentWork2')}</p>
+                        </div>
+                      </div>
+
+                     
 
                       {/* Batut Gayrimenkul */}
                       <div className="bg-[var(--profile-timeline-card-bg)] p-4 rounded-lg border border-[var(--profile-timeline-card-border)] transition-all duration-300 hover:shadow-md relative">
@@ -723,7 +765,7 @@ ${t('skills.languages')}:
                             </h4>
                             <div className="text-sm text-center sm:text-right">
                               <span className="inline-block bg-[#4EF2C3]/10 dark:bg-[#5FD2D3]/10 text-[#4EF2C3] dark:text-[#5FD2D3] px-3 py-1 rounded-full mt-1 sm:mt-0">
-                                2018 - 2022
+                                2016 - 2019
                               </span>
                             </div>
                           </div>
