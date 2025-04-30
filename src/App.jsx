@@ -10,7 +10,7 @@ import ScrollToTop from './components/ScroolToTop.jsx'
 import { ThemeProvider } from './context/ThemeContext'
 import './theme.css'
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import { SpeedInsights } from "@vercel/speed-insights/next"
+
 
 function App() {
   const [, ] = useState(0)
@@ -24,7 +24,7 @@ function App() {
         <Projects/>
         <Footer/>
         <ScrollToTop/>
-        <SpeedInsights />
+      
       </div>
     </ThemeProvider>
   )
