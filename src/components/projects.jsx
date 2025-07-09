@@ -1,7 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Tab } from '@headlessui/react';
-import { useInView } from 'react-intersection-observer';
 import { useTranslation } from 'react-i18next';
 
 // Tech icon ve renk yardımcıları
@@ -42,131 +40,112 @@ const getTechIcon = (tech) => {
 
 export default function Projects() {
   const { t, i18n } = useTranslation();
-  
-  // Ana state değişkenleri
   const [projects, setProjects] = useState([]);
   const [activeCategory, setActiveCategory] = useState('all');
-  const [activeProject, setActiveProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [showCategoryMenu, setShowCategoryMenu] = useState(false);
-  
-  // Animasyon için ref ve observer
-  const { ref: sectionRef, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: true
-  });
-  
-  // Kategoriye göre projeleri filtreleme
-  const filterProjectsByCategory = (projectList, category) => {
-    if (!projectList || !Array.isArray(projectList)) return [];
-    if (category === 'all') return projectList;
-    return projectList.filter(project => 
-      project.category === category || 
-      (project.tags && Array.isArray(project.tags) && project.tags.includes(category))
+  const sectionRef = useRef(null);
+
+  // Intersection Observer ile görünürlük tespiti
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
     );
-  };
-  
-  // Kategorileri dil değişikliğine göre güncelle
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  // Kategoriler
   const categories = [
     { id: 'all', label: t('projects.all'), icon: 'fas fa-border-all' },
     { id: 'web', label: t('projects.web'), icon: 'fas fa-laptop-code' },
     { id: 'mobile', label: t('projects.mobile'), icon: 'fas fa-mobile-alt' },
     { id: 'design', label: t('projects.design'), icon: 'fas fa-paint-brush' }
   ];
-  
-  // Dil değişikliğini izle
-  useEffect(() => {
-    // Örnek projeler güncelle
-    if (projects && projects.length > 0 && projects[0].id && projects[0].id.includes('sample')) {
-      setProjects(getSampleProjects());
-    }
-  }, [i18n.language]);
-  
-  // Veri çekme işlemi
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        setLoading(true);
-        
-        // API isteği için 3 saniye timeout
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 3000);
-        
-        const response = await fetch('/local/tr/Card.json', {
-          signal: controller.signal,
-          headers: {
-            'Cache-Control': 'no-cache'
-          }
-        });
-        
-        clearTimeout(timeoutId);
-        
-        if (response.ok) {
-          const data = await response.json();
-          setProjects(data);
-        } else {
-          throw new Error('Projeler getirilemedi');
-        }
-      } catch (err) {
-        console.error('Veri yükleme hatası:', err);
-        setProjects(getSampleProjects());
-      } finally {
-        setLoading(false);
-      }
-    };
-    
-    fetchProjects();
-  }, []);
-  
-  // Aktif projeyi ayarlama
-  useEffect(() => {
-    if (projects && projects.length > 0) {
-      const filtered = filterProjectsByCategory(projects, activeCategory);
-      setActiveProject(filtered.length > 0 ? filtered[0] : null);
-    }
-  }, [projects, activeCategory]);
-  
-  // Filtrelenmiş projeler
-  const filteredProjects = filterProjectsByCategory(projects, activeCategory);
-  
-  // Örnek projeler - çevirilerle birlikte
+
+  // Örnek projeler
   const getSampleProjects = () => [
     {
       id: "sample-1",
-      title: t('projects.sampleProject1Title'),
-      description: t('projects.sampleProject1Desc'),
-      images: [{ src: "/images/default.png", alt: "3D Portfolio" }],
+      title: "3D Portfolio Website",
+      description: "Interactive 3D portfolio with Three.js animations and modern UI/UX design",
+      images: [{ src: "/images/PatentOyun.png", alt: "3D Portfolio" }],
       techStack: ["React", "ThreeJS", "TailwindCSS", "Framer Motion"],
       category: "web",
       tags: ["web", "3d", "interactive"],
+      status: "completed",
+      year: "2024",
       siteLink: "https://example.com/3d-portfolio",
       githubLink: "https://github.com/example/3d-portfolio"
     },
     {
       id: "sample-2",
-      title: t('projects.sampleProject2Title'),
-      description: t('projects.sampleProject2Desc'),
-      images: [{ src: "/images/default.png", alt: "AR Furniture App" }],
+      title: "AR Furniture App",
+      description: "Augmented reality mobile app for furniture visualization in real spaces",
+      images: [{ src: "/images/SegnaTile.png", alt: "AR Furniture App" }],
       techStack: ["React Native", "ARKit", "ARCore", "Firebase"],
       category: "mobile",
       tags: ["mobile", "ar", "interactive"],
+      status: "completed",
+      year: "2024",
       siteLink: "https://example.com/ar-furniture",
       githubLink: "https://github.com/example/ar-furniture"
     },
     {
       id: "sample-3",
-      title: t('projects.sampleProject3Title'),
-      description: t('projects.sampleProject3Desc'),
-      images: [{ src: "/images/default.png", alt: "Data Visualization" }],
+      title: "Data Visualization Dashboard",
+      description: "Interactive data visualization dashboard with real-time analytics",
+      images: [{ src: "/images/KrizlerveHekimlik.png", alt: "Data Visualization" }],
       techStack: ["D3.js", "React", "Node.js", "MongoDB"],
       category: "design",
       tags: ["dataviz", "web", "interactive"],
+      status: "in-progress",
+      year: "2024",
       siteLink: "https://example.com/data-viz",
       githubLink: "https://github.com/example/data-viz"
     }
   ];
-  
-  // URL güvenliği için kontrol
+
+  // Veri yükleme
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        setLoading(true);
+        const sampleProjects = getSampleProjects();
+        await new Promise(resolve => setTimeout(resolve, 1500)); // Simulated loading
+        setProjects(sampleProjects);
+        setSelectedProject(sampleProjects[0]);
+      } catch (err) {
+        console.error('Proje yükleme hatası:', err);
+        const sampleProjects = getSampleProjects();
+        setProjects(sampleProjects);
+        setSelectedProject(sampleProjects[0]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
+  // Filtreleme
+  const filteredProjects = activeCategory === 'all' 
+    ? projects 
+    : projects.filter(project => project.category === activeCategory);
+
+  // URL güvenliği
   const isValidUrl = (url) => {
     if (!url) return false;
     try {
@@ -176,456 +155,370 @@ export default function Projects() {
       return false;
     }
   };
-  
-  // Animasyon varyantları
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1, 
-      transition: { staggerChildren: 0.1 }
-    }
-  };
-  
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { type: "spring", stiffness: 100, damping: 10 }
-    }
-  };
 
-  // CSS Değişkenleri 
-  const cssVariables = {
-    projectsBgFrom: 'var(--projects-bg-from, #f8f9fa)',
-    projectsBgTo: 'var(--projects-bg-to, #ffffff)',
-    projectsPrimaryColor: 'var(--projects-primary-color, #3b82f6)',
-    projectsSecondaryColor: 'var(--projects-secondary-color, #8b5cf6)',
-    projectsSidebarBg: 'var(--projects-sidebar-bg, #ffffff)',
-    cardShadow: 'var(--card-shadow, rgba(0,0,0,0.1))',
-    textPrimary: 'var(--text-primary, #1f2937)',
-    projectsTabBg: 'var(--projects-tab-bg, #f3f4f6)',
-    projectsTabSelected: 'var(--projects-tab-selected, #3b82f6)',
-    projectsTabText: 'var(--projects-tab-text, #4b5563)',
-    projectsButtonPrimaryBg: 'var(--projects-button-primary-bg, #3b82f6)',
-    projectsButtonPrimaryText: 'var(--projects-button-primary-text, #ffffff)',
-    projectsButtonSecondaryBorder: 'var(--projects-button-secondary-border, #d1d5db)',
-    projectsButtonSecondaryText: 'var(--projects-button-secondary-text, #4b5563)',
-    projectsTabSelectedText: 'var(--projects-tab-selected-text, #ffffff)',
-    projectsTechTagBg: 'var(--projects-tech-tag-bg, #f3f4f6)',
-    projectsTechTagText: 'var(--projects-tech-tag-text, #4b5563)',
-    projectsTechIcon: 'var(--projects-tech-icon, #6b7280)',
-    projectsCardBg: 'var(--projects-card-bg, #ffffff)',
-    projectsCardShadow: 'var(--projects-card-shadow, rgba(0,0,0,0.1))',
-    textSecondary: 'var(--text-secondary, #6b7280)',
-    projectsEmptyIconBg: 'var(--projects-empty-icon-bg, #f3f4f6)',
-    projectsEmptyIcon: 'var(--projects-empty-icon, #9ca3af)'
-  };
-  
-  return (
-    <section 
-      id="projects" 
-      ref={sectionRef}
-      className="py-12 sm:py-16 md:py-20 overflow-hidden relative"
-      style={{ 
-        backgroundImage: `linear-gradient(to bottom, ${cssVariables.projectsBgFrom}, ${cssVariables.projectsBgTo})` 
-      }}
-    >
-      {/* Arka plan efektleri */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full blur-3xl" 
-             style={{ 
-               backgroundColor: cssVariables.projectsPrimaryColor, 
-               opacity: 0.1 
-             }}></div>
-        <div className="absolute -bottom-20 left-20 w-80 h-80 rounded-full blur-3xl"
-             style={{ 
-               backgroundColor: cssVariables.projectsSecondaryColor, 
-               opacity: 0.1 
-             }}></div>
-      </div>
-      
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        {/* Başlık */}
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-8 sm:mb-10 md:mb-12"
-        >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-2 sm:mb-3"
-              style={{ 
-                backgroundImage: `linear-gradient(to right, ${cssVariables.projectsPrimaryColor}, ${cssVariables.projectsSecondaryColor})`,
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                color: 'transparent' 
-              }}>
-            {t('projects.title')}
-          </h2>
-          <p style={{ color: cssVariables.textSecondary }} className="max-w-2xl mx-auto text-sm sm:text-base">
-            {t('projects.description')}
-          </p>
-        </motion.div>
-        
-        {/* Mobil Kategori Dropdown */}
-        <div className="md:hidden mb-6">
-          <button 
-            className="w-full flex items-center justify-between p-3 rounded-lg text-sm font-medium shadow-sm"
-            style={{ 
-              backgroundColor: cssVariables.projectsSidebarBg,
-              color: cssVariables.textPrimary
-            }}
-            onClick={() => setShowCategoryMenu(!showCategoryMenu)}
-          >
-            <span className="flex items-center">
-              <i className={`${categories.find(c => c.id === activeCategory)?.icon || 'fas fa-filter'} mr-2`}></i>
-              <span>{categories.find(c => c.id === activeCategory)?.label || t('projects.filter')}</span>
-            </span>
-            <i className={`fas fa-chevron-${showCategoryMenu ? 'up' : 'down'}`}></i>
-          </button>
-          
-          {/* Mobil Kategori Menüsü */}
-          {showCategoryMenu && (
-            <motion.div 
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="mt-2 rounded-lg shadow-md overflow-hidden"
-              style={{ backgroundColor: cssVariables.projectsSidebarBg }}
-            >
+  // Projects Filter Panel Component
+  function ProjectsFilterPanel() {
+    return (
+      <div className="mb-8 bg-[#2d2d30] rounded-lg border border-gray-700 overflow-hidden">
+        <div className="flex items-center justify-between bg-[#383838] px-4 py-3 border-b border-gray-700">
+          <div className="flex items-center space-x-3">
+            <div className="flex space-x-1">
+              <div className="w-3 h-3 bg-[#ff5f57] rounded-full"></div>
+              <div className="w-3 h-3 bg-[#ffbd2e] rounded-full"></div>
+              <div className="w-3 h-3 bg-[#28ca42] rounded-full"></div>
+            </div>
+            <span className="text-gray-300 text-sm">projects-filter.js</span>
+          </div>
+          <div className="text-gray-400 text-xs">●</div>
+        </div>
+
+        <div className="p-4 font-mono text-sm text-[#d4d4d4]">
+          <div className="space-y-2">
+            <div className="text-[#6a9955]">{/* Project filtering system */}</div>
+            <div>
+              <span className="text-[#569cd6]">const</span> 
+              <span className="text-[#9cdcfe]"> activeFilter</span> 
+              <span className="text-[#d4d4d4]"> = </span>
+              <span className="text-[#ce9178]">&apos;{activeCategory}&apos;</span>
+              <span className="text-[#d4d4d4]">;</span>
+            </div>
+            
+            <div className="flex flex-wrap gap-3 mt-4 pt-2 border-t border-gray-600">
               {categories.map((category) => (
                 <button
                   key={category.id}
-                  onClick={() => {
-                    setActiveCategory(category.id);
-                    setShowCategoryMenu(false);
-                  }}
-                  className="w-full text-left p-3 text-sm font-medium border-b last:border-0 flex items-center"
-                  style={{ 
-                    backgroundColor: activeCategory === category.id 
-                      ? cssVariables.projectsPrimaryColor 
-                      : 'transparent',
-                    color: activeCategory === category.id 
-                      ? cssVariables.projectsTabSelectedText 
-                      : cssVariables.projectsTabText,
-                    borderColor: cssVariables.projectsButtonSecondaryBorder
-                  }}
+                  onClick={() => setActiveCategory(category.id)}
+                  className={`px-4 py-2 rounded text-sm font-medium transition-colors ${
+                    activeCategory === category.id
+                      ? 'bg-[#0e639c] text-white'
+                      : 'bg-[#3c3c3c] text-[#d4d4d4] hover:bg-[#464647]'
+                  }`}
                 >
                   <i className={`${category.icon} mr-2`}></i>
                   {category.label}
-                  
-                  <span className="ml-auto px-2 py-0.5 text-xs rounded-full"
-                        style={{ 
-                          backgroundColor: activeCategory === category.id 
-                            ? 'rgba(255, 255, 255, 0.2)' 
-                            : cssVariables.projectsTechTagBg 
-                        }}>
-                    {filterProjectsByCategory(projects, category.id).length}
-                  </span>
                 </button>
               ))}
-            </motion.div>
-          )}
+            </div>
+            
+            <div className="text-[#6a9955] text-xs mt-2">
+              {/* Active filter: {activeCategory} • {filteredProjects.length} projects found */}
+            </div>
+          </div>
         </div>
-        
-        {/* Yükleniyor durumu */}
+      </div>
+    );
+  }
+
+  // Projects Terminal Component
+  function ProjectsTerminal() {
+    return (
+      <div className="bg-[#1e1e1e] rounded-lg border border-gray-700 overflow-hidden shadow-lg">
+        {/* VS Code Header */}
+        <div className="flex items-center justify-between bg-[#2d2d30] px-4 py-2 border-b border-gray-700">
+          <div className="flex items-center space-x-3">
+            <div className="flex space-x-1">
+              <div className="w-3 h-3 bg-[#ff5f57] rounded-full"></div>
+              <div className="w-3 h-3 bg-[#ffbd2e] rounded-full"></div>
+              <div className="w-3 h-3 bg-[#28ca42] rounded-full"></div>
+            </div>
+            <span className="text-gray-300 text-sm font-medium">projects.json</span>
+          </div>
+          <div className="text-gray-400 text-xs">●</div>
+        </div>
+
+        {/* Code Editor Content */}
+        <div className="p-0 font-mono text-sm bg-[#1e1e1e] text-[#d4d4d4]">
+          {/* Line numbers and code */}
+          <div className="flex">
+            <div className="w-12 bg-[#1e1e1e] text-[#858585] text-xs select-none border-r border-gray-700 py-4">
+              {Array.from({length: Math.max(20, filteredProjects.length * 8 + 10)}, (_, i) => (
+                <div key={i} className="h-5 flex items-center justify-end pr-2">
+                  {i + 1}
+                </div>
+              ))}
+            </div>
+            
+            <div className="flex-1 p-4">
+              <div className="space-y-1">
+                <div className="text-[#d4d4d4]">{'{'}</div>
+                
+                {/* Projects Section */}
+                <div className="ml-4">
+                  <div className="text-[#9cdcfe]">&quot;projects&quot;</div>
+                  <div className="text-[#d4d4d4]">: {'{'}</div>
+                  
+                  {/* Category Header */}
+                  <div className="ml-4 space-y-0.5">
+                    <div>
+                      <span className="text-[#9cdcfe]">&quot;category&quot;</span>
+                      <span className="text-[#d4d4d4]">: </span>
+                      <span className="text-[#ce9178]">&quot;{categories.find(c => c.id === activeCategory)?.label || 'All'}&quot;</span>
+                      <span className="text-[#d4d4d4]">,</span>
+                    </div>
+                    <div>
+                      <span className="text-[#9cdcfe]">&quot;count&quot;</span>
+                      <span className="text-[#d4d4d4]">: </span>
+                      <span className="text-[#b5cea8]">{filteredProjects.length}</span>
+                      <span className="text-[#d4d4d4]">,</span>
+                    </div>
+                    <div>
+                      <span className="text-[#9cdcfe]">&quot;portfolio&quot;</span>
+                      <span className="text-[#d4d4d4]">: [</span>
+                    </div>
+                  </div>
+                  
+                  {/* Projects List in JSON format */}
+                  <div className="ml-8 space-y-4">
+                    {filteredProjects.map((project, index) => (
+                      <motion.div
+                        key={project.id}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -20 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        className="group"
+                      >
+                        <div 
+                          className={`text-[#d4d4d4] hover:bg-[#2d2d30] rounded px-2 py-2 transition-colors cursor-pointer border-l-2 ${
+                            selectedProject?.id === project.id ? 'border-[#0e639c] bg-[#2d2d30]' : 'border-transparent'
+                          }`}
+                          onClick={() => setSelectedProject(project)}
+                        >
+                          <span className="text-[#d4d4d4]">{'{'}</span>
+                          <br />
+                          <span className="ml-4">
+                            <span className="text-[#9cdcfe]">&quot;id&quot;</span>
+                            <span className="text-[#d4d4d4]">: </span>
+                            <span className="text-[#ce9178]">&quot;{project.id}&quot;</span>
+                            <span className="text-[#d4d4d4]">,</span>
+                          </span>
+                          <br />
+                          <span className="ml-4">
+                            <span className="text-[#9cdcfe]">&quot;title&quot;</span>
+                            <span className="text-[#d4d4d4]">: </span>
+                            <span className="text-[#ce9178]">&quot;{project.title}&quot;</span>
+                            <span className="text-[#d4d4d4]">,</span>
+                          </span>
+                          <br />
+                          <span className="ml-4">
+                            <span className="text-[#9cdcfe]">&quot;status&quot;</span>
+                            <span className="text-[#d4d4d4]">: </span>
+                            <span className="text-[#ce9178]">&quot;{project.status}&quot;</span>
+                            <span className="text-[#d4d4d4]">,</span>
+                          </span>
+                          <br />
+                          <span className="ml-4">
+                            <span className="text-[#9cdcfe]">&quot;year&quot;</span>
+                            <span className="text-[#d4d4d4]">: </span>
+                            <span className="text-[#b5cea8]">{project.year}</span>
+                            <span className="text-[#d4d4d4]">,</span>
+                          </span>
+                          <br />
+                          <span className="ml-4">
+                            <span className="text-[#9cdcfe]">&quot;techStack&quot;</span>
+                            <span className="text-[#d4d4d4]">: [</span>
+                            {project.techStack && project.techStack.map((tech, techIndex) => (
+                              <span key={techIndex}>
+                                <span className="text-[#ce9178]">&quot;{tech}&quot;</span>
+                                {techIndex < project.techStack.length - 1 && <span className="text-[#d4d4d4]">, </span>}
+                              </span>
+                            ))}
+                            <span className="text-[#d4d4d4]">]</span>
+                          </span>
+                          <br />
+                          <span className="text-[#d4d4d4]">{'}'}{index < filteredProjects.length - 1 ? ',' : ''}</span>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                  
+                  <div className="ml-4 text-[#d4d4d4]">]</div>
+                  <div className="text-[#d4d4d4]">{'}'}</div>
+                </div>
+
+                <div className="text-[#d4d4d4]">{'}'}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Project Details Panel
+  function ProjectDetailsPanel() {
+    if (!selectedProject) return null;
+
+    return (
+      <div className="mt-8 bg-[#2d2d30] rounded-lg border border-gray-700 overflow-hidden">
+        <div className="flex items-center justify-between bg-[#383838] px-4 py-3 border-b border-gray-700">
+          <div className="flex items-center space-x-3">
+            <div className="flex space-x-1">
+              <div className="w-3 h-3 bg-[#ff5f57] rounded-full"></div>
+              <div className="w-3 h-3 bg-[#ffbd2e] rounded-full"></div>
+              <div className="w-3 h-3 bg-[#28ca42] rounded-full"></div>
+            </div>
+            <span className="text-gray-300 text-sm">project-details.md</span>
+          </div>
+          <div className="text-gray-400 text-xs">●</div>
+        </div>
+
+        <div className="p-6 text-white">
+          {/* Project Image */}
+          <div className="relative h-64 md:h-80 overflow-hidden rounded-lg mb-6">
+            {selectedProject.images && selectedProject.images.length > 0 ? (
+              <img 
+                src={selectedProject.images[0].src} 
+                alt={selectedProject.images[0].alt || selectedProject.title} 
+                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-cyan-500 to-purple-500">
+                <i className="fa fa-code text-white text-4xl"></i>
+              </div>
+            )}
+            
+            {/* Status Badge */}
+            <div className="absolute top-4 right-4">
+              <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${
+                selectedProject.status === 'completed' 
+                  ? 'bg-green-500/20 text-green-400 border border-green-500/30' 
+                  : 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
+              }`}>
+                <div className={`w-2 h-2 rounded-full mr-2 ${
+                  selectedProject.status === 'completed' ? 'bg-green-400' : 'bg-yellow-400'
+                }`}></div>
+                {selectedProject.status === 'completed' ? 'Completed' : 'In Progress'}
+              </span>
+            </div>
+          </div>
+
+          {/* Project Info */}
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-2">{selectedProject.title}</h3>
+              <p className="text-gray-300 text-lg">{selectedProject.description}</p>
+            </div>
+
+            {/* Tech Stack */}
+            <div>
+              <h4 className="text-lg font-semibold text-white mb-3">Technologies Used</h4>
+              <div className="flex flex-wrap gap-2">
+                {selectedProject.techStack && selectedProject.techStack.map((tech, idx) => (
+                  <span 
+                    key={idx}
+                    className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#3c3c3c] text-gray-300 border border-gray-600"
+                  >
+                    <i className={`${getTechIcon(tech)} mr-2 text-cyan-400`}></i>
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3">
+              {selectedProject.siteLink && (
+                <motion.a 
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  href={selectedProject.siteLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    if (!isValidUrl(selectedProject.siteLink)) {
+                      e.preventDefault();
+                      alert('Invalid URL');
+                    }
+                  }}
+                  className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-medium transition-all duration-300 group bg-[#0e639c] text-white hover:bg-[#1177bb]"
+                >
+                  <i className="fas fa-external-link-alt group-hover:translate-x-1 transition-transform"></i>
+                  <span>View Live Site</span>
+                </motion.a>
+              )}
+              
+              {selectedProject.githubLink && (
+                <motion.a 
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  href={selectedProject.githubLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    if (!isValidUrl(selectedProject.githubLink)) {
+                      e.preventDefault();
+                      alert('Invalid URL');
+                    }
+                  }}
+                  className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg border border-gray-600 px-6 py-3 text-sm font-medium transition-all duration-300 group text-gray-300 hover:border-gray-500 hover:text-white"
+                >
+                  <i className="fab fa-github group-hover:rotate-12 transition-transform"></i>
+                  <span>View Code</span>
+                </motion.a>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div id="projects" ref={sectionRef} className="relative py-16 md:py-24 lg:py-32 overflow-hidden bg-[#0a0a0f]">
+      {/* Background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-cyan-900/20" />
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-purple-500/10 to-transparent" />
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-cyan-500/10 to-transparent" />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -30 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-5xl md:text-6xl font-bold mb-4">
+            <span className="text-white">{t('projects.title') || 'My'}</span>
+            <br />
+            <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+              Projects
+            </span>
+          </h2>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            {t('projects.description') || 'Explore my latest work and creative projects'}
+          </p>
+        </motion.div>
+
+        {/* Loading State */}
         {loading && (
-          <div className="flex justify-center py-10 sm:py-16">
-            <div className="relative w-12 h-12 sm:w-16 sm:h-16">
-              <div className="absolute inset-0 rounded-full"
-                   style={{ 
-                     borderWidth: '4px', 
-                     borderStyle: 'solid',
-                     borderColor: cssVariables.projectsTechTagBg 
-                   }}></div>
+          <div className="flex justify-center py-16">
+            <div className="relative w-16 h-16">
+              <div className="absolute inset-0 rounded-full border-4 border-gray-700"></div>
               <motion.div 
-                className="absolute inset-0 rounded-full"
-                style={{ 
-                  borderWidth: '4px', 
-                  borderStyle: 'solid',
-                  borderColor: 'transparent', 
-                  borderTopColor: cssVariables.projectsPrimaryColor 
-                }}
+                className="absolute inset-0 rounded-full border-4 border-transparent border-t-cyan-400"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
               />
             </div>
           </div>
         )}
-        
-        {!loading && projects && projects.length > 0 && (
-          <div className="flex flex-col md:flex-row md:gap-6 lg:gap-8">
-            {/* Desktop Sidebar */}
-            <div className="hidden md:block md:w-1/3 lg:w-1/4">
-              <motion.div
-                variants={containerVariants}
-                initial="hidden"
-                animate={inView ? "visible" : "hidden"}
-                className="sticky top-24 rounded-xl shadow-lg p-4 lg:p-5"
-                style={{ 
-                  backgroundColor: cssVariables.projectsSidebarBg,
-                  boxShadow: `0 4px 15px ${cssVariables.cardShadow}`
-                }}
-              >
-                <h3 className="text-lg font-semibold mb-4" style={{ color: cssVariables.textPrimary }}>
-                  {t('projects.categories')}
-                </h3>
-                
-                <div className="space-y-2">
-                  {categories.map((category) => (
-                    <motion.button
-                      key={category.id}
-                      variants={itemVariants}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      onClick={() => setActiveCategory(category.id)}
-                      className="w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-all flex items-center"
-                      style={{ 
-                        backgroundColor: activeCategory === category.id 
-                          ? cssVariables.projectsPrimaryColor 
-                          : cssVariables.projectsTechTagBg,
-                        color: activeCategory === category.id 
-                          ? cssVariables.projectsTabSelectedText 
-                          : cssVariables.projectsTabText,
-                        boxShadow: activeCategory === category.id ? `0 2px 5px ${cssVariables.cardShadow}` : 'none'
-                      }}
-                    >
-                      <i className={`${category.icon} w-5 h-5 mr-2 text-center`}></i>
-                      <span className="flex-grow">{category.label}</span>
-                      
-                      <div className="flex items-center justify-center w-6 h-6 text-xs rounded-full"
-                          style={{ 
-                            backgroundColor: activeCategory === category.id 
-                              ? 'rgba(255, 255, 255, 0.2)' 
-                              : 'rgba(0, 0, 0, 0.1)' 
-                          }}>
-                        {filterProjectsByCategory(projects, category.id).length}
-                      </div>
-                    </motion.button>
-                  ))}
-                </div>
-                
-                {activeProject && (
-                  <div className="mt-6 pt-5 border-t border-gray-200 dark:border-gray-700 hidden lg:block">
-                    <h3 className="text-lg font-semibold mb-3" style={{ color: cssVariables.textPrimary }}>
-                      {t('projects.technologies')}
-                    </h3>
-                    
-                    <div className="flex flex-wrap gap-2">
-                      {activeProject.techStack && activeProject.techStack.map((tech, idx) => (
-                        <motion.span 
-                          key={idx}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: idx * 0.05 }}
-                          className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium"
-                          style={{
-                            backgroundColor: cssVariables.projectsTechTagBg,
-                            color: cssVariables.projectsTechTagText
-                          }}
-                        >
-                          <i className={`${getTechIcon(tech)} mr-1.5`} style={{ color: cssVariables.projectsTechIcon }}></i>
-                          {tech}
-                        </motion.span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </motion.div>
-            </div>
-            
-            {/* Proje İçeriği Alanı */}
-            <div className="w-full md:w-2/3 lg:w-3/4">
-              {filteredProjects && filteredProjects.length > 0 ? (
-                <Tab.Group>
-                  {/* Tab menusu - kaydırılabilir */}
-                  <Tab.List className="flex overflow-x-auto space-x-1 rounded-xl p-1 mb-4 sm:mb-6 scrollbar-hide"
-                            style={{ backgroundColor: cssVariables.projectsTechTagBg }}>
-                    {filteredProjects.map((project) => (
-                      <Tab
-                        key={project.id}
-                        className="py-2 px-3 sm:px-4 whitespace-nowrap text-sm font-medium rounded-lg transition-all focus:outline-none flex-shrink-0"
-                        onClick={() => setActiveProject(project)}
-                      >
-                        {({ selected }) => (
-                          <span 
-                            className="truncate"
-                            style={{
-                              color: selected ? cssVariables.projectsTabSelected : cssVariables.projectsTabText
-                            }}
-                          >
-                            {project.title}
-                          </span>
-                        )}
-                      </Tab>
-                    ))}
-                  </Tab.List>
-                  
-                  <Tab.Panels>
-                    {filteredProjects.map((project) => (
-                      <Tab.Panel
-                        key={project.id}
-                        className="rounded-xl focus:outline-none"
-                        style={{ 
-                          backgroundColor: cssVariables.projectsCardBg,
-                          boxShadow: `0 4px 15px ${cssVariables.projectsCardShadow}`
-                        }}
-                      >
-                        <div className="overflow-hidden rounded-xl">
-                          {/* Proje görseli */}
-                          <div className="relative h-48 sm:h-56 md:h-64 lg:h-72 overflow-hidden">
-                            {project.images && project.images.length > 0 ? (
-                              <img 
-                                src={project.images[0].src} 
-                                alt={project.images[0].alt || project.title} 
-                                className="w-full h-full object-contain transition-transform duration-700 hover:scale-105"
-                              />
-                            ) : (
-                              <div className="w-full h-full flex items-center justify-center"
-                                   style={{ 
-                                     backgroundImage: `linear-gradient(to bottom right, ${cssVariables.projectsPrimaryColor}, ${cssVariables.projectsSecondaryColor})` 
-                                   }}>
-                                <i className="fa fa-code text-white text-4xl"></i>
-                              </div>
-                            )}
-                            
-                            {/* Kategori rozeti */}
-                            <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
-                              <span className="inline-flex items-center px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs font-medium bg-black/50 text-white backdrop-blur-sm">
-                                <i className={`${categories.find(c => c.id === project.category)?.icon || 'fas fa-code'} mr-1.5`}></i>
-                                {categories.find(c => c.id === project.category)?.label || project.category}
-                              </span>
-                            </div>
-                          </div>
-                          
-                          {/* Proje detayları */}
-                          <div className="p-4 sm:p-6">
-                            <h3 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3" style={{ color: cssVariables.textPrimary }}>
-                              {project.title}
-                            </h3>
-                            
-                            <p className="mb-4 sm:mb-6 text-sm sm:text-base" style={{ color: cssVariables.textSecondary }}>
-                              {project.description}
-                            </p>
-                            
-                            {/* Mobil için teknoloji etiketleri */}
-                            <div className="mb-4 flex flex-wrap gap-2 lg:hidden">
-                              {project.techStack && project.techStack.map((tech, idx) => (
-                                <span 
-                                  key={idx}
-                                  className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium"
-                                  style={{
-                                    backgroundColor: cssVariables.projectsTechTagBg,
-                                    color: cssVariables.projectsTechTagText
-                                  }}
-                                >
-                                  <i className={`${getTechIcon(tech)} mr-1.5`} style={{ color: cssVariables.projectsTechIcon }}></i>
-                                  {tech}
-                                </span>
-                              ))}
-                            </div>
-                            
-                            {/* Proje linkleri - Mobilde alt alta, desktop yanyana */}
-                            <div className="flex flex-col sm:flex-row gap-3">
-                              {project.siteLink && (
-                                <motion.a 
-                                  whileHover={{ scale: 1.02 }}
-                                  whileTap={{ scale: 0.98 }}
-                                  href={project.siteLink} 
-                                  target="_blank" 
-                                  rel="noopener noreferrer"
-                                  onClick={(e) => {
-                                    if (!isValidUrl(project.siteLink)) {
-                                      e.preventDefault();
-                                      alert(t('projects.invalidUrl'));
-                                    }
-                                  }}
-                                  className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-all duration-300 group"
-                                  style={{ 
-                                    backgroundColor: cssVariables.projectsButtonPrimaryBg, 
-                                    color: cssVariables.projectsButtonPrimaryText 
-                                  }}
-                                >
-                                  <i className="fas fa-external-link-alt group-hover:translate-x-1 transition-transform"></i>
-                                  <span>{t('projects.viewSite')}</span>
-                                </motion.a>
-                              )}
-                              
-                              {project.githubLink && (
-                                <motion.a 
-                                  whileHover={{ scale: 1.02 }}
-                                  whileTap={{ scale: 0.98 }}
-                                  href={project.githubLink} 
-                                  target="_blank" 
-                                  rel="noopener noreferrer"
-                                  onClick={(e) => {
-                                    if (!isValidUrl(project.githubLink)) {
-                                      e.preventDefault();
-                                      alert(t('projects.invalidUrl'));
-                                    }
-                                  }}
-                                  className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg border px-4 py-2.5 text-sm font-medium transition-all duration-300 group"
-                                  style={{ 
-                                    borderColor: cssVariables.projectsButtonSecondaryBorder, 
-                                    color: cssVariables.projectsButtonSecondaryText 
-                                  }}
-                                >
-                                  <i className="fab fa-github group-hover:rotate-12 transition-transform"></i>
-                                  <span>{t('projects.gitHubCode')}</span>
-                                </motion.a>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      </Tab.Panel>
-                    ))}
-                  </Tab.Panels>
-                </Tab.Group>
-              ) : (
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5 }}
-                  className="text-center py-8 sm:py-12 md:py-16 rounded-xl shadow-lg"
-                  style={{ backgroundColor: cssVariables.projectsCardBg }}
-                >
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-5 rounded-full flex items-center justify-center"
-                       style={{ backgroundColor: cssVariables.projectsEmptyIconBg }}>
-                    <i className="fas fa-search text-lg sm:text-xl" style={{ color: cssVariables.projectsEmptyIcon }}></i>
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-bold mb-2" style={{ color: cssVariables.textPrimary }}>
-                    {t('projects.notFound')}
-                  </h3>
-                  <p className="max-w-md mx-auto mb-5 sm:mb-6 px-4 text-sm sm:text-base" style={{ color: cssVariables.textSecondary }}>
-                    {t('projects.notFoundDesc')}
-                  </p>
-                  <button
-                    onClick={() => setActiveCategory('all')}
-                    className="px-4 py-2 rounded-lg shadow transition-colors"
-                    style={{ 
-                      backgroundColor: cssVariables.projectsPrimaryColor, 
-                      color: cssVariables.projectsButtonPrimaryText 
-                    }}
-                  >
-                    {t('projects.showAllProjects')}
-                  </button>
-                </motion.div>
-              )}
-            </div>
-          </div>
+
+        {!loading && (
+          <>
+            {/* Projects Filter Panel */}
+            <ProjectsFilterPanel />
+
+            {/* Projects Terminal */}
+            <ProjectsTerminal />
+
+            {/* Project Details Panel */}
+            <ProjectDetailsPanel />
+          </>
         )}
       </div>
-
-      {/* Scrollbar Gizleme için Inline stil */}
-      <style>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
-    </section>
+    </div>
   );
 }

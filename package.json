@@ -19,7 +19,7 @@
     "@headlessui/react": "^2.2.0",
     "@vercel/speed-insights": "^1.2.0",
     "bootstrap": "^5.3.3",
-    "framer-motion": "^12.5.0",
+    "framer-motion": "^12.23.1",
     "html2canvas": "^1.4.1",
     "i18next": "^23.16.8",
     "i18next-browser-languagedetector": "^8.0.2",

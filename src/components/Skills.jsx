@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Skills() {
   const { t, i18n } = useTranslation();
@@ -23,15 +24,12 @@ export default function Skills() {
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
+      observer.disconnect();
     };
   }, []);
 
   // Dil değişikliğinde kategorileri güncelle
   useEffect(() => {
-    // Kategorileri doğru dilde güncelle
     setActiveTab('all');
   }, [i18n.language]);
 
@@ -76,231 +74,213 @@ export default function Skills() {
     ? skills 
     : skills.filter(skill => skill.category === activeTab);
 
-  return (
-    <div id="skills" ref={sectionRef} className="relative py-16 md:py-24 lg:py-32 overflow-hidden bg-[var(--bg-primary)]">
-      {/* Geometrik arka plan şekilleri */}
-      <div className="absolute top-0 right-0 w-full h-full overflow-hidden z-0">
-        <div className="absolute top-0 right-0 w-2/3 h-2/3 bg-gradient-to-br from-[var(--profile-bg-gradient-1)] to-[var(--profile-bg-gradient-2)] rounded-bl-[40%] opacity-30"></div>
-        <div className="absolute bottom-0 left-0 w-2/3 h-2/3 bg-gradient-to-tr from-[var(--gradient-start)] to-[var(--gradient-end)] rounded-tr-[40%] opacity-30"></div>
+  // Skills Filter Panel Component
+  function SkillsFilterPanel() {
+    return (
+      <div className="mb-8 bg-[#2d2d30] rounded-lg border border-gray-700 overflow-hidden">
+        <div className="flex items-center justify-between bg-[#383838] px-4 py-3 border-b border-gray-700">
+          <div className="flex items-center space-x-3">
+            <div className="flex space-x-1">
+              <div className="w-3 h-3 bg-[#ff5f57] rounded-full"></div>
+              <div className="w-3 h-3 bg-[#ffbd2e] rounded-full"></div>
+              <div className="w-3 h-3 bg-[#28ca42] rounded-full"></div>
+            </div>
+            <span className="text-gray-300 text-sm">skills-filter.js</span>
+          </div>
+          <div className="text-gray-400 text-xs">●</div>
+        </div>
+
+        <div className="p-4 font-mono text-sm text-[#d4d4d4]">
+          <div className="space-y-2">
+            <div className="text-[#6a9955]">{/* Skills filtering system */}</div>
+            <div>
+              <span className="text-[#569cd6]">const</span> 
+              <span className="text-[#9cdcfe]"> activeFilter</span> 
+              <span className="text-[#d4d4d4]"> = </span>
+              <span className="text-[#ce9178]">&apos;{activeTab}&apos;</span>
+              <span className="text-[#d4d4d4]">;</span>
+            </div>
+            
+            <div className="flex flex-wrap gap-3 mt-4 pt-2 border-t border-gray-600">
+              {categories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => setActiveTab(category.id)}
+                  className={`px-4 py-2 rounded text-sm font-medium transition-colors ${
+                    activeTab === category.id
+                      ? 'bg-[#0e639c] text-white'
+                      : 'bg-[#3c3c3c] text-[#d4d4d4] hover:bg-[#464647]'
+                  }`}
+                >
+                  <i className={`${category.icon} mr-2`}></i>
+                  {category.label}
+                </button>
+              ))}
+            </div>
+            
+            <div className="text-[#6a9955] text-xs mt-2">
+              {/* Active filter: {activeTab} • {filteredSkills.length} skills found */}
+            </div>
+          </div>
+        </div>
       </div>
+    );
+  }
 
-      {/* İçerik container */}
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        {/* Başlık alanı */}
-        <div className="text-center mb-8 md:mb-16 relative">
-          <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0 -translate-y-10'}`}>
-            <div className="inline-block relative mx-auto">
-              <div className="absolute top-0 -left-4 md:-left-6 w-4 md:w-6 h-4 md:h-6 border-t-2 border-l-2 border-[var(--profile-header-decoration)]"></div>
-              <div className="absolute top-0 -right-4 md:-right-6 w-4 md:w-6 h-4 md:h-6 border-t-2 border-r-2 border-[var(--profile-header-decoration)]"></div>
-              <div className="absolute -bottom-2 -left-4 md:-left-6 w-4 md:w-6 h-4 md:h-6 border-b-2 border-l-2 border-[var(--profile-header-decoration)]"></div>
-              <div className="absolute -bottom-2 -right-4 md:-right-6 w-4 md:w-6 h-4 md:h-6 border-b-2 border-r-2 border-[var(--profile-header-decoration)]"></div>
-              
-              <h2 className="text-3xl md:text-5xl font-bold mb-1 text-transparent bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] bg-clip-text px-4">
-                {t('skills.skills')}
-              </h2>
+  // Skills Terminal Component
+  function SkillsTerminal() {
+    return (
+      <div className="bg-[#1e1e1e] rounded-lg border border-gray-700 overflow-hidden shadow-lg">
+        {/* VS Code Header */}
+        <div className="flex items-center justify-between bg-[#2d2d30] px-4 py-2 border-b border-gray-700">
+          <div className="flex items-center space-x-3">
+            <div className="flex space-x-1">
+              <div className="w-3 h-3 bg-[#ff5f57] rounded-full"></div>
+              <div className="w-3 h-3 bg-[#ffbd2e] rounded-full"></div>
+              <div className="w-3 h-3 bg-[#28ca42] rounded-full"></div>
             </div>
-            <p className="text-[var(--text-secondary)] text-base md:text-lg max-w-2xl mx-auto mt-4 md:mt-6 px-2">
-              {t('skills.description')}
-            </p>
+            <span className="text-gray-300 text-sm font-medium">skills.json</span>
           </div>
+          <div className="text-gray-400 text-xs">●</div>
         </div>
 
-        {/* Mobil için Basit Kategori Filtreleri - Yetenek sayısı göstergesi ile */}
-        <div className="md:hidden mb-6">
-          {/* Yetenek Sayısı Özeti */}
-          <div className="bg-[var(--card-bg)] rounded-lg shadow-sm mb-4 p-4 border border-[var(--card-border)]">
-            <div className="flex items-center">
-              <div className="bg-[var(--accent-primary)] rounded-full p-2 mr-3">
-                <i className="fas fa-layer-group text-white"></i>
-              </div>
-              <div>
-                <h3 className="font-bold text-[var(--text-primary)]">{filteredSkills.length} {t('skills.skillsFound', 'beceri')}</h3>
-                <p className="text-sm text-[var(--text-secondary)]">
-                  {activeTab === 'all' ? t('skills.allSkills', 'Tüm yetenekler') : categories.find(c => c.id === activeTab)?.label}
-                </p>
-              </div>
-            </div>
-          </div>
-          
-          {/* Ana Kategori Butonları - Çok sadeleştirilmiş, sadece ana kategoriler */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            <button 
-              onClick={() => setActiveTab('all')}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                activeTab === 'all' 
-                  ? 'bg-[var(--accent-primary)] text-[var(--text-primary)]' 
-                  : 'bg-[var(--card-bg)] text-[var(--text-secondary)] border border-[var(--card-border)]'
-              }`}
-            >
-              <i className="fas fa-border-all mr-2"></i>
-              {t('skills.all')}
-            </button>
-            <button 
-              onClick={() => setActiveTab('frontend')}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                activeTab === 'frontend' 
-                  ? 'bg-[var(--accent-primary)] text-[var(--text-primary)]' 
-                  : 'bg-[var(--card-bg)] text-[var(--text-secondary)] border border-[var(--card-border)]'
-              }`}
-            >
-              <i className="fas fa-laptop-code mr-2"></i>
-              {t('skills.frontend')}
-            </button>
-            <button 
-              onClick={() => setActiveTab('backend')}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                activeTab === 'backend' 
-                  ? 'bg-[var(--accent-primary)] text-[var(--text-primary)]' 
-                  : 'bg-[var(--card-bg)] text-[var(--text-secondary)] border border-[var(--card-border)]'
-              }`}
-            >
-              <i className="fas fa-server mr-2"></i>
-              {t('skills.backend')}
-            </button>
-            <button 
-              onClick={() => {
-                // Mobil dropdown menü için toggle
-                const dropdown = document.getElementById('categoryDropdown');
-                if (dropdown) {
-                  dropdown.classList.toggle('hidden');
-                }
-              }}
-              className="rounded-full w-10 h-10 flex items-center justify-center text-sm font-medium bg-[var(--card-bg)] text-[var(--text-secondary)] border border-[var(--card-border)]"
-            >
-              <i className="fas fa-ellipsis-h"></i>
-            </button>
-          </div>
-          
-          {/* Diğer Kategoriler Dropdown */}
-          <div id="categoryDropdown" className="hidden bg-[var(--card-bg)] rounded-lg shadow-md p-3 mb-6 border border-[var(--card-border)]">
-            {categories.filter(c => !['all', 'frontend', 'backend'].includes(c.id)).map(category => (
-              <button
-                key={category.id}
-                onClick={() => {
-                  setActiveTab(category.id);
-                  const dropdown = document.getElementById('categoryDropdown');
-                  if (dropdown) {
-                    dropdown.classList.add('hidden');
-                  }
-                }}
-                className={`w-full text-left p-3 mb-1 rounded-lg flex items-center ${
-                  activeTab === category.id 
-                    ? 'bg-[var(--accent-primary)] text-[var(--text-primary)]' 
-                    : 'hover:bg-[var(--card-border)] text-[var(--text-secondary)]'
-                }`}
-              >
-                <i className={`${category.icon} mr-3`}></i>
-                {category.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Masaüstü için Kategori Seçici */}
-        <div className="hidden md:block relative mb-16">
-          <div className="absolute inset-0 bg-gradient-to-r from-[var(--gradient-start)]/30 to-[var(--gradient-end)]/30 blur-xl -z-10 rounded-3xl transform -skew-y-1"></div>
-          <div className="flex justify-center flex-wrap gap-3 bg-[var(--card-bg)] p-4 rounded-xl border border-[var(--card-border)] shadow-lg">
-            {categories.map((category, index) => (
-              <button
-                key={category.id}
-                onClick={() => setActiveTab(category.id)}
-                className={`px-5 py-3 rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
-                  activeTab === category.id
-                    ? 'bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] text-white shadow-md'
-                    : 'bg-[var(--btn-outline-hover)] text-[var(--text-secondary)] hover:bg-[var(--card-border)]'
-                }`}
-                style={{ 
-                  transitionDelay: `${index * 50}ms`,
-                  transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-                  opacity: isVisible ? 1 : 0
-                }}
-              >
-                <i className={category.icon}></i>
-                {category.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Yetenekler Grid - 3D Kart Efekti */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
-          {filteredSkills.map((skill, index) => (
-            <div 
-              key={index}
-              className="group perspective"
-              style={{ 
-                transitionDelay: `${index * 50}ms`,
-                transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                opacity: isVisible ? 1 : 0,
-                transition: 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
-              }}
-            >
-              <div className="relative preserve-3d group-hover:my-rotate-y-180 w-full h-32 sm:h-36 md:h-44 lg:h-52 duration-700">
-                {/* Kart Ön Yüz */}
-                <div className="absolute backface-hidden w-full h-full rounded-xl shadow-md overflow-hidden">
-                  <div className="flex flex-col items-center justify-center h-full bg-[var(--card-bg)] border border-[var(--card-border)] p-3">
-                    <i className={`${skill.icon} text-3xl sm:text-4xl md:text-5xl mb-3`} style={{ color: skill.color }}></i>
-                    <h3 className="text-[var(--text-primary)] text-center text-sm font-medium">{skill.name}</h3>
-                  </div>
+        {/* Code Editor Content */}
+        <div className="p-0 font-mono text-sm bg-[#1e1e1e] text-[#d4d4d4]">
+          {/* Line numbers and code */}
+          <div className="flex">
+            <div className="w-12 bg-[#1e1e1e] text-[#858585] text-xs select-none border-r border-gray-700 py-4">
+              {Array.from({length: Math.max(20, Math.ceil(filteredSkills.length / 4) + 10)}, (_, i) => (
+                <div key={i} className="h-5 flex items-center justify-end pr-2">
+                  {i + 1}
                 </div>
+              ))}
+            </div>
+            
+            <div className="flex-1 p-4">
+              <div className="space-y-1">
+                <div className="text-[#d4d4d4]">{'{'}</div>
                 
-                {/* Kart Arka Yüz */}
-                <div className="absolute my-rotate-y-180 backface-hidden w-full h-full rounded-xl shadow-md overflow-hidden">
-                  <div className="flex flex-col items-center justify-center p-3 h-full text-center bg-gradient-to-br from-[var(--gradient-start)] to-[var(--gradient-end)]">
-                    <i className={`${skill.icon} text-2xl sm:text-3xl md:text-4xl mb-2 text-white`}></i>
-                    <h3 className="text-white font-bold mb-1 text-sm">{skill.name}</h3>
-                    <p className="text-white/90 text-xs line-clamp-3">
-                      {t(`skills.${skill.name.toLowerCase().replace(/[^a-z0-9]/g, '')}Desc`, `Projelerimde ${skill.name} teknolojisini aktif olarak kullanıyorum`)}
-                    </p>
+                {/* Skills Section */}
+                <div className="ml-4">
+                  <div className="text-[#9cdcfe]">&quot;skills&quot;</div>
+                  <div className="text-[#d4d4d4]">: {'{'}</div>
+                  
+                  {/* Category Header */}
+                  <div className="ml-4 space-y-0.5">
+                    <div>
+                      <span className="text-[#9cdcfe]">&quot;category&quot;</span>
+                      <span className="text-[#d4d4d4]">: </span>
+                      <span className="text-[#ce9178]">&quot;{categories.find(c => c.id === activeTab)?.label || 'All'}&quot;</span>
+                      <span className="text-[#d4d4d4]">,</span>
+                    </div>
+                    <div>
+                      <span className="text-[#9cdcfe]">&quot;count&quot;</span>
+                      <span className="text-[#d4d4d4]">: </span>
+                      <span className="text-[#b5cea8]">{filteredSkills.length}</span>
+                      <span className="text-[#d4d4d4]">,</span>
+                    </div>
+                    <div>
+                      <span className="text-[#9cdcfe]">&quot;technologies&quot;</span>
+                      <span className="text-[#d4d4d4]">: [</span>
+                    </div>
                   </div>
+                  
+                  {/* Skills Grid in JSON format */}
+                  <div className="ml-8 space-y-2">
+                    {filteredSkills.map((skill, index) => (
+                      <motion.div
+                        key={skill.name}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -20 }}
+                        transition={{ duration: 0.5, delay: index * 0.05 }}
+                        className="group"
+                      >
+                        <div className="text-[#d4d4d4] hover:bg-[#2d2d30] rounded px-2 py-1 transition-colors cursor-pointer">
+                          <span className="text-[#d4d4d4]">{'{'}</span>
+                          <br />
+                          <span className="ml-4">
+                            <span className="text-[#9cdcfe]">&quot;name&quot;</span>
+                            <span className="text-[#d4d4d4]">: </span>
+                            <span className="text-[#ce9178]">&quot;{skill.name}&quot;</span>
+                            <span className="text-[#d4d4d4]">,</span>
+                          </span>
+                          <br />
+                          <span className="ml-4">
+                            <span className="text-[#9cdcfe]">&quot;category&quot;</span>
+                            <span className="text-[#d4d4d4]">: </span>
+                            <span className="text-[#ce9178]">&quot;{skill.category}&quot;</span>
+                            <span className="text-[#d4d4d4]">,</span>
+                          </span>
+                          <br />
+                          <span className="ml-4">
+                            <span className="text-[#9cdcfe]">&quot;icon&quot;</span>
+                            <span className="text-[#d4d4d4]">: </span>
+                            <span className="text-[#ce9178]">&quot;
+                              <i className={`${skill.icon} inline-block mx-1`} style={{ color: skill.color }}></i>
+                            &quot;</span>
+                            <span className="text-[#d4d4d4]">,</span>
+                          </span>
+                          <br />
+                          <span className="ml-4">
+                            <span className="text-[#9cdcfe]">&quot;proficiency&quot;</span>
+                            <span className="text-[#d4d4d4]">: </span>
+                            <span className="text-[#ce9178]">&quot;advanced&quot;</span>
+                          </span>
+                          <br />
+                          <span className="text-[#d4d4d4]">{'}'}{index < filteredSkills.length - 1 ? ',' : ''}</span>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                  
+                  <div className="ml-4 text-[#d4d4d4]">]</div>
+                  <div className="text-[#d4d4d4]">{'}'}</div>
                 </div>
+
+                <div className="text-[#d4d4d4]">{'}'}</div>
               </div>
             </div>
-          ))}
+          </div>
         </div>
-
-        {/* Özel CSS (White Express İkonu için Fix) */}
-        <style >{`
-          .devicon-express-original {
-            background-color: rgba(0, 0, 0, 0.2);
-            border-radius: 5px;
-            padding: 3px;
-          }
-          
-          .dark .devicon-express-original {
-            background-color: rgba(255, 255, 255, 0.2);
-          }
-        `}</style>
       </div>
-      
-      {/* Custom CSS for 3D Card Effect */}
-      <style >{`
-        .perspective {
-          perspective: 1000px;
-        }
-        
-        .preserve-3d {
-          transform-style: preserve-3d;
-        }
-        
-        .backface-hidden {
-          backface-visibility: hidden;
-        }
-        
-        .my-rotate-y-180 {
-          transform: rotateY(180deg);
-        }
-        
-        .group:hover .group-hover\\:my-rotate-y-180 {
-          transform: rotateY(180deg);
-        }
-        
-        .line-clamp-3 {
-          display: -webkit-box;
-          -webkit-line-clamp: 3;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-      `}</style>
+    );
+  }
+
+  return (
+    <div id="skills" ref={sectionRef} className="relative py-16 md:py-24 lg:py-32 overflow-hidden bg-[#0a0a0f]">
+      {/* Background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-cyan-900/20" />
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-purple-500/10 to-transparent" />
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-cyan-500/10 to-transparent" />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -30 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-5xl md:text-6xl font-bold mb-4">
+            <span className="text-white">{t('skills.skills')}</span>
+            <br />
+            <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+              Technologies
+            </span>
+          </h2>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            {t('skills.description')}
+          </p>
+        </motion.div>
+
+        {/* Skills Filter Panel */}
+        <SkillsFilterPanel />
+
+        {/* Skills Terminal */}
+        <SkillsTerminal />
+      </div>
     </div>
-  );}
+  );
+}

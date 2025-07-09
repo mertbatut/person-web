@@ -27,11 +27,13 @@
     "all": "Tümü",
     "frontend": "Frontend",
     "backend": "Backend",
-    "languages": "Diller",
-    "database": "Veritabanı",
     "tools": "Araçlar",
     "design": "Tasarım",
-    "devops": "DevOps"
+    "devops": "DevOps",
+    "frontendSkills": ["React.js", "Angular", "JavaScript (ES6+)", "HTML5 & CSS3", "Responsive Design"],
+    "backendSkills": ["C# & ASP.NET", "Node.js & Express", "SQL Server", "API Integration", "Docker"],
+    "toolsSkills": ["Git & GitHub", "VS Code", "npm & Webpack", "Figma", "Adobe Creative Suite"],
+    "languages": "Diller"
   },
   "projects": {
     "title": "Projelerim",
@@ -121,9 +123,67 @@
     "downloadOptions": "İndirme Seçenekleri",
     "selectFormat": "Format Seçin",
     "personalInfo": "Kişisel Bilgiler",
-    "birthDate": "11 Ağustos 1993",
     "birthPlace": "Bursa, Türkiye",
-    "contactInfo": "İletişim Bilgileri"
+    "contactInfo": "İletişim Bilgileri",
+    "personalData": {
+      "name": "Mert Batut",
+      "email": "mertbatut@gmail.com",
+      "phone": "+90 541 846 99 79",
+      "location": "Bursa, Türkiye",
+      "website": "www.mertbatut.com.tr"
+    },
+    "workExperienceData": [
+      {
+        "title": "Front-End Developer",
+        "company": "Alesta Yazılım",
+        "period": "2022 - Günümüz",
+        "description": "Alesta Yazılım'da inşaat firmaları için özel yazılım çözümleri geliştiriyorum. Angular, React, React Native ve Redux teknolojilerini kullanarak modern ve interaktif arayüzler oluşturuyorum. Tailwind CSS ve Bootstrap ile responsive tasarımlar, Axios ile API entegrasyonları yapıyorum. Kullanıcı deneyimini iyileştirme ve uygulama performansını optimize etme üzerine çalışıyorum.",
+        "current": true
+      },
+      {
+        "title": "Stajyer Front-End Developer",
+        "company": "Just Markt",
+        "period": "2019 - 2020",
+        "description": "Just Markt sanal market uygulamasında React, Tailwind CSS ve Axios kullanarak modern ve interaktif arayüzler geliştirdim. API bağlantıları kurup ürün listeleme, sepet ve sipariş işlemlerini gerçekleştirdim. Performans optimizasyonları yaparak kullanıcı deneyimini iyileştirdim ve Redux ile uygulama genelinde verimli state yönetimi sağladım.",
+        "current": false
+      },
+      {
+        "title": "Emlak Danışmanı",
+        "company": "Batut Gayrimenkul",
+        "period": "2016 - 2019",
+        "description": "Batut Gayrimenkul firmasında emlak danışmanı olarak müşteri ilişkileri ve emlak listeleri yönetimi üzerine çalıştım. Müşteri iletişimi, pazarlık ve problem çözme becerilerini geliştirdim.",
+        "current": false
+      }
+    ],
+    "educationData": [
+      {
+        "name": "Beykent Üniversitesi",
+        "degree": "İşletme Bölümü, Lisans",
+        "period": "2012 - 2016"
+      },
+      {
+        "name": "Workintech Akademi",
+        "degree": "Modern web teknolojileri üzerine yoğun bir frontend geliştirme bootcamp'ini tamamladım. React, JavaScript, HTML5, CSS3, Tailwind, Axios ve Figma gibi ön yüz araçlarının kullanımını öğrendim. 6 ay boyunca tam zamanlı olarak gerçek bir projede çalışma fırsatı buldum. Bu süreçte ekip arkadaşlarımla birlikte online pizza sipariş sistemi geliştirdik. Teorik bilgileri pratiğe dökme ve ekip çalışması deneyimi kazandım.",
+        "period": "2021 - 2022"
+      }
+    ],
+    "certificationsData": [
+      "Problem Solving (Basic) - HackerRank",
+      "JavaScript (Basic) - HackerRank", 
+      "JavaScript (Intermediate) - HackerRank",
+      "REST API (Intermediate) - HackerRank",
+      "React (Basic) - HackerRank"
+    ],
+    "expertiseData": [
+      "UI geliştirme",
+      "Performans optimizasyonu", 
+      "Duyarlı tasarım",
+      "Mobil geliştirme"
+    ],
+    "languagesData": [
+      { "name": "Türkçe", "level": "Anadil" },
+      { "name": "İngilizce", "level": "Orta Seviye" }
+    ]
   },
   "footer": {
     "title": "Bana bir mesaj gönderin!",
