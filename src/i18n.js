@@ -9,7 +9,7 @@ i18n
   .use(initReactI18next) 
   .init({
     fallbackLng: 'tr', 
-    debug: true, 
+    debug: false, // Console debug mesajlarını kapat
     interpolation: {
       escapeValue: false, 
     },

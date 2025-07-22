@@ -23,7 +23,8 @@
   "skills": {
     "title": "Technical Skills",
     "skills": "My Skills",
-    "description": "Technologies I use in my projects and skills I continuously develop.",
+    "description": "Modern technologies and tools I use to build amazing web applications",
+    "technologies": "Technologies",
     "all": "All",
     "frontend": "Frontend",
     "backend": "Backend",
@@ -31,11 +32,18 @@
     "database": "Database",
     "tools": "Tools",
     "design": "Design",
-    "devops": "DevOps"
+    "devops": "DevOps",
+    "filterCode": "Code",
+    "filterGrid": "Grid",
+    "filterComment": "Skills filtering system",
+    "activeFilter": "Active",
+    "skillsCount": "skills",
+    "andMore": "and",
+    "more": "more"
   },
   "projects": {
     "title": "My Projects",
-    "description": "Projects showcasing my experience and skills",
+    "description": "A collection of web applications showcasing innovative solutions and modern technologies",
     "categories": "Categories",
     "technologies": "Technologies",
     "viewSite": "Visit Website",
@@ -48,8 +56,77 @@
     "all": "All",
     "web": "Web",
     "mobile": "Mobile",
-    "design": "Design",
+    "api": "API",
+    "viewLive": "View Live",
+    "viewLiveShort": "View",
+    "source": "Source",
+    "sourceShort": "Code",
+    "live": "LIVE",
+    "webApp": "Web App",
     "loading": "Loading",
+    "projectsData": [
+      {
+        "id": "patent-oyun",
+        "title": "Patent Game",
+        "description": "A word game application used by the Turkish Patent Institute.",
+        "image": "/images/PatentOyun.png",
+        "techStack": ["Angular", "TailwindCSS", "Framer Motion", "WebGL"],
+        "status": "completed",
+        "year": "2024",
+        "siteLink": "https://oyun.turkpatent.gov.tr/"
+      },
+      {
+        "id": "segna-tile-web",
+        "title": "Segna Tile Web",
+        "description": "Corporate website for a decorative stone store.",
+        "image": "/images/SegnaTile.png",
+        "techStack": ["React", "Node.js", "Firebase", "TailwindCSS"],
+        "status": "completed",
+        "year": "2024",
+        "siteLink": "https://segnatile.com/"
+      },
+      {
+        "id": "krizler-ve-hekimlik",
+        "title": "Crises and Medicine",
+        "description": "Information page for a TUBITAK project developed by Çukurova University Medical Faculty.",
+        "image": "/images/KrizlerveHekimlik.png",
+        "techStack": ["React", "Node.js", "PostgreSQL", "TailwindCSS"],
+        "status": "completed",
+        "year": "2023",
+        "siteLink": "https://www.krizlervehekimlik.com.tr/"
+      },
+      {
+        "id": "oguzcanturan",
+        "title": "Oguzcan Turan Videographer",
+        "description": "Portfolio website for a professional videographer.",
+        "image": "/images/videographer.png",
+        "techStack": ["React", "Node.js", "Firebase", "TailwindCSS"],
+        "status": "completed",
+        "year": "2024",
+        "siteLink": "https://oguzcanturan.com/"
+      },
+      {
+        "id": "seraf-montenegro-properties",
+        "title": "Seraf Montenegro Properties",
+        "description": "Corporate website for a real estate company located in Montenegro.",
+        "image": "/images/serafmontenegro.png",
+        "techStack": ["React", "Node.js", "Firebase", "TailwindCSS"],
+        "status": "completed",
+        "year": "2025",
+        "siteLink": "https://serafmontenegro.com/"
+      },
+      {
+        "id": "batut-gayrimenkul",
+        "title": "Batut Real Estate",
+        "description": "Corporate website for a real estate company located in Bursa.",
+        "image": "/images/batutgayrimenkul.png",
+        "techStack": ["React", "Node.js", "Firebase", "TailwindCSS"],
+        "status": "completed",
+        "year": "2025",
+        "siteLink": "https://batutgayrimenkul.vercel.app/"
+      }
+    ],
+    "design": "Design",
     "sampleProject1Title": "3D Portfolio Web Application",
     "sampleProject1Desc": "A fully interactive 3D portfolio web application created using ThreeJS and React. Users can navigate between projects in 3D.",
     "sampleProject2Title": "AR Furniture App",
@@ -99,6 +176,11 @@
     "resumeIntro": "As a Front-End Developer with 2 years of professional experience focusing on React and Angular, I specialize in developing modern web applications. I create performance-oriented solutions that prioritize user experience, built on strong foundations in JavaScript (ES6+), HTML5, and CSS3. Beyond my front-end skills, I've expanded my capabilities in the back-end domain, developing entry-level projects using C#, ASP.NET, SQL Server, and Docker. This has given me the ability to understand and implement full-stack architecture. I approach each project with a detail-oriented mindset, prioritizing clean code and user experience, while continuously developing my technical skills to keep pace with evolving industry demands.",
     "exportFormat":"Export Format",
     "preparingDownload":"Preparing Download...",
+    "exportComment": "Export CV functionality",
+    "readyToExport": "Ready to export",
+    "format": "Format",
+    "downloadCV": "Download CV",
+    "processing": "Processing...",
     "universityName": "Beykent University",
     "universityDegree": "Bachelor's Degree in Business Administration",
     "universityYear": "2012 - 2016",
@@ -121,9 +203,69 @@
     "downloadOptions": "Download Options",
     "selectFormat": "Select Format",
     "personalInfo": "Personal Information",
-    "birthDate": "August 11, 1993",
+    "birthDateValue": "August 11, 1993",
     "birthPlace": "Bursa, Turkey",
-    "contactInfo": "Contact Information"
+    "contactInfo": "Contact Information",
+    "personalData": {
+      "name": "Mert Batut",
+      "email": "mertbatut@gmail.com",
+      "phone": "+90 541 846 99 79",
+      "location": "Bursa, Turkey",
+      "website": "www.mertbatut.com.tr"
+    },
+    "workExperienceData": [
+      {
+        "title": "Front-End Developer",
+        "company": "Alesta Software",
+        "period": "2022 - Present",
+        "description": "At Alesta Software, I develop custom software solutions for construction companies. I create modern and interactive interfaces using Angular, React, React Native, and Redux technologies. I implement responsive designs with Tailwind CSS and Bootstrap, and handle API integrations with Axios. I focus on improving user experience and optimizing application performance.",
+        "current": true
+      },
+      {
+        "title": "Intern Front-End Developer",
+        "company": "Just Markt",
+        "period": "2019 - 2020",
+        "description": "Developed modern and interactive interfaces for the Just Markt virtual grocery application using React, Tailwind CSS, and Axios. Implemented API connections for product listing, cart, and order functionalities. Enhanced user experience through performance optimizations and managed application state efficiently with Redux.",
+        "current": false
+      },
+      {
+        "title": "Real Estate Consultant",
+        "company": "Batut Real Estate",
+        "period": "2016 - 2019",
+        "description": "Worked as a real estate consultant at Batut Real Estate, managing client relationships and property listings. Developed skills in client communication, negotiation, and problem-solving.",
+        "current": false
+      }
+    ],
+    "educationData": [
+      {
+        "name": "Beykent University",
+        "degree": "Bachelor's Degree in Business Administration",
+        "period": "2012 - 2016"
+      },
+      {
+        "name": "Workintech Academy",
+        "degree": "Completed an intensive frontend development bootcamp focused on modern web technologies. I learned to use frontend tools including React, JavaScript, HTML5, CSS3, Tailwind, Axios, and Figma. I had the opportunity to work full-time on a real project for 6 months. During this period, my team and I developed an online pizza ordering system. I gained valuable experience in applying theoretical knowledge practically and working as part of a development team.",
+        "period": "2021 - 2022"
+      }
+    ],
+    "certificationsData": [
+      "Problem Solving (Basic) - HackerRank",
+      "JavaScript (Basic) - HackerRank", 
+      "JavaScript (Intermediate) - HackerRank",
+      "REST API (Intermediate) - HackerRank",
+      "React (Basic) - HackerRank"
+    ],
+    "expertiseData": [
+      "UI development",
+      "Performance optimization", 
+      "Responsive design",
+      "Mobile development"
+    ],
+    "languagesData": [
+      { "name": "Turkish", "level": "Native Language" },
+      { "name": "English", "level": "Intermediate Level" }
+    ],
+    "errorDownloading": "Error downloading file"
   },
   "footer": {
     "title": "Send me a message!",

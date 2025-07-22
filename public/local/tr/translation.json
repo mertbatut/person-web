@@ -23,8 +23,10 @@
   "skills": {
     "title": "Teknik Yetenekler",
     "skills": "Yeteneklerim",
-    "description": "Projelerimde kullandığım teknolojiler ve sürekli geliştirdiğim yetenekler.",
+    "description": "Harika web uygulamaları geliştirmek için kullandığım modern teknolojiler ve araçlar",
+    "technologies": "Teknolojiler",
     "all": "Tümü",
+    "database": "Veritabanı",
     "frontend": "Frontend",
     "backend": "Backend",
     "tools": "Araçlar",
@@ -33,11 +35,18 @@
     "frontendSkills": ["React.js", "Angular", "JavaScript (ES6+)", "HTML5 & CSS3", "Responsive Design"],
     "backendSkills": ["C# & ASP.NET", "Node.js & Express", "SQL Server", "API Integration", "Docker"],
     "toolsSkills": ["Git & GitHub", "VS Code", "npm & Webpack", "Figma", "Adobe Creative Suite"],
-    "languages": "Diller"
+    "languages": "Diller",
+    "filterCode": "Kod",
+    "filterGrid": "Izgara",
+    "filterComment": "Yetenek filtreleme sistemi",
+    "activeFilter": "Aktif",
+    "skillsCount": "yetenek",
+    "andMore": "ve",
+    "more": "daha fazla"
   },
   "projects": {
     "title": "Projelerim",
-    "description": "Deneyim ve becerilerimi sergilediğim çalışmalar",
+    "description": "Yenilikçi çözümler ve modern teknolojileri sergileyen web uygulamaları koleksiyonu",
     "categories": "Kategoriler",
     "technologies": "Teknolojiler",
     "viewSite": "Siteyi Ziyaret Et",
@@ -50,8 +59,77 @@
     "all": "Tümü",
     "web": "Web",
     "mobile": "Mobil",
-    "design": "Tasarım",
+    "api": "API",
+    "viewLive": "Canlı Görüntüle",
+    "viewLiveShort": "Görüntüle",
+    "source": "Kaynak Kod",
+    "sourceShort": "Kod",
+    "live": "CANLI",
+    "webApp": "Web Uygulaması",
     "loading": "Yükleniyor",
+    "projectsData": [
+      {
+        "id": "patent-oyun",
+        "title": "Patent Oyun",
+        "description": "Türk Patent kurumunun kullanmakta olduğu bir kelime oyunu uygulaması.",
+        "image": "/images/PatentOyun.png",
+        "techStack": ["Angular", "TailwindCSS", "Framer Motion", "WebGL"],
+        "status": "completed",
+        "year": "2024",
+        "siteLink": "https://oyun.turkpatent.gov.tr/"
+      },
+      {
+        "id": "segna-tile-web",
+        "title": "Segna Tile Web",
+        "description": "Kurumsal dekoratif taş mağazasının kurumsal web sayfası.",
+        "image": "/images/SegnaTile.png",
+        "techStack": ["React", "Node.js", "Firebase", "TailwindCSS"],
+        "status": "completed",
+        "year": "2024",
+        "siteLink": "https://segnatile.com/"
+      },
+      {
+        "id": "krizler-ve-hekimlik",
+        "title": "Krizler ve Hekimlik",
+        "description": "Çukurova Üniversitesi Tıp Fakültesinin geliştirmiş olduğu TUBİTAK projesinin bilgilendirme sayfası.",
+        "image": "/images/KrizlerveHekimlik.png",
+        "techStack": ["React", "Node.js", "PostgreSQL", "TailwindCSS"],
+        "status": "completed",
+        "year": "2023",
+        "siteLink": "https://www.krizlervehekimlik.com.tr/"
+      },
+      {
+        "id": "oguzcanturan",
+        "title": "Oguzcan Turan Videographer",
+        "description": "Profesyonel bir videografın portfolyo web sitesi.",
+        "image": "/images/videographer.png",
+        "techStack": ["React", "Node.js", "Firebase", "TailwindCSS"],
+        "status": "completed",
+        "year": "2024",
+        "siteLink": "https://oguzcanturan.com/"
+      },
+      {
+        "id": "seraf-montenegro-properties",
+        "title": "Seraf Montenegro Properties",
+        "description": "Montenegro'da bulunan bir emlak şirketinin kurumsal web sayfası.",
+        "image": "/images/serafmontenegro.png",
+        "techStack": ["React", "Node.js", "Firebase", "TailwindCSS"],
+        "status": "completed",
+        "year": "2025",
+        "siteLink": "https://serafmontenegro.com/"
+      },
+      {
+        "id": "batut-gayrimenkul",
+        "title": "Batut Gayrimenkul",
+        "description": "Bursa'da bulunan bir emlak şirketinin kurumsal web sayfası.",
+        "image": "/images/batutgayrimenkul.png",
+        "techStack": ["React", "Node.js", "Firebase", "TailwindCSS"],
+        "status": "completed",
+        "year": "2025",
+        "siteLink": "https://batutgayrimenkul.vercel.app/"
+      }
+    ],
+    "design": "Tasarım",
     "sampleProject1Title": "3D Portföy Web Uygulaması",
     "sampleProject1Desc": "ThreeJS ve React kullanılarak oluşturulmuş, tamamen etkileşimli 3D portföy web uygulaması. Kullanıcılar projeler arasında 3D olarak gezinebilir.",
     "sampleProject2Title": "AR Mobilya Uygulaması",
@@ -101,6 +179,11 @@
     "resumeIntro": "2 yıllık profesyonel deneyime sahip, React ve Angular odaklı bir Front-End Developer olarak modern web uygulamaları geliştirme konusunda uzmanlığa sahibim. JavaScript (ES6+), HTML5 ve CSS3 konularında güçlü temeller üzerine kurulu becerilerle, kullanıcı deneyimini ön plana alan, performans odaklı çözümler üretiyorum. Front-end yeteneklerimin yanı sıra kendimi back-end alanında da geliştirerek C#, ASP.NET, SQL Server ve Docker gibi teknolojilerde giriş seviyesinde projeler gerçekleştiriyorum. Bu sayede tam yığın (full-stack) mimarisini anlama ve uygulama yeteneği kazandım. Her projeye detaycı bir yaklaşımla, temiz kod ve kullanıcı deneyimini önceliklendirerek yaklaşıyor, gelişen sektör taleplerine ayak uydurmak için sürekli olarak teknik becerilerimi geliştiriyorum.",
     "exportFormat":"Dışa Aktarılacak Formatı Seçin",
     "preparingDownload":"İndirme Hazırlanıyor...",
+    "exportComment": "CV dışa aktarma işlevi",
+    "readyToExport": "Dışa aktarım için hazır",
+    "format": "Format",
+    "downloadCV": "CV İndir",
+    "processing": "İşleniyor...",
     "universityName": "Beykent Üniversitesi",
     "universityDegree": "İşletme Bölümü, Lisans",
     "universityYear": "2012 - 2016",
@@ -183,7 +266,8 @@
     "languagesData": [
       { "name": "Türkçe", "level": "Anadil" },
       { "name": "İngilizce", "level": "Orta Seviye" }
-    ]
+    ],
+    "errorDownloading": "Dosya indirme hatası"
   },
   "footer": {
     "title": "Bana bir mesaj gönderin!",

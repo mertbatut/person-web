@@ -1,53 +1,43 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { ThemeContext } from '../context/ThemeContext';
 
-// Tech icon ve renk yardımcıları
+// Tech icons
 const techIcons = {
   React: 'fab fa-react',
-  Vue: 'fab fa-vuejs',
-  Angular: 'fab fa-angular',
-  JavaScript: 'fab fa-js',
-  TypeScript: 'devicon-typescript-plain',
-  HTML: 'fab fa-html5',
-  CSS: 'fab fa-css3-alt',
-  SASS: 'fab fa-sass',
   'Node.js': 'fab fa-node',
-  PHP: 'fab fa-php',
-  Python: 'fab fa-python',
-  Java: 'fab fa-java',
-  'C#': 'devicon-csharp-plain',
-  'Ruby on Rails': 'devicon-rails-plain',
   MongoDB: 'devicon-mongodb-plain',
-  MySQL: 'devicon-mysql-plain',
+  PostgreSQL: 'devicon-postgresql-plain',
   Firebase: 'devicon-firebase-plain',
-  AWS: 'fab fa-aws',
-  Docker: 'fab fa-docker',
-  Git: 'fab fa-git-alt',
-  WordPress: 'fab fa-wordpress',
   ThreeJS: 'fa fa-cube',
   'TailwindCSS': 'devicon-tailwindcss-plain',
   'Framer Motion': 'fa fa-film',
-  'React Native': 'fab fa-react',
-  ARKit: 'fa fa-mobile',
-  ARCore: 'fa fa-android',
   'D3.js': 'fa fa-chart-bar',
+  'Socket.io': 'fa fa-plug',
+  Express: 'fab fa-node-js',
+  Redis: 'devicon-redis-plain',
+  WebGL: 'fa fa-cube'
 };
 
-const getTechIcon = (tech) => {
-  return techIcons[tech] || 'fa fa-code';
-};
+const getTechIcon = (tech) => techIcons[tech] || 'fa fa-code';
 
 export default function Projects() {
   const { t, i18n } = useTranslation();
+  const { theme } = useContext(ThemeContext);
   const [projects, setProjects] = useState([]);
-  const [activeCategory, setActiveCategory] = useState('all');
-  const [selectedProject, setSelectedProject] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
   const [loading, setLoading] = useState(true);
   const sectionRef = useRef(null);
 
-  // Intersection Observer ile görünürlük tespiti
+  const isDark = theme === 'dark';
+
+  // Get projects data from translation - memoized to prevent infinite loops
+  const projectsData = useMemo(() => {
+    return t('projects.projectsData', { returnObjects: true });
+  }, [t, i18n.language]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Intersection Observer
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -62,463 +52,266 @@ export default function Projects() {
       observer.observe(sectionRef.current);
     }
 
-    return () => {
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, []);
 
-  // Kategoriler
-  const categories = [
-    { id: 'all', label: t('projects.all'), icon: 'fas fa-border-all' },
-    { id: 'web', label: t('projects.web'), icon: 'fas fa-laptop-code' },
-    { id: 'mobile', label: t('projects.mobile'), icon: 'fas fa-mobile-alt' },
-    { id: 'design', label: t('projects.design'), icon: 'fas fa-paint-brush' }
-  ];
-
-  // Örnek projeler
-  const getSampleProjects = () => [
-    {
-      id: "sample-1",
-      title: "3D Portfolio Website",
-      description: "Interactive 3D portfolio with Three.js animations and modern UI/UX design",
-      images: [{ src: "/images/PatentOyun.png", alt: "3D Portfolio" }],
-      techStack: ["React", "ThreeJS", "TailwindCSS", "Framer Motion"],
-      category: "web",
-      tags: ["web", "3d", "interactive"],
-      status: "completed",
-      year: "2024",
-      siteLink: "https://example.com/3d-portfolio",
-      githubLink: "https://github.com/example/3d-portfolio"
-    },
-    {
-      id: "sample-2",
-      title: "AR Furniture App",
-      description: "Augmented reality mobile app for furniture visualization in real spaces",
-      images: [{ src: "/images/SegnaTile.png", alt: "AR Furniture App" }],
-      techStack: ["React Native", "ARKit", "ARCore", "Firebase"],
-      category: "mobile",
-      tags: ["mobile", "ar", "interactive"],
-      status: "completed",
-      year: "2024",
-      siteLink: "https://example.com/ar-furniture",
-      githubLink: "https://github.com/example/ar-furniture"
-    },
-    {
-      id: "sample-3",
-      title: "Data Visualization Dashboard",
-      description: "Interactive data visualization dashboard with real-time analytics",
-      images: [{ src: "/images/KrizlerveHekimlik.png", alt: "Data Visualization" }],
-      techStack: ["D3.js", "React", "Node.js", "MongoDB"],
-      category: "design",
-      tags: ["dataviz", "web", "interactive"],
-      status: "in-progress",
-      year: "2024",
-      siteLink: "https://example.com/data-viz",
-      githubLink: "https://github.com/example/data-viz"
-    }
-  ];
-
-  // Veri yükleme
+  // Load projects
   useEffect(() => {
     const fetchProjects = async () => {
       try {
         setLoading(true);
-        const sampleProjects = getSampleProjects();
-        await new Promise(resolve => setTimeout(resolve, 1500)); // Simulated loading
-        setProjects(sampleProjects);
-        setSelectedProject(sampleProjects[0]);
+        await new Promise(resolve => setTimeout(resolve, 600));
+        // Ensure projectsData is an array before setting it
+        const validProjects = Array.isArray(projectsData) ? projectsData : [];
+        setProjects(validProjects);
       } catch (err) {
-        console.error('Proje yükleme hatası:', err);
-        const sampleProjects = getSampleProjects();
-        setProjects(sampleProjects);
-        setSelectedProject(sampleProjects[0]);
+        if (import.meta.env.DEV) {
+          console.error('Loading error:', err);
+        }
+        setProjects([]); // Set empty array on error
       } finally {
         setLoading(false);
       }
     };
 
     fetchProjects();
-  }, []);
-
-  // Filtreleme
-  const filteredProjects = activeCategory === 'all' 
-    ? projects 
-    : projects.filter(project => project.category === activeCategory);
-
-  // URL güvenliği
-  const isValidUrl = (url) => {
-    if (!url) return false;
-    try {
-      new URL(url);
-      return url.startsWith('http://') || url.startsWith('https://');
-    } catch (_) {
-      return false;
-    }
-  };
-
-  // Projects Filter Panel Component
-  function ProjectsFilterPanel() {
-    return (
-      <div className="mb-8 bg-[#2d2d30] rounded-lg border border-gray-700 overflow-hidden">
-        <div className="flex items-center justify-between bg-[#383838] px-4 py-3 border-b border-gray-700">
-          <div className="flex items-center space-x-3">
-            <div className="flex space-x-1">
-              <div className="w-3 h-3 bg-[#ff5f57] rounded-full"></div>
-              <div className="w-3 h-3 bg-[#ffbd2e] rounded-full"></div>
-              <div className="w-3 h-3 bg-[#28ca42] rounded-full"></div>
-            </div>
-            <span className="text-gray-300 text-sm">projects-filter.js</span>
-          </div>
-          <div className="text-gray-400 text-xs">●</div>
-        </div>
-
-        <div className="p-4 font-mono text-sm text-[#d4d4d4]">
-          <div className="space-y-2">
-            <div className="text-[#6a9955]">{/* Project filtering system */}</div>
-            <div>
-              <span className="text-[#569cd6]">const</span> 
-              <span className="text-[#9cdcfe]"> activeFilter</span> 
-              <span className="text-[#d4d4d4]"> = </span>
-              <span className="text-[#ce9178]">&apos;{activeCategory}&apos;</span>
-              <span className="text-[#d4d4d4]">;</span>
-            </div>
-            
-            <div className="flex flex-wrap gap-3 mt-4 pt-2 border-t border-gray-600">
-              {categories.map((category) => (
-                <button
-                  key={category.id}
-                  onClick={() => setActiveCategory(category.id)}
-                  className={`px-4 py-2 rounded text-sm font-medium transition-colors ${
-                    activeCategory === category.id
-                      ? 'bg-[#0e639c] text-white'
-                      : 'bg-[#3c3c3c] text-[#d4d4d4] hover:bg-[#464647]'
-                  }`}
-                >
-                  <i className={`${category.icon} mr-2`}></i>
-                  {category.label}
-                </button>
-              ))}
-            </div>
-            
-            <div className="text-[#6a9955] text-xs mt-2">
-              {/* Active filter: {activeCategory} • {filteredProjects.length} projects found */}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // Projects Terminal Component
-  function ProjectsTerminal() {
-    return (
-      <div className="bg-[#1e1e1e] rounded-lg border border-gray-700 overflow-hidden shadow-lg">
-        {/* VS Code Header */}
-        <div className="flex items-center justify-between bg-[#2d2d30] px-4 py-2 border-b border-gray-700">
-          <div className="flex items-center space-x-3">
-            <div className="flex space-x-1">
-              <div className="w-3 h-3 bg-[#ff5f57] rounded-full"></div>
-              <div className="w-3 h-3 bg-[#ffbd2e] rounded-full"></div>
-              <div className="w-3 h-3 bg-[#28ca42] rounded-full"></div>
-            </div>
-            <span className="text-gray-300 text-sm font-medium">projects.json</span>
-          </div>
-          <div className="text-gray-400 text-xs">●</div>
-        </div>
-
-        {/* Code Editor Content */}
-        <div className="p-0 font-mono text-sm bg-[#1e1e1e] text-[#d4d4d4]">
-          {/* Line numbers and code */}
-          <div className="flex">
-            <div className="w-12 bg-[#1e1e1e] text-[#858585] text-xs select-none border-r border-gray-700 py-4">
-              {Array.from({length: Math.max(20, filteredProjects.length * 8 + 10)}, (_, i) => (
-                <div key={i} className="h-5 flex items-center justify-end pr-2">
-                  {i + 1}
-                </div>
-              ))}
-            </div>
-            
-            <div className="flex-1 p-4">
-              <div className="space-y-1">
-                <div className="text-[#d4d4d4]">{'{'}</div>
-                
-                {/* Projects Section */}
-                <div className="ml-4">
-                  <div className="text-[#9cdcfe]">&quot;projects&quot;</div>
-                  <div className="text-[#d4d4d4]">: {'{'}</div>
-                  
-                  {/* Category Header */}
-                  <div className="ml-4 space-y-0.5">
-                    <div>
-                      <span className="text-[#9cdcfe]">&quot;category&quot;</span>
-                      <span className="text-[#d4d4d4]">: </span>
-                      <span className="text-[#ce9178]">&quot;{categories.find(c => c.id === activeCategory)?.label || 'All'}&quot;</span>
-                      <span className="text-[#d4d4d4]">,</span>
-                    </div>
-                    <div>
-                      <span className="text-[#9cdcfe]">&quot;count&quot;</span>
-                      <span className="text-[#d4d4d4]">: </span>
-                      <span className="text-[#b5cea8]">{filteredProjects.length}</span>
-                      <span className="text-[#d4d4d4]">,</span>
-                    </div>
-                    <div>
-                      <span className="text-[#9cdcfe]">&quot;portfolio&quot;</span>
-                      <span className="text-[#d4d4d4]">: [</span>
-                    </div>
-                  </div>
-                  
-                  {/* Projects List in JSON format */}
-                  <div className="ml-8 space-y-4">
-                    {filteredProjects.map((project, index) => (
-                      <motion.div
-                        key={project.id}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -20 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className="group"
-                      >
-                        <div 
-                          className={`text-[#d4d4d4] hover:bg-[#2d2d30] rounded px-2 py-2 transition-colors cursor-pointer border-l-2 ${
-                            selectedProject?.id === project.id ? 'border-[#0e639c] bg-[#2d2d30]' : 'border-transparent'
-                          }`}
-                          onClick={() => setSelectedProject(project)}
-                        >
-                          <span className="text-[#d4d4d4]">{'{'}</span>
-                          <br />
-                          <span className="ml-4">
-                            <span className="text-[#9cdcfe]">&quot;id&quot;</span>
-                            <span className="text-[#d4d4d4]">: </span>
-                            <span className="text-[#ce9178]">&quot;{project.id}&quot;</span>
-                            <span className="text-[#d4d4d4]">,</span>
-                          </span>
-                          <br />
-                          <span className="ml-4">
-                            <span className="text-[#9cdcfe]">&quot;title&quot;</span>
-                            <span className="text-[#d4d4d4]">: </span>
-                            <span className="text-[#ce9178]">&quot;{project.title}&quot;</span>
-                            <span className="text-[#d4d4d4]">,</span>
-                          </span>
-                          <br />
-                          <span className="ml-4">
-                            <span className="text-[#9cdcfe]">&quot;status&quot;</span>
-                            <span className="text-[#d4d4d4]">: </span>
-                            <span className="text-[#ce9178]">&quot;{project.status}&quot;</span>
-                            <span className="text-[#d4d4d4]">,</span>
-                          </span>
-                          <br />
-                          <span className="ml-4">
-                            <span className="text-[#9cdcfe]">&quot;year&quot;</span>
-                            <span className="text-[#d4d4d4]">: </span>
-                            <span className="text-[#b5cea8]">{project.year}</span>
-                            <span className="text-[#d4d4d4]">,</span>
-                          </span>
-                          <br />
-                          <span className="ml-4">
-                            <span className="text-[#9cdcfe]">&quot;techStack&quot;</span>
-                            <span className="text-[#d4d4d4]">: [</span>
-                            {project.techStack && project.techStack.map((tech, techIndex) => (
-                              <span key={techIndex}>
-                                <span className="text-[#ce9178]">&quot;{tech}&quot;</span>
-                                {techIndex < project.techStack.length - 1 && <span className="text-[#d4d4d4]">, </span>}
-                              </span>
-                            ))}
-                            <span className="text-[#d4d4d4]">]</span>
-                          </span>
-                          <br />
-                          <span className="text-[#d4d4d4]">{'}'}{index < filteredProjects.length - 1 ? ',' : ''}</span>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                  
-                  <div className="ml-4 text-[#d4d4d4]">]</div>
-                  <div className="text-[#d4d4d4]">{'}'}</div>
-                </div>
-
-                <div className="text-[#d4d4d4]">{'}'}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // Project Details Panel
-  function ProjectDetailsPanel() {
-    if (!selectedProject) return null;
-
-    return (
-      <div className="mt-8 bg-[#2d2d30] rounded-lg border border-gray-700 overflow-hidden">
-        <div className="flex items-center justify-between bg-[#383838] px-4 py-3 border-b border-gray-700">
-          <div className="flex items-center space-x-3">
-            <div className="flex space-x-1">
-              <div className="w-3 h-3 bg-[#ff5f57] rounded-full"></div>
-              <div className="w-3 h-3 bg-[#ffbd2e] rounded-full"></div>
-              <div className="w-3 h-3 bg-[#28ca42] rounded-full"></div>
-            </div>
-            <span className="text-gray-300 text-sm">project-details.md</span>
-          </div>
-          <div className="text-gray-400 text-xs">●</div>
-        </div>
-
-        <div className="p-6 text-white">
-          {/* Project Image */}
-          <div className="relative h-64 md:h-80 overflow-hidden rounded-lg mb-6">
-            {selectedProject.images && selectedProject.images.length > 0 ? (
-              <img 
-                src={selectedProject.images[0].src} 
-                alt={selectedProject.images[0].alt || selectedProject.title} 
-                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-              />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-cyan-500 to-purple-500">
-                <i className="fa fa-code text-white text-4xl"></i>
-              </div>
-            )}
-            
-            {/* Status Badge */}
-            <div className="absolute top-4 right-4">
-              <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${
-                selectedProject.status === 'completed' 
-                  ? 'bg-green-500/20 text-green-400 border border-green-500/30' 
-                  : 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
-              }`}>
-                <div className={`w-2 h-2 rounded-full mr-2 ${
-                  selectedProject.status === 'completed' ? 'bg-green-400' : 'bg-yellow-400'
-                }`}></div>
-                {selectedProject.status === 'completed' ? 'Completed' : 'In Progress'}
-              </span>
-            </div>
-          </div>
-
-          {/* Project Info */}
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-2xl font-bold text-white mb-2">{selectedProject.title}</h3>
-              <p className="text-gray-300 text-lg">{selectedProject.description}</p>
-            </div>
-
-            {/* Tech Stack */}
-            <div>
-              <h4 className="text-lg font-semibold text-white mb-3">Technologies Used</h4>
-              <div className="flex flex-wrap gap-2">
-                {selectedProject.techStack && selectedProject.techStack.map((tech, idx) => (
-                  <span 
-                    key={idx}
-                    className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#3c3c3c] text-gray-300 border border-gray-600"
-                  >
-                    <i className={`${getTechIcon(tech)} mr-2 text-cyan-400`}></i>
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3">
-              {selectedProject.siteLink && (
-                <motion.a 
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  href={selectedProject.siteLink} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  onClick={(e) => {
-                    if (!isValidUrl(selectedProject.siteLink)) {
-                      e.preventDefault();
-                      alert('Invalid URL');
-                    }
-                  }}
-                  className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-medium transition-all duration-300 group bg-[#0e639c] text-white hover:bg-[#1177bb]"
-                >
-                  <i className="fas fa-external-link-alt group-hover:translate-x-1 transition-transform"></i>
-                  <span>View Live Site</span>
-                </motion.a>
-              )}
-              
-              {selectedProject.githubLink && (
-                <motion.a 
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  href={selectedProject.githubLink} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  onClick={(e) => {
-                    if (!isValidUrl(selectedProject.githubLink)) {
-                      e.preventDefault();
-                      alert('Invalid URL');
-                    }
-                  }}
-                  className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg border border-gray-600 px-6 py-3 text-sm font-medium transition-all duration-300 group text-gray-300 hover:border-gray-500 hover:text-white"
-                >
-                  <i className="fab fa-github group-hover:rotate-12 transition-transform"></i>
-                  <span>View Code</span>
-                </motion.a>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  }, [projectsData]);
 
   return (
-    <div id="projects" ref={sectionRef} className="relative py-16 md:py-24 lg:py-32 overflow-hidden bg-[#0a0a0f]">
+    <div id="projects" ref={sectionRef} className={`relative py-20 transition-colors duration-500 ${
+      isDark ? 'bg-[#0a0a0f]' : 'bg-gray-50'
+    }`}>
+      
       {/* Background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-cyan-900/20" />
-        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-purple-500/10 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-cyan-500/10 to-transparent" />
+        <div className={`absolute inset-0 ${
+          isDark 
+            ? 'bg-gradient-to-br from-purple-900/10 via-transparent to-cyan-900/10' 
+            : 'bg-gradient-to-br from-purple-100/30 via-transparent to-cyan-100/30'
+        }`} />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        
         {/* Header */}
         <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -30 }}
+          className="text-center mb-12 sm:mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-4">
-            <span className="text-white">{t('projects.title') || 'My'}</span>
-            <br />
-            <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-              Projects
-            </span>
+          <h2 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-4 ${
+            isDark ? 'text-white' : 'text-gray-900'
+          }`}>
+            {t('projects.title').split(' ')[0]} <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">{t('projects.title').split(' ')[1]}</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            {t('projects.description') || 'Explore my latest work and creative projects'}
+          <p className={`text-lg sm:text-xl max-w-2xl mx-auto ${
+            isDark ? 'text-gray-300' : 'text-gray-600'
+          }`}>
+            {t('projects.description')}
           </p>
         </motion.div>
 
-        {/* Loading State */}
+        {/* Loading */}
         {loading && (
-          <div className="flex justify-center py-16">
-            <div className="relative w-16 h-16">
-              <div className="absolute inset-0 rounded-full border-4 border-gray-700"></div>
-              <motion.div 
-                className="absolute inset-0 rounded-full border-4 border-transparent border-t-cyan-400"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-              />
-            </div>
+          <div className="flex justify-center py-20">
+            <motion.div 
+              className="w-12 h-12 border-3 border-cyan-400 border-t-transparent rounded-full"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+            />
           </div>
         )}
 
         {!loading && (
-          <>
-            {/* Projects Filter Panel */}
-            <ProjectsFilterPanel />
+          <motion.div 
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            {Array.isArray(projects) && projects.length > 0 ? projects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                className={`group relative overflow-hidden rounded-2xl sm:rounded-3xl transition-all duration-700 ${
+                  isDark 
+                    ? 'bg-gray-800/30 backdrop-blur-xl border border-gray-700/50 hover:border-cyan-400/50' 
+                    : 'bg-white/80 backdrop-blur-xl border border-gray-200/50 hover:border-cyan-400/50'
+                } hover:shadow-2xl hover:shadow-cyan-400/10`}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -4, scale: 1.01 }}
+              >
+                
+                {/* Project Image */}
+                <div className="relative h-40 sm:h-48 lg:h-56 overflow-hidden rounded-t-2xl sm:rounded-t-3xl">
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                  
+                  {/* Status Badge */}
+                  <div className="absolute top-3 sm:top-4 right-3 sm:right-4">
+                    <div className="px-2 sm:px-3 py-1 sm:py-1.5 bg-emerald-500 text-white text-xs sm:text-sm font-bold rounded-full shadow-lg">
+                      <i className="fas fa-check-circle mr-1"></i>
+                      {t('projects.live')}
+                    </div>
+                  </div>
 
-            {/* Projects Terminal */}
-            <ProjectsTerminal />
+                  {/* Category Badge */}
+                  <div className="absolute top-3 sm:top-4 left-3 sm:left-4">
+                    <div className={`px-2 sm:px-3 py-1 sm:py-1.5 ${
+                      isDark ? 'bg-gray-900/80' : 'bg-white/80'
+                    } backdrop-blur-sm rounded-full text-xs font-medium ${
+                      isDark ? 'text-gray-300' : 'text-gray-700'
+                    }`}>
+                      <i className="fas fa-layer-group mr-1"></i>
+                      <span className="hidden sm:inline">{t('projects.webApp')}</span>
+                    </div>
+                  </div>
 
-            {/* Project Details Panel */}
-            <ProjectDetailsPanel />
-          </>
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  {/* Quick Actions - Hidden on mobile */}
+                  <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 hidden sm:flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <motion.a
+                      href={project.siteLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 sm:p-2.5 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-cyan-500/70 transition-colors"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      <i className="fas fa-external-link-alt text-sm"></i>
+                    </motion.a>
+                    <motion.a
+                      href={project.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 sm:p-2.5 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-cyan-500/70 transition-colors"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      <i className="fab fa-github text-sm"></i>
+                    </motion.a>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-4 sm:p-6">
+                  
+                  {/* Title & Year */}
+                  <div className="flex justify-between items-start mb-2 sm:mb-3">
+                    <h3 className={`text-base sm:text-lg lg:text-xl font-bold leading-tight ${
+                      isDark ? 'text-white group-hover:text-cyan-400' : 'text-gray-900 group-hover:text-cyan-600'
+                    } transition-colors duration-300 pr-2`}>
+                      {project.title}
+                    </h3>
+                    <span className="text-xs sm:text-sm font-semibold text-cyan-500 whitespace-nowrap">
+                      {project.year}
+                    </span>
+                  </div>
+
+                  {/* Description */}
+                  <p className={`text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-3 ${
+                    isDark ? 'text-gray-300' : 'text-gray-600'
+                  }`}>
+                    {project.description}
+                  </p>
+
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
+                    {project.techStack.slice(0, 3).map((tech, idx) => (
+                      <span 
+                        key={idx}
+                        className={`inline-flex items-center px-2 sm:px-3 py-1 rounded-full text-xs font-medium ${
+                          isDark 
+                            ? 'bg-gray-700/60 text-gray-200' 
+                            : 'bg-gray-100 text-gray-700'
+                        }`}
+                      >
+                        <i className={`${getTechIcon(tech)} mr-1 sm:mr-1.5 text-cyan-500 text-xs`}></i>
+                        <span className="truncate">{tech}</span>
+                      </span>
+                    ))}
+                    {project.techStack.length > 3 && (
+                      <span className="inline-flex items-center px-2 sm:px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-cyan-500/20 to-purple-500/20 text-cyan-600 dark:text-cyan-400">
+                        +{project.techStack.length - 3}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex gap-2 sm:gap-3">
+                    <motion.a 
+                      href={project.siteLink} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex-1 bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 text-white py-2 sm:py-2.5 px-3 sm:px-4 rounded-lg sm:rounded-xl text-center text-xs sm:text-sm font-semibold transition-all duration-300 shadow-lg hover:shadow-cyan-500/25"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <i className="fas fa-eye mr-1 sm:mr-2"></i>
+                      <span className="hidden sm:inline">{t('projects.viewLive')}</span>
+                      <span className="sm:hidden">{t('projects.viewLiveShort')}</span>
+                    </motion.a>
+                    
+                    <motion.a 
+                      href={project.githubLink} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className={`flex-1 border py-2 sm:py-2.5 px-3 sm:px-4 rounded-lg sm:rounded-xl text-center text-xs sm:text-sm font-semibold transition-all duration-300 ${
+                        isDark 
+                          ? 'border-gray-600 text-gray-300 hover:border-gray-500 hover:bg-gray-800/50' 
+                          : 'border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-50'
+                      }`}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <i className="fab fa-github mr-1 sm:mr-2"></i>
+                      <span className="hidden sm:inline">{t('projects.source')}</span>
+                      <span className="sm:hidden">{t('projects.sourceShort')}</span>
+                    </motion.a>
+                  </div>
+                </div>
+
+                {/* Hover Glow Effect */}
+                <div className="absolute inset-0 rounded-2xl sm:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                  <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-cyan-500/5 via-purple-500/5 to-cyan-500/5"></div>
+                </div>
+                
+              </motion.div>
+            )) : (
+              <div className={`col-span-full text-center py-16 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                <p className="text-xl">{t('projects.notFound')}</p>
+                <p className="text-sm mt-2">{t('projects.notFoundDesc')}</p>
+              </div>
+            )}
+          </motion.div>
         )}
       </div>
+
+      <style>{`
+        .border-3 {
+          border-width: 3px;
+        }
+        .line-clamp-2 {
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+        .line-clamp-3 {
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      `}</style>
     </div>
   );
 }
